@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.security.KeyManagementException;
+
+import fr.eseo.dis.android.vp.connexion.ConnexionManager;
 import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Application PFE");
+
+        try {
+            ConnexionManager.trustCertificate();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
 
         Button button6 = (Button) findViewById(R.id.buttonVisitor);
         button6.setOnClickListener(new View.OnClickListener() {
@@ -94,4 +103,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d("MainActivity","onDestroy()");
     }
+
+
 }

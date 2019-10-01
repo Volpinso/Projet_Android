@@ -22,6 +22,18 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import fr.eseo.dis.android.vp.models.Logon;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginViewModel;
 import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginViewModelFactory;
@@ -102,8 +114,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
+                    try {
+                        loginViewModel.login(usernameEditText.getText().toString(),
+                                passwordEditText.getText().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 return false;
             }
@@ -113,10 +129,62 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                try {
+                    // Instantiate the RequestQueue.
+                    RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                    String url ="https://192.168.4.240/pfe/webservice.php?q=LOGON&user=" + usernameEditText.getText().toString() + "&pass="+ passwordEditText.getText().toString();
+                    System.out.println("requete"+url);
+
+                    // Request a string response from the provided URL.
+                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    //textView.setText("Response: " + response.toString());
+
+                                    System.out.println("ok"+response);
+
+                                    Gson gson = new Gson();
+                                    Logon responseModel = gson.fromJson(String.valueOf(response),
+                                            Logon.class);
+
+                                    System.out.println(responseModel.toString());
+
+                                    if(responseModel.getError()!=null && responseModel.getToken()==null){
+                                        showLoginFailed(AppCompatActivity.RESULT_CANCELED);
+                                    }else{
+                                        try {
+                                            loginViewModel.login(usernameEditText.getText().toString(),
+                                                    passwordEditText.getText().toString());
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                }
+                            }, new Response.ErrorListener() {
+
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // TODO: Handle error
+                                    System.out.println("error");
+
+                                }
+                            });
+                    queue.add(jsonObjectRequest);
+
+                    Thread.sleep(8000);
+
+                    System.out.println(jsonObjectRequest);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
+
+
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
