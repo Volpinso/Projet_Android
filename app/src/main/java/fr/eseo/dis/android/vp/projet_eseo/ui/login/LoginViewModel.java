@@ -53,7 +53,7 @@ public class LoginViewModel extends ViewModel {
 
     // A placeholder username validation check
     private boolean isUserNameValid(String username) {
-        if (username == null || username.length() != 8) {
+        if (username == null || username.length() < 3) {
             return false;
         }
         else {

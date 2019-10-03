@@ -9,8 +9,16 @@
     <string name="action_sign_in">Se connecter</string>
     <string name="action_sign_in_short">Se connecter</string>
     <string name="welcome">"Bienvenue !"</string>
+    <string name="wrong_password">"Mauvais mot de passe ou Identifiant ! "</string>
     <string name="invalid_username">Mauvais identifiant</string>
     <string name="invalid_password">Veuillez remplir ce champs</string>
     <string name="login_failed">"Echec de connexion</string>
     <string name="login">"Identifiant"</string>
+    <string name="title_activity_jury_member">JuryMemberActivity</string>
+    <string name="tab_text_1">PFE</string>
+    <string name="tab_text_2">Jurys</string>
+    <string name="tab_text_3">Notes</string>
+    <string name="tab_text_4">Créer Jurys</string>
+    <string name="jury_menu_name">Bienvenue </string>
+    <string name="title_activity_com_member">ComMemberActivity</string>
 </resources>

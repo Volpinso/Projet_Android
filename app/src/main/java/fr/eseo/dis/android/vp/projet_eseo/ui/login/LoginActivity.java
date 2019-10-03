@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -34,6 +35,10 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import fr.eseo.dis.android.vp.models.Logon;
+import fr.eseo.dis.android.vp.projet_eseo.ActivityVisitorListSubjects;
+import fr.eseo.dis.android.vp.projet_eseo.ComMemberActivity;
+import fr.eseo.dis.android.vp.projet_eseo.JuryMemberActivity;
+import fr.eseo.dis.android.vp.projet_eseo.MainActivity;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginViewModel;
 import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginViewModelFactory;
@@ -191,9 +196,20 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        if(!model.getDisplayName().equals("aubinseb")) {
+            Intent intent = new Intent(LoginActivity.this, JuryMemberActivity.class);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(LoginActivity.this, ComMemberActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+        String wrongPassword = getString(R.string.wrong_password);
+        Toast.makeText(getApplicationContext(), wrongPassword, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 }
