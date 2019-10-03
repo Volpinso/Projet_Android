@@ -35,6 +35,7 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import fr.eseo.dis.android.vp.models.Logon;
+import fr.eseo.dis.android.vp.models.RequestModel;
 import fr.eseo.dis.android.vp.projet_eseo.ActivityVisitorListSubjects;
 import fr.eseo.dis.android.vp.projet_eseo.ComMemberActivity;
 import fr.eseo.dis.android.vp.projet_eseo.JuryMemberActivity;
@@ -137,9 +138,8 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                    String url ="https://192.168.4.240/pfe/webservice.php?q=LOGON&user=" + usernameEditText.getText().toString() + "&pass="+ passwordEditText.getText().toString();
-                    System.out.println("requete"+url);
-
+                    String url = RequestModel.loginRequest(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+                    System.out.println(url);
                     // Request a string response from the provided URL.
                      JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                             (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -147,8 +147,6 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     //textView.setText("Response: " + response.toString());
-
-                                    System.out.println("ok"+response);
 
                                     Gson gson = new Gson();
                                     Logon responseModel = gson.fromJson(String.valueOf(response),
@@ -178,10 +176,6 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             });
                     queue.add(jsonObjectRequest);
-
-                    Thread.sleep(8000);
-
-                    System.out.println(jsonObjectRequest);
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -2,6 +2,7 @@ package fr.eseo.dis.android.vp.projet_eseo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,7 +12,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManagerFactory;
 
 import fr.eseo.dis.android.vp.connexion.ConnexionManager;
 import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginActivity;
@@ -24,11 +40,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Application PFE");
 
-        try {
+        /*try {
             ConnexionManager.trustCertificate();
         } catch (KeyManagementException e) {
             e.printStackTrace();
+        }*/
+
+        try {
+            HttpsURLConnection.setDefaultSSLSocketFactory(ConnexionManager.getSocketFactory(this.getApplicationContext()));
+        } catch (CertificateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
         }
+
 
         Button button6 = (Button) findViewById(R.id.buttonVisitor);
         button6.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d("MainActivity","onDestroy()");
     }
+
 
 
 }
