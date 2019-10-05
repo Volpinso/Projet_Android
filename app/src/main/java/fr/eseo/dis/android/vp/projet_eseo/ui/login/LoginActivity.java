@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -47,6 +48,7 @@ import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginViewModelFactory;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -160,6 +162,10 @@ public class LoginActivity extends AppCompatActivity {
                                         try {
                                             loginViewModel.login(usernameEditText.getText().toString(),
                                                     passwordEditText.getText().toString());
+                                            sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
+                                            sharedPreferences.edit().putString("username", usernameEditText.getText().toString());
+                                            sharedPreferences.edit().putString("token", responseModel.getToken());
+                                            sharedPreferences.edit().apply();
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }

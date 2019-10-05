@@ -20,5 +20,7 @@
     <string name="tab_text_3">Notes</string>
     <string name="tab_text_4">Créer Jurys</string>
     <string name="jury_menu_name">Bienvenue </string>
+    <string name="buttonAllPfe">Voir tous les PFE</string>
+    <string name="buttonPfeJury">Voir les PFE dont je suis membre du jury</string>
     <string name="title_activity_com_member">ComMemberActivity</string>
 </resources>

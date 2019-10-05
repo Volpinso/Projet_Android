@@ -1,17 +1,19 @@
 package fr.eseo.dis.android.vp.projet_eseo.ui.main;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import fr.eseo.dis.android.vp.projet_eseo.MainActivity;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 
 /**
@@ -22,6 +24,7 @@ public class PlaceholderFragmentPfe extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
+    private SharedPreferences sharedPreferences;
 
     public static PlaceholderFragmentPfe newInstance(int index) {
         PlaceholderFragmentPfe fragment = new PlaceholderFragmentPfe();
@@ -47,6 +50,26 @@ public class PlaceholderFragmentPfe extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_jury_pfe, container, false);
+        Button buttonAllPfe = (Button) root.findViewById(R.id.buttonAllPfe);
+        buttonAllPfe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button buttonPfeJury = (Button) root.findViewById(R.id.buttonPfeJury);
+        buttonPfeJury.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                sharedPreferences = getContext().getSharedPreferences("user_details", Context.MODE_PRIVATE);
+                String username = sharedPreferences.getString("username", null);
+                sharedPreferences.getString("token",  null);
+                startActivity(intent);
+                System.out.println(username);
+            }
+        });
         return root;
     }
 }

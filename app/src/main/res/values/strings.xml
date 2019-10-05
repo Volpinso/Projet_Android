@@ -19,5 +19,7 @@
     <string name="tab_text_2">Juries</string>
     <string name="tab_text_3">Grades</string>
     <string name="tab_text_4">Create Juries</string>
+    <string name="buttonAllPfe">See all FSP</string>
+    <string name="buttonPfeJury">See FSP which i am a member of</string>
     <string name="title_activity_com_member">ComMemberActivity</string>
 </resources>
