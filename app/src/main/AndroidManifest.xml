@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AllPfeActivity"
+            android:label="@string/AllPfeActivity">
+        </activity>
+        <activity
             android:name=".ComMemberActivity"
             android:label="@string/title_activity_com_member"
             android:parentActivityName=".ui.login.LoginActivity"

@@ -23,4 +23,5 @@
     <string name="buttonAllPfe">Voir tous les PFE</string>
     <string name="buttonPfeJury">Voir les PFE dont je suis membre du jury</string>
     <string name="title_activity_com_member">ComMemberActivity</string>
+    <string name="AllPfeActivity">Tous les PFE</string>
 </resources>

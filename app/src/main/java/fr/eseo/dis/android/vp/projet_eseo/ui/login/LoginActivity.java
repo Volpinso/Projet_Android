@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -48,7 +50,24 @@ import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginViewModelFactory;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
-    private SharedPreferences sharedPreferences;
+    private static String token;
+    private static String username;
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        LoginActivity.username = username;
+    }
+
+    public static String getToken() {
+        return token;
+    }
+
+    public static void setToken(String token) {
+        LoginActivity.token = token;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -154,18 +173,14 @@ public class LoginActivity extends AppCompatActivity {
                                     Logon responseModel = gson.fromJson(String.valueOf(response),
                                             Logon.class);
 
-                                    System.out.println(responseModel.toString());
-
                                     if(responseModel.getError()!=null && responseModel.getToken()==null){
                                         showLoginFailed(AppCompatActivity.RESULT_CANCELED);
                                     }else{
                                         try {
+                                            setToken(responseModel.getToken());
+                                            setUsername(usernameEditText.getText().toString());
                                             loginViewModel.login(usernameEditText.getText().toString(),
                                                     passwordEditText.getText().toString());
-                                            sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
-                                            sharedPreferences.edit().putString("username", usernameEditText.getText().toString());
-                                            sharedPreferences.edit().putString("token", responseModel.getToken());
-                                            sharedPreferences.edit().apply();
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }

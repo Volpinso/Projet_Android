@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import fr.eseo.dis.android.vp.projet_eseo.AllPfeActivity;
 import fr.eseo.dis.android.vp.projet_eseo.MainActivity;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 
@@ -54,7 +55,7 @@ public class PlaceholderFragmentPfe extends Fragment {
         buttonAllPfe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), AllPfeActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,11 +64,7 @@ public class PlaceholderFragmentPfe extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
-                sharedPreferences = getContext().getSharedPreferences("user_details", Context.MODE_PRIVATE);
-                String username = sharedPreferences.getString("username", null);
-                sharedPreferences.getString("token",  null);
                 startActivity(intent);
-                System.out.println(username);
             }
         });
         return root;

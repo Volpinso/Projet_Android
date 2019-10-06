@@ -22,4 +22,5 @@
     <string name="buttonAllPfe">See all FSP</string>
     <string name="buttonPfeJury">See FSP which i am a member of</string>
     <string name="title_activity_com_member">ComMemberActivity</string>
+    <string name="AllPfeActivity">All FSP</string>
 </resources>
