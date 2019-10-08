@@ -28,6 +28,7 @@ import fr.eseo.dis.android.vp.projet_eseo.ActivityVisitorListSubjects;
 import fr.eseo.dis.android.vp.projet_eseo.AllPfeActivity;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginActivity;
+import fr.eseo.dis.android.vp.projet_eseo.ui.main.PlaceholderFragmentPfe;
 
 public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerViewAdapter.PFERecyclerViewHolder>{
 
@@ -41,11 +42,10 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
 
     public PFERecyclerViewAdapter(AllPfeActivity allPfeActivity) {
         this.allPfeActivity = allPfeActivity;
-        this.projectList = AllPfeActivity.listRequest();
-        System.out.println(this.projectList.size());
+        this.projectList = PlaceholderFragmentPfe.getProjectList();
         //TODO: The following lines will be repalaced
         subjectInformation = new ArrayList<>();
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < this.projectList.size(); i++) {
             subjectInformation.add(i);
         }
         expandedPositions = new ArrayList<>();
@@ -62,6 +62,18 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
 
     @Override
     public void onBindViewHolder(@NonNull final PFERecyclerViewHolder holder, final int position) {
+        holder.pfeTitre.setText(projectList.get(position).getTitle());
+        if (projectList.get(position).getPoster() != null) {
+            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " " + projectList.get(position).getPoster());
+        } else {
+            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " ");
+        }
+        if (projectList.get(position).getConfid() == 0) {
+            holder.pfeDescriptionLabel.setText(projectList.get(position).getDescrip());
+        }
+        else {
+            holder.pfeDescriptionLabel.setText(holder.itemView.getContext().getResources().getString(R.string.confidential));
+        }
 
         if(expandedPositions.contains(position)){
             holder.pfeDescriptionLabel.setVisibility(View.VISIBLE);

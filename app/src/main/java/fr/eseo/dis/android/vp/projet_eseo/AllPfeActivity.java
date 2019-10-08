@@ -33,12 +33,10 @@ import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginActivity;
 public class AllPfeActivity extends AppCompatActivity {
 
     PFERecyclerViewAdapter PfeRecyclerViewAdapter;
-    private static List<Projects> projectList = new ArrayList<>();
-    private static Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AllPfeActivity.context = getApplicationContext();
         setContentView(R.layout.activity_visitor_list_subjects);
         RecyclerView pfeRecycler = (RecyclerView)findViewById(R.id.rv_filmList);
         pfeRecycler.setHasFixedSize(true);
@@ -48,51 +46,5 @@ public class AllPfeActivity extends AppCompatActivity {
         PfeRecyclerViewAdapter = new PFERecyclerViewAdapter(this);
         pfeRecycler.setAdapter(PfeRecyclerViewAdapter);
 
-    }
-
-    public static List<Projects> listRequest(){
-        try {
-            // Instantiate the RequestQueue.
-            String token = LoginActivity.getToken();
-            RequestQueue queue = Volley.newRequestQueue(context);
-            String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
-            System.out.println(url);
-            // Request a string response from the provided URL.
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Gson gson = new Gson();
-                            Liprj responseModel = gson.fromJson(String.valueOf(response),
-                                    Liprj.class);
-                            for(int i = 0 ; i < responseModel.getProjects().length; i++){
-                                projectList.add(responseModel.getProjects()[i]);
-                            }
-                            try {
-                                Thread.sleep(5000);
-                            }
-                            catch (Exception e){
-
-                            }
-                            System.out.println(projectList);
-
-                        }
-                    }, new Response.ErrorListener() {
-
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            // TODO: Handle error
-                            projectList = null;
-                            System.out.println("error");
-
-                        }
-                    });
-            queue.add(jsonObjectRequest);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return projectList;
     }
 }

@@ -1,5 +1,6 @@
 package fr.eseo.dis.android.vp.projet_eseo.ui.main;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,24 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.eseo.dis.android.vp.models.Liprj;
+import fr.eseo.dis.android.vp.models.Projects;
+import fr.eseo.dis.android.vp.models.RequestModel;
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginActivity;
 
 /**
  * A placeholder fragment containing a simple view.
