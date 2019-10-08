@@ -12,32 +12,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AllPfeActivity"
+            android:name="fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity"
             android:label="@string/AllPfeActivity">
         </activity>
         <activity
-            android:name=".ComMemberActivity"
+            android:name="fr.eseo.dis.android.vpmb.projet_eseo.ComMemberActivity"
             android:label="@string/title_activity_com_member"
-            android:parentActivityName=".ui.login.LoginActivity"
+            android:parentActivityName="fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginActivity" />
+                android:value="fr.eseo.dis.android.vp.projet_eseo.fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity" />
         </activity>
         <activity
-            android:name=".JuryMemberActivity"
+            android:name="fr.eseo.dis.android.vpmb.projet_eseo.JuryMemberActivity"
             android:label="@string/jury_menu_name"
-            android:parentActivityName=".ui.login.LoginActivity"
+            android:parentActivityName="fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginActivity" />
+                android:value="fr.eseo.dis.android.vp.projet_eseo.fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity" />
         </activity>
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".ActivityVisitorListSubjects" />
-        <activity android:name=".MainActivity">
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.ActivityVisitorListSubjects" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

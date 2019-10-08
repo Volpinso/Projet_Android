@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityVisitorListSubjects">
+    tools:context="fr.eseo.dis.android.vpmb.projet_eseo.ActivityVisitorListSubjects">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_filmList"
