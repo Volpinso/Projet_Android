@@ -23,4 +23,6 @@
     <string name="buttonPfeJury">See FSP which i am a member of</string>
     <string name="title_activity_com_member">ComMemberActivity</string>
     <string name="AllPfeActivity">All FSP</string>
+    <string name="emplacement">Place : </string>
+    <string name="confidential">This subject is confidential.</string>
 </resources>
