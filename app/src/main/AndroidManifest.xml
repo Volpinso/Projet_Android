@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity"></activity>
+        <activity android:name=".Main2Activity" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity"
-            android:label="@string/AllPfeActivity">
-        </activity>
+            android:label="@string/AllPfeActivity" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.ComMemberActivity"
             android:label="@string/title_activity_com_member"
@@ -22,7 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.eseo.dis.android.vp.projet_eseo.fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity" />
+                android:value="fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity" />
         </activity>
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.JuryMemberActivity"
@@ -31,7 +32,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.eseo.dis.android.vp.projet_eseo.fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity" />
+                android:value="fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity" />
         </activity>
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity"

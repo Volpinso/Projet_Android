@@ -25,4 +25,5 @@
     <string name="AllPfeActivity">All FSP</string>
     <string name="emplacement">Place : </string>
     <string name="confidential">This subject is confidential.</string>
+    <string name="title_activity_pfe_details">Details</string>
 </resources>
