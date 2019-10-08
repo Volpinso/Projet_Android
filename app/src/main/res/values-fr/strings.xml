@@ -26,4 +26,5 @@
     <string name="AllPfeActivity">Tous les PFE</string>
     <string name="emplacement">Emplacement : </string>
     <string name="confidential">Ce sujet est confidentiel.</string>
+    <string name="title_activity_pfe_details">Détails</string>
 </resources>
