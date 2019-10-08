@@ -5,13 +5,16 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -33,12 +36,12 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
-import fr.eseo.dis.android.vpmb.models.Liprj;
+import fr.eseo.dis.android.vp.projet_eseo.R;
+
 import fr.eseo.dis.android.vpmb.models.Logon;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ComMemberActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.JuryMemberActivity;
-import fr.eseo.dis.android.vp.projet_eseo.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -153,13 +156,14 @@ public class LoginActivity extends AppCompatActivity {
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                     String url = RequestModel.loginRequest(usernameEditText.getText().toString(), passwordEditText.getText().toString());
-
+                    System.out.println(url);
                     // Request a string response from the provided URL.
-                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                             (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
                                 @Override
                                 public void onResponse(JSONObject response) {
+                                    //textView.setText("Response: " + response.toString());
 
                                     Gson gson = new Gson();
                                     Logon responseModel = gson.fromJson(String.valueOf(response),
@@ -203,46 +207,11 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-        if(!model.getDisplayName().equals("jpo")) {
+        if(!model.getDisplayName().equals("aubinseb")) {
             Intent intent = new Intent(LoginActivity.this, JuryMemberActivity.class);
             startActivity(intent);
         }
         else{
-            RequestQueue queue = Volley.newRequestQueue(this.getApplicationContext());
-            String url = RequestModel.getAllProjectrequest(this.getUsername(), token);
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Gson gson = new Gson();
-                            Liprj responseModel = gson.fromJson(String.valueOf(response),
-                                    Liprj.class);
-                            for(int i = 0 ; i < responseModel.getProjects().length; i++){
-                                projectList.add(responseModel.getProjects()[i]);
-                            }
-                            try {
-                                Thread.sleep(5000);
-                            }
-                            catch (Exception e){
-
-                            }
-                            System.out.println(projectList);
-
-                        }
-                    }, new Response.ErrorListener() {
-
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            // TODO: Handle error
-                            projectList = null;
-                            System.out.println("error");
-
-                        }
-                    });
-            queue.add(jsonObjectRequest);
-
-
             Intent intent = new Intent(LoginActivity.this, ComMemberActivity.class);
             startActivity(intent);
         }

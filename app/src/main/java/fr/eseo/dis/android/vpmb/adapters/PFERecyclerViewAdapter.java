@@ -14,11 +14,8 @@ import java.util.List;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity;
 import fr.eseo.dis.android.vp.projet_eseo.R;
-<<<<<<< HEAD:app/src/main/java/fr/eseo/dis/android/vpmb/adapters/PFERecyclerViewAdapter.java
-=======
-import fr.eseo.dis.android.vp.projet_eseo.ui.login.LoginActivity;
-import fr.eseo.dis.android.vp.projet_eseo.ui.main.PlaceholderFragmentPfe;
->>>>>>> 9d54e439b6aba8e4f73c503272a71162f0bad562:app/src/main/java/fr/eseo/dis/android/vp/adapters/PFERecyclerViewAdapter.java
+import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe;
+
 
 public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerViewAdapter.PFERecyclerViewHolder>{
 
