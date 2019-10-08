@@ -1,0 +1,209 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "76fa6ec6400185143f3155d7a705b3af",
+    "entities": [
+      {
+        "tableName": "Subject",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idProject` INTEGER NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `poster` TEXT, PRIMARY KEY(`idProject`))",
+        "fields": [
+          {
+            "fieldPath": "idProject",
+            "columnName": "idProject",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "poster64",
+            "columnName": "poster",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idProject"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Visitor",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idVisiteur` INTEGER NOT NULL, `pseudoJury` INTEGER NOT NULL, PRIMARY KEY(`idVisiteur`), FOREIGN KEY(`pseudoJury`) REFERENCES `PseudoJury`(`idPseudoJury`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "idVisiteur",
+            "columnName": "idVisiteur",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pseudoJury",
+            "columnName": "pseudoJury",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idVisiteur"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "PseudoJury",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "pseudoJury"
+            ],
+            "referencedColumns": [
+              "idPseudoJury"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "ProjectJury",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idSubject` INTEGER NOT NULL, `pseudoJury` INTEGER NOT NULL, PRIMARY KEY(`idSubject`, `pseudoJury`), FOREIGN KEY(`idSubject`) REFERENCES `Subject`(`idProject`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`pseudoJury`) REFERENCES `PseudoJury`(`idPseudoJury`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "idSubject",
+            "columnName": "idSubject",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pseudoJury",
+            "columnName": "pseudoJury",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idSubject",
+            "pseudoJury"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "Subject",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idSubject"
+            ],
+            "referencedColumns": [
+              "idProject"
+            ]
+          },
+          {
+            "table": "PseudoJury",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "pseudoJury"
+            ],
+            "referencedColumns": [
+              "idPseudoJury"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Grade",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idNotation` INTEGER NOT NULL, `note` REAL NOT NULL, `commentaire` TEXT, `pseudoJury` INTEGER NOT NULL, PRIMARY KEY(`idNotation`), FOREIGN KEY(`pseudoJury`) REFERENCES `PseudoJury`(`idPseudoJury`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "idNotation",
+            "columnName": "idNotation",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "commentaire",
+            "columnName": "commentaire",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pseudoJury",
+            "columnName": "pseudoJury",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idNotation"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "PseudoJury",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "pseudoJury"
+            ],
+            "referencedColumns": [
+              "idPseudoJury"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "PseudoJury",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idPseudoJury` INTEGER NOT NULL, PRIMARY KEY(`idPseudoJury`))",
+        "fields": [
+          {
+            "fieldPath": "idPseudoJury",
+            "columnName": "idPseudoJury",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idPseudoJury"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"76fa6ec6400185143f3155d7a705b3af\")"
+    ]
+  }
+}

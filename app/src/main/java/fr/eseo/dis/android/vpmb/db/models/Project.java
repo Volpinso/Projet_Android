@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName="Subject")
 public class Project {
 
     @PrimaryKey
@@ -23,8 +23,8 @@ public class Project {
     String poster64;
 
 
-    public Project(long idSujet, String title, String description, String poster64) {
-        this.idProject = idSujet;
+    public Project(long idProject, String title, String description, String poster64) {
+        this.idProject = idProject;
         this.title = title;
         this.description = description;
         this.poster64 = poster64;

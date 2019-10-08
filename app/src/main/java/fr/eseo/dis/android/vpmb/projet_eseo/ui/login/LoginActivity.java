@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -26,6 +27,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -36,14 +38,25 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.eseo.dis.android.vp.projet_eseo.R;
 
+import fr.eseo.dis.android.vpmb.db.AppDataBase;
+import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
+import fr.eseo.dis.android.vpmb.models.Liprj;
 import fr.eseo.dis.android.vpmb.models.Logon;
+import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ComMemberActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.JuryMemberActivity;
 
+import static fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe.getAppContext;
+
 public class LoginActivity extends AppCompatActivity {
+
+    private List<Projects> projectListBDD = new ArrayList<>();
 
     private LoginViewModel loginViewModel;
     private static String token;
@@ -156,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                     String url = RequestModel.loginRequest(usernameEditText.getText().toString(), passwordEditText.getText().toString());
-                    System.out.println(url);
+
                     // Request a string response from the provided URL.
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                             (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -207,13 +220,19 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-        if(!model.getDisplayName().equals("aubinseb")) {
+        if(!model.getDisplayName().equals("jpo")) {
             Intent intent = new Intent(LoginActivity.this, JuryMemberActivity.class);
             startActivity(intent);
         }
         else{
+
             Intent intent = new Intent(LoginActivity.this, ComMemberActivity.class);
             startActivity(intent);
+
+            AppDataBase db = AppDataBase.getAppDatabase(this.getApplicationContext());
+            boolean d = db.isOpen();
+            Log.d("database",String.valueOf(d));
+            db.pseudoJuryDAO().insert(new PseudoJury(1));
         }
     }
 

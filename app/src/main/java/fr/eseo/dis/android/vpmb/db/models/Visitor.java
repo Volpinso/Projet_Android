@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName="Visitor", primaryKeys = "pseudoJury",
+@Entity(tableName="Visitor",
         foreignKeys =
                 @ForeignKey(entity=PseudoJury.class, parentColumns = "idPseudoJury",childColumns = "pseudoJury"))
 
@@ -20,9 +20,9 @@ public class Visitor {
     @NonNull
     long pseudoJury;
 
-    public Visitor(long idVisiteur, long idPseudoJury) {
+    public Visitor(long idVisiteur, long pseudoJury) {
         this.idVisiteur = idVisiteur;
-        this.pseudoJury = idPseudoJury;
+        this.pseudoJury = pseudoJury;
     }
 
     public long getIdVisiteur() {

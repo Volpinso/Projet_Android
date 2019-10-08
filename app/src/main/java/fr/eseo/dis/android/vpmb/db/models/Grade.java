@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName="Grade",primaryKeys = "pseudoJury",
+@Entity(tableName="Grade",
         foreignKeys= @ForeignKey(entity=PseudoJury.class, parentColumns = "idPseudoJury", childColumns = "pseudoJury"))
 
 public class Grade {
@@ -17,17 +17,17 @@ public class Grade {
     @ColumnInfo(name="note")
     double note;
 
-    @ColumnInfo(name="note")
+    @ColumnInfo(name="commentaire")
     String commentaire;
 
     @ColumnInfo(name="pseudoJury")
     long pseudoJury;
 
-    public Grade(long dNotation, double note, String commentaire, long idPseudoJury) {
-        this.idNotation = dNotation;
+    public Grade(long idNotation, double note, String commentaire, long pseudoJury) {
+        this.idNotation = idNotation;
         this.note = note;
         this.commentaire = commentaire;
-        this.pseudoJury = idPseudoJury;
+        this.pseudoJury = pseudoJury;
     }
 
     public long getIdNotation() {
