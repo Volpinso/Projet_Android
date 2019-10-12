@@ -7,6 +7,8 @@ public class RequestModel {
     private static String user = "&user=";
     private static String pass = "&pass=";
     private static String tok = "&token=";
+    private static String proj = "&proj=";
+    private static String style = "&style=";
 
 
     public static String loginRequest(String username, String password){
@@ -19,6 +21,10 @@ public class RequestModel {
 
     public static String getRandomNonConfidProjetc(String username, String token){
         return urlBase+methodName+"PORTE"+user+username+tok+token;
+    }
+
+    public static String getPoster(String username, int projectId, String stylePostr, String token){
+        return urlBase+methodName+"POSTR"+user+username+proj+projectId+style+stylePostr+tok+token;
     }
 
 }
