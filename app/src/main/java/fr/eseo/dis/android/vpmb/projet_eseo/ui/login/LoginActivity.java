@@ -43,21 +43,21 @@ import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
 
-import fr.eseo.dis.android.vpmb.db.AppDataBase;
-import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
+
+import fr.eseo.dis.android.vpmb.models.Juries;
 import fr.eseo.dis.android.vpmb.models.Liprj;
 import fr.eseo.dis.android.vpmb.models.Logon;
+import fr.eseo.dis.android.vpmb.models.Myjur;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ComMemberActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.JuryMemberActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComPfe;
 
-import static fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe.getAppContext;
 
 public class LoginActivity extends AppCompatActivity {
 
     private List<Projects> projectListBDD = new ArrayList<>();
+    private static List<Juries> myJuriesList = new ArrayList<>();
 
     private LoginViewModel loginViewModel;
     private static String token;
@@ -167,6 +167,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
+
                 try {
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
@@ -188,6 +189,7 @@ public class LoginActivity extends AppCompatActivity {
                                         showLoginFailed(AppCompatActivity.RESULT_CANCELED);
                                     }else{
                                         try {
+                                            juryRequest(usernameEditText.getText().toString(), responseModel.getToken());
                                             setToken(responseModel.getToken());
                                             setUsername(usernameEditText.getText().toString());
                                             loginViewModel.login(usernameEditText.getText().toString(),
@@ -230,7 +232,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else{
-
             Intent intent = new Intent(LoginActivity.this, ComMemberActivity.class);
             startActivity(intent);
 
@@ -258,14 +259,11 @@ public class LoginActivity extends AppCompatActivity {
         LoginActivity.projectList = projectList;
     }
 
-    private void listProjects(){
+    private void listProjects() {
         //Request Get All projects
         try {
             // Instantiate the RequestQueue.
             String token = LoginActivity.getToken();
-            System.out.println("token "+LoginActivity.getToken());
-            System.out.println("username " +LoginActivity.getUsername());
-
             RequestQueue queue = Volley.newRequestQueue(this.getApplicationContext());
             String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
             System.out.println(url);
@@ -301,4 +299,58 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-}
+        public static List<Juries> getJuryList() {
+        return myJuriesList;
+    }
+
+    public static void setJuryList(List<Juries> myJuriesList) {
+        LoginActivity.myJuriesList = myJuriesList;
+    }
+
+
+
+        public void juryRequest(String username, String token){
+            try {
+                // Instantiate the RequestQueue.
+                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                String url = RequestModel.getMyJuriesRequest(username, token);
+                System.out.println(url);
+                // Request a string response from the provided URL.
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Gson gson = new Gson();
+                                Myjur responseModel = gson.fromJson(String.valueOf(response),
+                                        Myjur.class);
+                                for(int i = 0 ; i < responseModel.getJuries().length; i++){
+                                    myJuriesList.add(responseModel.getJuries()[i]);
+                                }
+                                setJuryList(myJuriesList);
+                                System.out.println(getJuryList());
+
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+                                myJuriesList = null;
+                                System.out.println("error");
+
+                            }
+                        });
+                queue.add(jsonObjectRequest);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try{
+                Thread.sleep(3000);
+            }
+            catch (Exception e){
+
+            }
+        }
+    }
