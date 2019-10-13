@@ -107,56 +107,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
                 return true;
             }
         });
-
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                try {
-                    // Instantiate the RequestQueue.
-                    RequestQueue queue = Volley.newRequestQueue(view.getContext());
-                    String url = RequestModel.getPoster(LoginActivity.getUsername(), projectsList.get(position).getProjectId(), "THB64", LoginActivity.getToken());
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    if(response.contains("Invalid Credentials") || response.contains("No Poster")){
-                                        setThumbnail("No Poster");
-                                    }
-                                    else{
-                                        System.out.println(response);
-                                        setThumbnail(response);
-                                    }
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    // Handle error
-                                }
-                            });
-
-                    // Add the request to the RequestQueue.
-                    queue.add(stringRequest);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    Thread.sleep(3000);
-                }
-                catch (Exception e){
-
-                }
-                Intent intent = new Intent( view.getContext(), MyPfeDetailsActivity.class);
-                intent.putExtra("projectId", projectsList.get(position).getProjectId());
-                view.getContext().startActivity(intent);
-            }
-        });
-
-
-
+        
     }
 
 
