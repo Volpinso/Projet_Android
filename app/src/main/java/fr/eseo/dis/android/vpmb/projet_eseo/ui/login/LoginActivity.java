@@ -51,6 +51,7 @@ import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ComMemberActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.JuryMemberActivity;
+import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComPfe;
 
 import static fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe.getAppContext;
 
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private static String token;
     private static String username;
+    private static List<Projects> projectList = new ArrayList<>();
 
     public static String getUsername() {
         return username;
@@ -190,6 +192,9 @@ public class LoginActivity extends AppCompatActivity {
                                             setUsername(usernameEditText.getText().toString());
                                             loginViewModel.login(usernameEditText.getText().toString(),
                                                     passwordEditText.getText().toString());
+
+                                            listProjects();
+                                            System.out.println(getProjectList());
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
@@ -229,10 +234,12 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, ComMemberActivity.class);
             startActivity(intent);
 
-            AppDataBase db = AppDataBase.getAppDatabase(this.getApplicationContext());
-            boolean d = db.isOpen();
-            Log.d("database",String.valueOf(d));
-            db.pseudoJuryDAO().insert(new PseudoJury(1));
+            //AppDataBase db = AppDataBase.getAppDatabase(this.getApplicationContext());
+            //boolean d = db.isOpen();
+            //Log.d("database",String.valueOf(d));
+            
+            //db.pseudoJuryDAO().insert(new PseudoJury(1));
+
         }
     }
 
@@ -242,4 +249,56 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
         startActivity(intent);
     }
+
+    public static List<Projects> getProjectList() {
+        return projectList;
+    }
+
+    public static void setProjectList(List<Projects> projectList) {
+        LoginActivity.projectList = projectList;
+    }
+
+    private void listProjects(){
+        //Request Get All projects
+        try {
+            // Instantiate the RequestQueue.
+            String token = LoginActivity.getToken();
+            System.out.println("token "+LoginActivity.getToken());
+            System.out.println("username " +LoginActivity.getUsername());
+
+            RequestQueue queue = Volley.newRequestQueue(this.getApplicationContext());
+            String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
+            System.out.println(url);
+            // Request a string response from the provided URL.
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Gson gson = new Gson();
+                            Liprj responseModel = gson.fromJson(String.valueOf(response),
+                                    Liprj.class);
+                            for(int i = 0 ; i < responseModel.getProjects().length; i++){
+                                projectList.add(responseModel.getProjects()[i]);
+                            }
+                            setProjectList(projectList);
+
+                        }
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // TODO: Handle error
+                            projectList = null;
+                            System.out.println("error");
+
+                        }
+                    });
+            queue.add(jsonObjectRequest);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -65,25 +65,25 @@ public abstract class AppDataBase extends RoomDatabase {
 
     }
 
-   /* private void setupFilms(){
+
+  /* private void setupProject(){
         AppListTask flt = new AppListTask();
         flt.execute();
-    }
-
-    private class AppListTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... params) {
-            Log.d("DB","doInBackground started");
-            AppDataBase.getDatabase(LoginActivity).moviesDao().findAllMoviesWithTheirMainGenre();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void resultCode){
-            Log.d("DB","onPostExecute started");
-            super.onPostExecute(resultCode);
-        }
     }*/
+
+       /* private class AppListTask extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... params) {
+                Log.d("DB","doInBackground started");
+                long insert = AppDataBase.getAppDatabase(LoginActivity.this).pseudoJuryDAO().insert(new PseudoJury(1));
+            }
+
+            @Override
+            protected void onPostExecute(Void resultCode){
+                Log.d("DB","onPostExecute started");
+                super.onPostExecute(resultCode);
+            }
+        }*/
 
 
 
