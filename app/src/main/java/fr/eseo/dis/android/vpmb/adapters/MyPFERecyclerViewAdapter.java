@@ -7,37 +7,30 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eseo.dis.android.vpmb.models.Logon;
+import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
-import fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity;
-import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity;
+import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe;
 
 
-public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerViewAdapter.PFERecyclerViewHolder>{
+public class MyPFERecyclerViewAdapter extends RecyclerView.Adapter<MyPFERecyclerViewAdapter.PFERecyclerViewHolder>{
 
-    private final AllPfeActivity allPfeActivity;
+    private final MyPfeActivity myPfeActivity;
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
     private List<Projects> projectList;
@@ -46,9 +39,9 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
     //TODO: This field will be deleted
     private float radius;
 
-    public PFERecyclerViewAdapter(AllPfeActivity allPfeActivity) {
-        this.allPfeActivity = allPfeActivity;
-        this.projectList = PlaceholderFragmentPfe.getProjectList();
+    public MyPFERecyclerViewAdapter(MyPfeActivity myPfeActivity) {
+        this.myPfeActivity = myPfeActivity;
+        this.projectList = PlaceholderFragmentPfe.getMyProjectList();
         //TODO: The following lines will be repalaced
         subjectInformation = new ArrayList<>();
         for(int i = 0; i < this.projectList.size(); i++) {
@@ -147,7 +140,7 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
                 catch (Exception e){
 
                 }
-                Intent intent = new Intent( view.getContext(), PfeDetailsActivity.class);
+                Intent intent = new Intent( view.getContext(), MyPfeDetailsActivity.class);
                 intent.putExtra("projectId", projectList.get(position).getProjectId());
                 view.getContext().startActivity(intent);
             }
@@ -186,7 +179,7 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
     }
 
     public static void setThumbnail(String thumbnail){
-        PFERecyclerViewAdapter.thumbnail = thumbnail;
+        MyPFERecyclerViewAdapter.thumbnail = thumbnail;
     }
 
     public String createPseudo(String surname, String forename){

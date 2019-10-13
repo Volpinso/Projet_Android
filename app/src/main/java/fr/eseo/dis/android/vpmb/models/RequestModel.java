@@ -19,6 +19,10 @@ public class RequestModel {
         return urlBase+methodName+Liprj.class.getSimpleName().toUpperCase()+user+username+tok+token;
     }
 
+    public static String getSupervisorProjectrequest(String username, String token){
+        return urlBase+methodName+Myprj.class.getSimpleName().toUpperCase()+user+username+tok+token;
+    }
+
     public static String getRandomNonConfidProjetc(String username, String token){
         return urlBase+methodName+"PORTE"+user+username+tok+token;
     }
@@ -26,5 +30,10 @@ public class RequestModel {
     public static String getPoster(String username, int projectId, String stylePostr, String token){
         return urlBase+methodName+"POSTR"+user+username+proj+projectId+style+stylePostr+tok+token;
     }
+
+    public static String getMyJuriesRequest(String username, String token){
+        return urlBase+methodName+Myjur.class.getSimpleName().toUpperCase()+user+username+tok+token;
+    }
+
 
 }

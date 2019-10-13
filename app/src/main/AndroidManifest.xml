@@ -13,10 +13,13 @@
         android:theme="@style/AppTheme">
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivity"></activity>
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity" />
-        <activity android:name=".Main2Activity" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPfeDetailsActivity" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity"
             android:label="@string/AllPfeActivity" />
+        <activity
+            android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity"
+            android:label="@string/MyPfeActivity" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.ComMemberActivity"
             android:label="@string/title_activity_com_member"

@@ -27,11 +27,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.models.Juries;
 import fr.eseo.dis.android.vpmb.models.Liprj;
+import fr.eseo.dis.android.vpmb.models.Myjur;
+import fr.eseo.dis.android.vpmb.models.Myprj;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.MainActivity;
+import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 /**
@@ -45,6 +49,8 @@ public class PlaceholderFragmentPfe extends Fragment {
     private SharedPreferences sharedPreferences;
 
     private static List<Projects> projectList = new ArrayList<>();
+    private static List<Projects> myProjectsList = new ArrayList<>();
+    private static List<Juries> myJuriesList = new ArrayList<>();
     private static Context context;
 
     public static List<Projects> getProjectList() {
@@ -53,6 +59,14 @@ public class PlaceholderFragmentPfe extends Fragment {
 
     public static void setProjectList(List<Projects> projectList) {
         PlaceholderFragmentPfe.projectList = projectList;
+    }
+
+    public static List<Projects> getMyProjectList() {
+        return myProjectsList;
+    }
+
+    public static void setMyProjectList(List<Projects> myProjectsList) {
+        PlaceholderFragmentPfe.myProjectsList = myProjectsList;
     }
 
     public static PlaceholderFragmentPfe newInstance(int index) {
@@ -68,6 +82,7 @@ public class PlaceholderFragmentPfe extends Fragment {
         super.onCreate(savedInstanceState);
         context = getContext();
 
+        //Request Get All projects
         try {
             // Instantiate the RequestQueue.
             String token = LoginActivity.getToken();
@@ -105,6 +120,90 @@ public class PlaceholderFragmentPfe extends Fragment {
             e.printStackTrace();
         }
 
+        //Request Get My Juries
+        try {
+            // Instantiate the RequestQueue.
+            String token = LoginActivity.getToken();
+            RequestQueue queue = Volley.newRequestQueue(getAppContext());
+            String url = RequestModel.getMyJuriesRequest(LoginActivity.getUsername(), token);
+            System.out.println(url);
+            // Request a string response from the provided URL.
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Gson gson = new Gson();
+                            Myjur responseModel = gson.fromJson(String.valueOf(response),
+                                    Myjur.class);
+                            for(int i = 0 ; i < responseModel.getJuries().length; i++){
+                                for(int j = 0; j < responseModel.getJuries()[i].getInfo().getProjects().length; j++){
+                                    for(int k = 0; k < getProjectList().size(); k++){
+                                        if(getProjectList().get(k).getProjectId() == responseModel.getJuries()[i].getInfo().getProjects()[j].getProjectId()){
+                                            myProjectsList.add(getProjectList().get(k));
+                                            setMyProjectList(myProjectsList);
+                                            System.out.println(myProjectsList);
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // TODO: Handle error
+                            myProjectsList = null;
+                            System.out.println("error");
+
+                        }
+                    });
+            queue.add(jsonObjectRequest);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //Request Get My projects
+        try {
+            // Instantiate the RequestQueue.
+            String token = LoginActivity.getToken();
+            RequestQueue queue = Volley.newRequestQueue(getAppContext());
+            String url = RequestModel.getSupervisorProjectrequest(LoginActivity.getUsername(), token);
+            System.out.println(url);
+            // Request a string response from the provided URL.
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Gson gson = new Gson();
+                            Myprj responseModel = gson.fromJson(String.valueOf(response),
+                                    Myprj.class);
+                            myProjectsList = getMyProjectList();
+                            for(int i = 0 ; i < responseModel.getProjects().length; i++){
+                                myProjectsList.add(responseModel.getProjects()[i]);
+                            }
+                            setMyProjectList(myProjectsList);
+
+                        }
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // TODO: Handle error
+                            myProjectsList = null;
+                            System.out.println("error");
+
+                        }
+                    });
+            queue.add(jsonObjectRequest);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
         int index = 1;
         if (getArguments() != null) {
@@ -130,14 +229,14 @@ public class PlaceholderFragmentPfe extends Fragment {
         buttonPfeJury.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), MyPfeActivity.class);
                 startActivity(intent);
             }
         });
         return root;
     }
 
-    public static List<Projects> getListRequest(){
+    /*public static List<Projects> getListRequest(){
         try {
             // Instantiate the RequestQueue.
             String token = LoginActivity.getToken();
@@ -174,7 +273,7 @@ public class PlaceholderFragmentPfe extends Fragment {
             e.printStackTrace();
         }
         return projectList;
-    }
+    }*/
 
     public static Context getAppContext() {
         return PlaceholderFragmentPfe.context;

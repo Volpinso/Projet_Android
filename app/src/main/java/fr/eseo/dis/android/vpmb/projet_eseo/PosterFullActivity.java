@@ -18,9 +18,14 @@ public class PosterFullActivity extends AppCompatActivity {
         setContentView(R.layout.activity_poster_full);
         setTitle("Full Screen");
         ImageView imageView = (ImageView) this.findViewById(R.id.full_screen);
-
-        imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(PfeDetailsActivity.getFullB64()), 0,
-                convertB64toImage(PfeDetailsActivity.getFullB64()).length));
+        if (PfeDetailsActivity.getFullB64() != null) {
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(PfeDetailsActivity.getFullB64()), 0,
+                    convertB64toImage(PfeDetailsActivity.getFullB64()).length));
+        }
+        else {
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(MyPfeDetailsActivity.getFullB64()), 0,
+                    convertB64toImage(MyPfeDetailsActivity.getFullB64()).length));
+        }
     }
 
     public byte[] convertB64toImage(String base64){
