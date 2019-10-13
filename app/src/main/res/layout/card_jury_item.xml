@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/pfe_titre"
+            android:id="@+id/jury_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -20,7 +20,7 @@
             android:layout_marginEnd="16dp"
             android:maxLines="2"
             android:minLines="2"
-            android:text="Titre"
+            android:text="Jury"
             android:textAlignment="textStart"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -30,30 +30,31 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/pfe_emplacement"
+            android:id="@+id/jury_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Emplacement"
+            android:text="Date"
             android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/pfe_description"
-            app:layout_constraintStart_toStartOf="@+id/pfe_titre"
-            app:layout_constraintTop_toBottomOf="@+id/pfe_titre" />
+            app:layout_constraintBottom_toTopOf="@+id/jury_membres"
+            app:layout_constraintStart_toStartOf="@+id/jury_number"
+            app:layout_constraintTop_toBottomOf="@+id/jury_number" />
 
         <TextView
-            android:id="@+id/pfe_description"
+            android:id="@+id/jury_membres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Description"
+            android:text="Membres"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/pfe_description_label"
+            app:layout_constraintBottom_toTopOf="@+id/jury_membres_name"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/pfe_description_label"
+            android:id="@+id/jury_membres_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
