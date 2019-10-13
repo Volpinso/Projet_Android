@@ -6,6 +6,7 @@ public class RequestModel {
     private static String methodName = "q=";
     private static String user = "&user=";
     private static String pass = "&pass=";
+    private static String jury = "&jury=";
     private static String tok = "&token=";
     private static String proj = "&proj=";
     private static String style = "&style=";
@@ -33,6 +34,10 @@ public class RequestModel {
 
     public static String getMyJuriesRequest(String username, String token){
         return urlBase+methodName+Myjur.class.getSimpleName().toUpperCase()+user+username+tok+token;
+    }
+
+    public static String getMyJuriesProjetcsRequest(String username, int juryId, String token){
+        return urlBase+methodName+Jyinf.class.getSimpleName().toUpperCase()+user+username+jury+juryId+tok+token;
     }
 
 

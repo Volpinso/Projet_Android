@@ -1,5 +1,6 @@
 package fr.eseo.dis.android.vpmb.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +9,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Juries;
+import fr.eseo.dis.android.vpmb.models.Jyinf;
+import fr.eseo.dis.android.vpmb.models.Myjur;
+import fr.eseo.dis.android.vpmb.models.Projects;
+import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.JuryMemberActivity;
+import fr.eseo.dis.android.vpmb.projet_eseo.MyJuryProjectActivity;
+import fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentJury;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe;
@@ -27,6 +45,15 @@ public class JuryRecyclerViewAdapter extends RecyclerView.Adapter<fr.eseo.dis.an
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
 
+    private static List<Projects> myJuryProjectList = new ArrayList<>();
+
+    public static List<Projects> getMyJuryProjectList() {
+        return myJuryProjectList;
+    }
+
+    public static void setMyJuryProjectList(List<Projects> myJuryProjectList){
+        JuryRecyclerViewAdapter.myJuryProjectList = myJuryProjectList;
+    }
 
 
     public JuryRecyclerViewAdapter(PlaceholderFragmentJury placeholderFragmentJury) {
@@ -85,6 +112,54 @@ public class JuryRecyclerViewAdapter extends RecyclerView.Adapter<fr.eseo.dis.an
                     holder.juryMembersName.setVisibility(View.VISIBLE);
                 }
                 return true;
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    // Instantiate the RequestQueue.
+                    RequestQueue queue = Volley.newRequestQueue(view.getContext());
+                    String url = RequestModel.getMyJuriesProjetcsRequest(LoginActivity.getUsername(), juriesList.get(position).getIdJury() ,LoginActivity.getToken());
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Gson gson = new Gson();
+                                    Jyinf responseModel = gson.fromJson(String.valueOf(response),
+                                            Jyinf.class);
+                                    for(int i = 0 ; i < responseModel.getProjects().length; i++){
+                                        myJuryProjectList.add(responseModel.getProjects()[i]);
+                                    }
+                                    setMyJuryProjectList(myJuryProjectList);
+                                    System.out.println(getMyJuryProjectList());
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // Handle error
+                                }
+                            });
+
+                    // Add the request to the RequestQueue.
+                    queue.add(jsonObjectRequest);
+                    try{
+                        Thread.sleep(3000);
+                    }
+                    catch(Exception e){
+
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                Intent intent = new Intent( view.getContext(), MyJuryProjectActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
     }
