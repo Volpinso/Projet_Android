@@ -22,6 +22,7 @@ import java.util.List;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
+import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComPfe;
@@ -148,7 +149,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
                 catch (Exception e){
 
                 }
-                Intent intent = new Intent( view.getContext(), PfeDetailsActivity.class);
+                Intent intent = new Intent( view.getContext(), MyPfeDetailsActivity.class);
                 intent.putExtra("projectId", projectsList.get(position).getProjectId());
                 view.getContext().startActivity(intent);
             }
@@ -157,6 +158,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
 
 
     }
+
 
     @Override
     public int getItemCount() {
