@@ -6,86 +6,141 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.models.Projects;
+import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComPfe;
 
 
-public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerViewAdapterCom.FilmographyRecyclerViewHolder> {
+public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerViewAdapterCom.PFERecyclerComViewHolder> {
 
 
     private final PlaceholderFragmentComPfe placeholderFragmentComPfe;
 
-    private List<Integer> filmInformation;
+    private final List<Projects> projectsList;
+
+    private List<Integer> subjectInformation;
+    private List<Integer> expandedPositions;
+    private static String thumbnail;
+
 
 
 
     public PFERecyclerViewAdapterCom(PlaceholderFragmentComPfe placeholderFragmentComPfe) {
         this.placeholderFragmentComPfe = placeholderFragmentComPfe;
         //TODO: The following lines will be repalaced
-        filmInformation = new ArrayList<>();
-        for(int i = 0; i < 20; i++){
-            filmInformation.add(i);
+        this.projectsList = LoginActivity.getProjectList();
+        //TODO: The following lines will be repalaced
+        subjectInformation = new ArrayList<>();
+        for(int i = 0; i < this.projectsList.size(); i++) {
+            subjectInformation.add(i);
         }
+        expandedPositions = new ArrayList<>();
         //TODO: End of the code to be replaced
 
     }
 
+
     @NonNull
     @Override
-    public FilmographyRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View filmView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_filmography_item,parent,false);
+    public PFERecyclerComViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View pfeView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_all_pfe_item,parent,false);
 
-        return new FilmographyRecyclerViewHolder(filmView);
+        return new PFERecyclerComViewHolder(pfeView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final FilmographyRecyclerViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final PFERecyclerViewAdapterCom.PFERecyclerComViewHolder holder, final int position) {
 
 
+        holder.pfeTitre.setText(projectsList.get(position).getTitle());
+        if (projectsList.get(position).getPoster() != null) {
+            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " " + projectsList.get(position).getPoster());
+        } else {
+            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " No place defined");
+        }
+        if (projectsList.get(position).getConfid() == 0 ||
+                createPseudo(projectsList.get(position).getSupervisor().getSurname(), projectsList.get(position).getSupervisor().getForename()) != LoginActivity.getUsername()) {
+            holder.pfeDescriptionLabel.setText(projectsList.get(position).getDescrip());
+        }
+        else {
+            holder.pfeDescriptionLabel.setText(holder.itemView.getContext().getResources().getString(R.string.confidential));
+        }
+
+        if(expandedPositions.contains(position)){
+            holder.pfeDescriptionLabel.setVisibility(View.VISIBLE);
+            holder.pfeDescription.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.pfeDescription.setVisibility(View.GONE);
+            holder.pfeDescriptionLabel.setVisibility(View.GONE);
+        }
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                if(holder.filmSynopsis.getVisibility()==View.VISIBLE){
-
-                    holder.filmSynopsis.setVisibility(View.GONE);
-                    holder.filmSynopsisLabel.setVisibility(View.GONE);
+                if(holder.pfeDescription.getVisibility()==View.VISIBLE){
+                    expandedPositions.remove(new Integer(position));
+                    holder.pfeDescription.setVisibility(View.GONE);
+                    holder.pfeDescriptionLabel.setVisibility(View.GONE);
                 }
                 else{
-
-                    holder.filmSynopsis.setVisibility(View.VISIBLE);
-                    holder.filmSynopsisLabel.setVisibility(View.VISIBLE);
+                    expandedPositions.add(position);
+                    holder.pfeDescription.setVisibility(View.VISIBLE);
+                    holder.pfeDescriptionLabel.setVisibility(View.VISIBLE);
                 }
                 return true;
             }
         });
+
+
+
     }
 
     @Override
     public int getItemCount() {
-        return filmInformation.size();
+        return subjectInformation.size();
     }
 
-    class FilmographyRecyclerViewHolder extends RecyclerView.ViewHolder {
+    class PFERecyclerComViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView filmTitre;
-        private final TextView filmGenre;
-        private final TextView filmAnnee;
-        private final TextView filmSynopsis;
-        private final TextView filmSynopsisLabel;
+        private final TextView pfeTitre;
+        private final TextView pfeEmplacement;
+        private final TextView pfeDescription;
+        private final TextView pfeDescriptionLabel;
 
-        public FilmographyRecyclerViewHolder(@NonNull View itemView) {
+
+
+        public PFERecyclerComViewHolder(@NonNull View itemView) {
             super(itemView);
-            filmTitre = itemView.findViewById(R.id.filmography_titre);
-            filmGenre = itemView.findViewById(R.id.filmography_genre);
-            filmAnnee = itemView.findViewById(R.id.filmography_annee);
-            filmSynopsis = itemView.findViewById(R.id.filmography_resume);
-            filmSynopsisLabel = itemView.findViewById(R.id.filmography_synopsis);
+            pfeTitre = itemView.findViewById(R.id.pfe_titre);
+            pfeEmplacement = itemView.findViewById(R.id.pfe_emplacement);
+            pfeDescription = itemView.findViewById(R.id.pfe_description);
+            pfeDescriptionLabel = itemView.findViewById(R.id.pfe_description_label);
+
         }
+    }
+
+    public static String getThumbnail(){
+        return thumbnail;
+    }
+
+    public static void setThumbnail(String thumbnail){
+        PFERecyclerViewAdapterCom.thumbnail = thumbnail;
+    }
+
+    public String createPseudo(String surname, String forename){
+        String pseudo;
+        if (surname.length() < 5){
+            pseudo = surname + forename.substring(0, 2);
+        }
+        else{
+            pseudo = surname.substring(0, 4) + forename.substring(0,2);
+        }
+        return pseudo;
     }
 }
