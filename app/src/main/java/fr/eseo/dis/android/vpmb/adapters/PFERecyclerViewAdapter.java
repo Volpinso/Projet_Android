@@ -30,6 +30,7 @@ import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity;
+import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe;
@@ -135,7 +136,7 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
                                 }
                             });
 
-                // Add the request to the RequestQueue.
+                    // Add the request to the RequestQueue.
                     queue.add(stringRequest);
 
                 } catch (Exception e) {
@@ -147,7 +148,7 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
                 catch (Exception e){
 
                 }
-                Intent intent = new Intent( view.getContext(), PfeDetailsActivity.class);
+                Intent intent = new Intent( view.getContext(), MyPfeDetailsActivity.class);
                 intent.putExtra("projectId", projectList.get(position).getProjectId());
                 view.getContext().startActivity(intent);
             }
