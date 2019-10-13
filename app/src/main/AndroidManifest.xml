@@ -18,6 +18,9 @@
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity"
             android:label="@string/AllPfeActivity" />
         <activity
+            android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyJuryProjectActivity"
+            android:label="MyJuryProjectActivity" />
+        <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity"
             android:label="@string/MyPfeActivity" />
         <activity
