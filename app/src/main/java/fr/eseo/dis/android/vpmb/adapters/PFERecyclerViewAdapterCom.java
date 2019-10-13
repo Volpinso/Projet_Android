@@ -1,5 +1,6 @@
 package fr.eseo.dis.android.vpmb.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Projects;
+import fr.eseo.dis.android.vpmb.models.RequestModel;
+import fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComPfe;
 
@@ -94,6 +104,53 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
                     holder.pfeDescriptionLabel.setVisibility(View.VISIBLE);
                 }
                 return true;
+            }
+        });
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    // Instantiate the RequestQueue.
+                    RequestQueue queue = Volley.newRequestQueue(view.getContext());
+                    String url = RequestModel.getPoster(LoginActivity.getUsername(), projectsList.get(position).getProjectId(), "THB64", LoginActivity.getToken());
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    if(response.contains("Invalid Credentials") || response.contains("No Poster")){
+                                        setThumbnail("No Poster");
+                                    }
+                                    else{
+                                        System.out.println(response);
+                                        setThumbnail(response);
+                                    }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // Handle error
+                                }
+                            });
+
+                    // Add the request to the RequestQueue.
+                    queue.add(stringRequest);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    Thread.sleep(3000);
+                }
+                catch (Exception e){
+
+                }
+                Intent intent = new Intent( view.getContext(), PfeDetailsActivity.class);
+                intent.putExtra("projectId", projectsList.get(position).getProjectId());
+                view.getContext().startActivity(intent);
             }
         });
 
