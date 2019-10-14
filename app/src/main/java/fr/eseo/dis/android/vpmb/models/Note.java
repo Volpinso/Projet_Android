@@ -5,8 +5,8 @@ public class Note {
     private int userId;
     private String forename;
     private String surname;
-    private float myNote;
-    private float avgNote;
+    private String myNote;
+    private String avgNote;
 
     public int getUserId() {
         return userId;
@@ -32,19 +32,19 @@ public class Note {
         this.surname = surname;
     }
 
-    public float getMyNote() {
+    public String getMyNote() {
         return myNote;
     }
 
-    public void setMyNote(float myNote) {
+    public void setMyNote(String myNote) {
         this.myNote = myNote;
     }
 
-    public float getAvgNote() {
+    public String getAvgNote() {
         return avgNote;
     }
 
-    public void setAvgNote(float avgNote) {
+    public void setAvgNote(String avgNote) {
         this.avgNote = avgNote;
     }
 

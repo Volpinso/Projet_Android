@@ -23,12 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.models.Juries;
 import fr.eseo.dis.android.vpmb.models.Note;
 import fr.eseo.dis.android.vpmb.models.Notes;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.GradesDetailsActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.MyPFEDetailsActivityCom;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentGrade;
 
@@ -40,10 +40,12 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
     private final PlaceholderFragmentGrade placeholderFragmentGrades;
 
     private final List<Projects> projectsList;
+    private final List<Juries> juryList;
+    private List<Projects> myProjectsList = new ArrayList<>();
 
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
-    private static List<Note> notesList;
+    private static List<Note> notesList = new ArrayList<>();
 
 
 
@@ -52,10 +54,26 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
     public PFERecyclerViewAdapterGrade(PlaceholderFragmentGrade placeholderFragmentGrades) {
         this.placeholderFragmentGrades = placeholderFragmentGrades;
         //TODO: The following lines will be repalaced
+
         this.projectsList = LoginActivity.getProjectList();
+        this.juryList = LoginActivity.getJuryList();
+
+        for(int i =0; i < juryList.size(); i++){
+            for(int j =0; j < juryList.get(i).getInfo().getProjects().length; j++){
+                for (int k = 0; k < projectsList.size(); k++){
+                    if(projectsList.get(k).getProjectId() == juryList.get(i).getInfo().getProjects()[j].getProjectId()){
+                        myProjectsList.add(projectsList.get(k));
+                    }
+                }
+            }
+        }
+
+        System.out.println(projectsList.toString());
+        System.out.println(juryList.toString());
+        System.out.println(myProjectsList.toString());
         //TODO: The following lines will be repalaced
         subjectInformation = new ArrayList<>();
-        for(int i = 0; i < this.projectsList.size(); i++) {
+        for(int i = 0; i < this.myProjectsList.size(); i++) {
             subjectInformation.add(i);
         }
         expandedPositions = new ArrayList<>();
@@ -76,15 +94,15 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
     public void onBindViewHolder(@NonNull final PFERecyclerViewAdapterGrade.PFERecyclerComViewHolder holder, final int position) {
 
 
-        holder.pfeTitre.setText(projectsList.get(position).getTitle());
-        if (projectsList.get(position).getPoster() != null) {
-            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " " + projectsList.get(position).getPoster());
+        holder.pfeTitre.setText(myProjectsList.get(position).getTitle());
+        if (myProjectsList.get(position).getPoster() != null) {
+            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " " + myProjectsList.get(position).getPoster());
         } else {
             holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " No place defined");
         }
-        if (projectsList.get(position).getConfid() == 0 ||
-                createPseudo(projectsList.get(position).getSupervisor().getSurname(), projectsList.get(position).getSupervisor().getForename()) != LoginActivity.getUsername()) {
-            holder.pfeDescriptionLabel.setText(projectsList.get(position).getDescrip());
+        if (myProjectsList.get(position).getConfid() == 0 ||
+                createPseudo(myProjectsList.get(position).getSupervisor().getSurname(), myProjectsList.get(position).getSupervisor().getForename()) != LoginActivity.getUsername()) {
+            holder.pfeDescriptionLabel.setText(myProjectsList.get(position).getDescrip());
         }
         else {
             holder.pfeDescriptionLabel.setText(holder.itemView.getContext().getResources().getString(R.string.confidential));
@@ -121,8 +139,10 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
 
                 try {
                     // Instantiate the RequestQueue.
+                    setNotes(new ArrayList<Note>());
                     RequestQueue queue = Volley.newRequestQueue(view.getContext());
-                    String url = RequestModel.getProjectGrades(LoginActivity.getUsername(), projectsList.get(position).getProjectId(), LoginActivity.getToken());
+                    String url = RequestModel.getProjectGrades(LoginActivity.getUsername(), myProjectsList.get(position).getProjectId(), LoginActivity.getToken());
+                    System.out.println(url);
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                             (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -131,10 +151,13 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
                                     Gson gson = new Gson();
                                     Notes responseModel = gson.fromJson(String.valueOf(response),
                                             Notes.class);
+
                                     for(int i = 0 ; i < responseModel.getNotes().length; i++){
                                         notesList.add(responseModel.getNotes()[i]);
+                                        System.out.println(notesList.toString());
                                     }
                                     setNotes(notesList);
+                                    System.out.println(getNotes());
 
                                 }
                             }, new Response.ErrorListener() {
@@ -151,6 +174,12 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                }
+                try{
+                    Thread.sleep(2000);
+                }
+                catch (Exception e){
+
                 }
                 Intent intent = new Intent( view.getContext(), GradesDetailsActivity.class);
                 view.getContext().startActivity(intent);

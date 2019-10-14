@@ -308,7 +308,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        public void juryRequest(String username, String token){
+        public void juryRequest(String username, String token) {
             try {
                 // Instantiate the RequestQueue.
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
@@ -323,7 +323,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Gson gson = new Gson();
                                 Myjur responseModel = gson.fromJson(String.valueOf(response),
                                         Myjur.class);
-                                for(int i = 0 ; i < responseModel.getJuries().length; i++){
+                                for (int i = 0; i < responseModel.getJuries().length; i++) {
                                     myJuriesList.add(responseModel.getJuries()[i]);
                                 }
                                 setJuryList(myJuriesList);
@@ -345,11 +345,14 @@ public class LoginActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            try{
+            try {
                 Thread.sleep(3000);
-            }
-            catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
+
     }
+
+
+

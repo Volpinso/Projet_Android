@@ -1,0 +1,125 @@
+package fr.eseo.dis.android.vpmb.adapters;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.models.Note;
+import fr.eseo.dis.android.vpmb.projet_eseo.GradesDetailsActivity;
+import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
+
+
+
+public class GradesDetailsAdapter extends RecyclerView.Adapter<GradesDetailsAdapter.GradeDetailsViewHolder> {
+
+
+    private final GradesDetailsActivity gradesDetailsActivity;
+    private List<Integer> subjectInformation;
+    private List<Integer> expandedPositions;
+    private List<Note> notesList;
+
+
+
+
+
+    public GradesDetailsAdapter(GradesDetailsActivity gradesDetailsActivity) {
+        this.gradesDetailsActivity = gradesDetailsActivity;
+        //TODO: The following lines will be repalaced
+        this.notesList = PFERecyclerViewAdapterGrade.getNotes();
+        //TODO: The following lines will be repalaced
+        subjectInformation = new ArrayList<>();
+        for(int i = 0; i < this.notesList.size(); i++) {
+            subjectInformation.add(i);
+        }
+        expandedPositions = new ArrayList<>();
+        //TODO: End of the code to be replaced
+
+    }
+
+
+    @NonNull
+    @Override
+    public GradeDetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View pfeView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_grades_details_item,parent,false);
+
+        return new GradeDetailsViewHolder(pfeView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull final GradesDetailsAdapter.GradeDetailsViewHolder holder, final int position) {
+
+
+        holder.studentName.setText(notesList.get(position).getForename() + " " + notesList.get(position).getSurname());
+        if (notesList.get(position).getMyNote() != null ){
+            holder.juryGrade.setText("My Grade : " + notesList.get(position).getMyNote());
+        }
+        else {
+            holder.juryGrade.setText("My Grade : Not grades Yet");
+        }
+
+        if (notesList.get(position).getAvgNote() != null ){
+            holder.averageGrade.setText("Average Grade : " + notesList.get(position).getAvgNote());
+        }
+        else {
+            holder.averageGrade.setText("Average Grade : Not grades Yet");
+        }
+
+        if(expandedPositions.contains(position)){
+            holder.juryGrade.setVisibility(View.VISIBLE);
+            holder.averageGrade.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.juryGrade.setVisibility(View.GONE);
+            holder.averageGrade.setVisibility(View.GONE);
+        }
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if(holder.juryGrade.getVisibility()==View.VISIBLE){
+                    expandedPositions.remove(new Integer(position));
+                    holder.juryGrade.setVisibility(View.GONE);
+                    holder.averageGrade.setVisibility(View.GONE);
+                }
+                else{
+                    expandedPositions.add(position);
+                    holder.juryGrade.setVisibility(View.VISIBLE);
+                    holder.averageGrade.setVisibility(View.VISIBLE);
+                }
+                return true;
+            }
+        });
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return subjectInformation.size();
+    }
+
+    class GradeDetailsViewHolder extends RecyclerView.ViewHolder {
+
+        private final TextView studentName;
+        private final TextView juryGrade;
+        private final TextView studentGrade;
+        private final TextView averageGrade;
+
+
+
+        public GradeDetailsViewHolder(@NonNull View itemView) {
+            super(itemView);
+            studentName = itemView.findViewById(R.id.student_name);
+            juryGrade = itemView.findViewById(R.id.jury_grade);
+            studentGrade = itemView.findViewById(R.id.student_grade);
+            averageGrade = itemView.findViewById(R.id.average_grade);
+
+        }
+    }
+}

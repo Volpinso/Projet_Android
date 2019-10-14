@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.adapters.GradesDetailsAdapter;
 import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapter;
 
 
 public class GradesDetailsActivity extends AppCompatActivity {
 
-    PFERecyclerViewAdapter PfeRecyclerViewAdapter;
+    GradesDetailsAdapter gradesDetailsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +24,8 @@ public class GradesDetailsActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
         pfeRecycler.setLayoutManager(llm);
-        //PfeRecyclerViewAdapter = new PFERecyclerViewAdapter(this);
-        pfeRecycler.setAdapter(PfeRecyclerViewAdapter);
+        gradesDetailsAdapter = new GradesDetailsAdapter(this);
+        pfeRecycler.setAdapter(gradesDetailsAdapter);
 
     }
 }
