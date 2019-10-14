@@ -81,7 +81,7 @@ public class MyJuryProjectsRecyclerViewAdapter extends RecyclerView.Adapter<MyJu
 
         String members = "Members : ";
         for(int i =0; i < projectList.get(position).getStudents().length - 1; i++){
-            members = members +  projectList.get(position).getStudents()[i].getForename() + " " + projectList.get(position).getStudents()[i].getSurname();
+            members = members +  projectList.get(position).getStudents()[i].getForename() + " " + projectList.get(position).getStudents()[i].getSurname() + ", ";
         }
         members = members + projectList.get(position).getStudents()[projectList.get(position).getStudents().length - 1].getForename()
                 + " " + projectList.get(position).getStudents()[projectList.get(position).getStudents().length - 1].getSurname();
@@ -119,55 +119,6 @@ public class MyJuryProjectsRecyclerViewAdapter extends RecyclerView.Adapter<MyJu
                 return true;
             }
         });
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                try {
-                    // Instantiate the RequestQueue.
-                    RequestQueue queue = Volley.newRequestQueue(view.getContext());
-                    String url = RequestModel.getPoster(LoginActivity.getUsername(), projectList.get(position).getProjectId(), "THB64", LoginActivity.getToken());
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    if(response.contains("Invalid Credentials") || response.contains("No Poster")){
-                                        setThumbnail("No Poster");
-                                    }
-                                    else{
-                                        System.out.println(response);
-                                        setThumbnail(response);
-                                    }
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    // Handle error
-                                }
-                            });
-
-                // Add the request to the RequestQueue.
-                    queue.add(stringRequest);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    Thread.sleep(3000);
-                }
-                catch (Exception e){
-
-                }
-                Intent intent = new Intent( view.getContext(), PfeDetailsActivity.class);
-                intent.putExtra("projectId", projectList.get(position).getProjectId());
-                view.getContext().startActivity(intent);
-            }
-        });
-
-
-
     }
 
     @Override

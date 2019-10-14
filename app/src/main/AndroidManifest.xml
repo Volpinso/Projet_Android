@@ -16,6 +16,7 @@
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPFEDetailsActivityCom" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPfeDetailsActivity" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.GradesDetailsActivity" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity"
             android:label="@string/AllPfeActivity" />

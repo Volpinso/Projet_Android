@@ -40,5 +40,9 @@ public class RequestModel {
         return urlBase+methodName+Jyinf.class.getSimpleName().toUpperCase()+user+username+jury+juryId+tok+token;
     }
 
+    public static String getProjectGrades(String username, int projectId, String token){
+        return urlBase+methodName+Notes.class.getSimpleName().toUpperCase()+user+username+proj+projectId+tok+token;
+    }
+
 
 }
