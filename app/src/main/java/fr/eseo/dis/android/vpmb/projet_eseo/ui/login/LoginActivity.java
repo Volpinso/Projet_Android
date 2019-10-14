@@ -196,7 +196,6 @@ public class LoginActivity extends AppCompatActivity {
                                                     passwordEditText.getText().toString());
 
                                             listProjects();
-                                            System.out.println(getProjectList());
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
