@@ -38,11 +38,17 @@ public abstract class AppDataBase extends RoomDatabase {
 
 
 
-    public static AppDataBase getAppDatabase(Context context){
+    public static AppDataBase getINSTANCE(Context context){
         if(INSTANCE==null){
-            INSTANCE = Room.databaseBuilder(context, AppDataBase.class, "jpoManager.db")
-                    .fallbackToDestructiveMigration()
-                    .build();
+            synchronized (AppDataBase.class){
+                if(INSTANCE==null){
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDataBase.class, "jpoManager.db")
+                            .fallbackToDestructiveMigration()
+                            .allowMainThreadQueries()
+                            .build();
+                }
+            }
+
        }
         return INSTANCE;
     }
@@ -66,16 +72,17 @@ public abstract class AppDataBase extends RoomDatabase {
     }
 
 
-  /* private void setupProject(){
+   /** public void setupProject(){
         AppListTask flt = new AppListTask();
         flt.execute();
-    }*/
+    }
 
-       /* private class AppListTask extends AsyncTask<Void, Void, Void> {
+       private class AppListTask extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... params) {
                 Log.d("DB","doInBackground started");
-                long insert = AppDataBase.getAppDatabase(LoginActivity.this).pseudoJuryDAO().insert(new PseudoJury(1));
+                INSTANCE.pseudoJuryDAO().insert(new PseudoJury());
+                return null;
             }
 
             @Override
@@ -83,8 +90,8 @@ public abstract class AppDataBase extends RoomDatabase {
                 Log.d("DB","onPostExecute started");
                 super.onPostExecute(resultCode);
             }
-        }*/
-
+    }
+**/
 
 
 

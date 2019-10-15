@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivity"></activity>
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivityCom"></activity>
+        <activity android:name="fr.eseo.dis.android.vpmb.CreatePseudoJuryManual"></activity>
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivity" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivityCom" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPFEDetailsActivityCom" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPfeDetailsActivity" />
