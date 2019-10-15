@@ -45,15 +45,15 @@ public class MyPfeDetailsActivity extends AppCompatActivity {
 
         TextView supervisor = (TextView) findViewById(R.id.supervisor);
         if (PlaceholderFragmentPfe.getProjectList().get(projectId).getSupervisor().getSurname() != null) {
-            supervisor.setText(R.string.Tutor + " " + PlaceholderFragmentPfe.getProjectList().get(projectId).getSupervisor().getSurname() + " "
+            supervisor.setText(getString(R.string.Tutor) + " " + PlaceholderFragmentPfe.getProjectList().get(projectId).getSupervisor().getSurname() + " "
                     + PlaceholderFragmentPfe.getProjectList().get(projectId).getSupervisor().getForename());
         } else {
-            supervisor.setText(R.string.Tutor + " " + R.string.NoSupervisor);
+            supervisor.setText(getString(R.string.Tutor) + " " + R.string.NoSupervisor);
         }
 
         TextView team = (TextView) findViewById(R.id.team_label);
         if (PlaceholderFragmentPfe.getProjectList().get(projectId).getStudents() != null) {
-           String equipe = "Team : ";
+           String equipe = getString(R.string.Team) + " ";
            for (int i =0 ; i < PlaceholderFragmentPfe.getProjectList().get(projectId).getStudents().length - 1; i++){
                equipe = equipe + PlaceholderFragmentPfe.getProjectList().get(projectId).getStudents()[i].getSurname() + " " +
                        PlaceholderFragmentPfe.getProjectList().get(projectId).getStudents()[i].getForename() + ", ";
@@ -62,7 +62,7 @@ public class MyPfeDetailsActivity extends AppCompatActivity {
                     PlaceholderFragmentPfe.getProjectList().get(projectId).getStudents()[PlaceholderFragmentPfe.getProjectList().get(projectId).getStudents().length -1].getForename();
            team.setText(equipe);
         } else {
-            team.setText(R.string.Team + " " + R.string.NoTeam);
+            team.setText(getString(R.string.Team) + " " + getString(R.string.NoTeam));
         }
 
         ImageView imageView = (ImageView) this.findViewById(R.id.poster_image);
@@ -73,7 +73,7 @@ public class MyPfeDetailsActivity extends AppCompatActivity {
         }
         else {
             TextView posterLabel = (TextView) findViewById(R.id.poster_label);
-            posterLabel.setText("Poster : " + R.string.NoPoster);
+            posterLabel.setText("Poster : " + getString(R.string.NoPoster));
             buttonFull.setEnabled(false);
         }
         buttonFull.setOnClickListener(new View.OnClickListener() {

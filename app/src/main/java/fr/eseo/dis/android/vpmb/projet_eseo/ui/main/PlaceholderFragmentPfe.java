@@ -185,6 +185,18 @@ public class PlaceholderFragmentPfe extends Fragment {
                             for(int i = 0 ; i < responseModel.getProjects().length; i++){
                                 myProjectsList.add(responseModel.getProjects()[i]);
                             }
+                            List<Projects> projectsList = LoginActivity.getProjectList();
+                            List<Juries> juryList = LoginActivity.getJuryList();
+
+                            for(int i =0; i < juryList.size(); i++){
+                                for(int j =0; j < juryList.get(i).getInfo().getProjects().length; j++){
+                                    for (int k = 0; k < projectsList.size(); k++){
+                                        if(projectsList.get(k).getProjectId() == juryList.get(i).getInfo().getProjects()[j].getProjectId()){
+                                            myProjectsList.add(projectsList.get(k));
+                                        }
+                                    }
+                                }
+                            }
                             setMyProjectList(myProjectsList);
 
                         }
