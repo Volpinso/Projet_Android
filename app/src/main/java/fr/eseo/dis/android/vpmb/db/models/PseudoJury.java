@@ -8,12 +8,8 @@ import androidx.room.PrimaryKey;
 public class PseudoJury {
 
     @PrimaryKey
-    @NonNull
     long idPseudoJury;
 
-    public PseudoJury(long idPseudoJury) {
-        this.idPseudoJury = idPseudoJury;
-    }
 
     public long getIdPseudoJury() {
         return idPseudoJury;
@@ -21,6 +17,10 @@ public class PseudoJury {
 
     public void setIdPseudoJury(long idPseudoJury) {
         this.idPseudoJury = idPseudoJury;
+    }
+
+    public PseudoJury(long idPseudoJury){
+        this.idPseudoJury=idPseudoJury;
     }
 
     @Override
