@@ -7,12 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -30,16 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.CreatePseudoJuryManual;
+import fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManual;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.DataConverter;
 import fr.eseo.dis.android.vpmb.db.models.Project;
-import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
-import fr.eseo.dis.android.vpmb.models.Liprj;
 import fr.eseo.dis.android.vpmb.models.Porte;
-import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
-import fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 

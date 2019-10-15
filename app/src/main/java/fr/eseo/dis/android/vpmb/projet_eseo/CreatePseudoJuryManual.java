@@ -1,6 +1,8 @@
-package fr.eseo.dis.android.vpmb;
+package fr.eseo.dis.android.vpmb.projet_eseo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.adapters.CreatePseudoJuryAdapter;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.DataConverter;
 import fr.eseo.dis.android.vpmb.db.models.Project;
@@ -30,12 +33,20 @@ import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComJury;
 public class CreatePseudoJuryManual extends AppCompatActivity {
 
 
+    CreatePseudoJuryAdapter createPseudoJuryAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Sélectionnez les sujets");
         setContentView(R.layout.activity_create_pseudo_jury_manual);
-
-
+        RecyclerView pfeRecycler = (RecyclerView)findViewById(R.id.rv_pfe);
+        pfeRecycler.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(RecyclerView.VERTICAL);
+        pfeRecycler.setLayoutManager(llm);
+        createPseudoJuryAdapter = new CreatePseudoJuryAdapter(this);
+        pfeRecycler.setAdapter(createPseudoJuryAdapter);
 
     }
 }
