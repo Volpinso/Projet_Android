@@ -37,4 +37,8 @@
     <string name="Supervisor">Tuteur :</string>
     <string name="FullScreen">Plein écran</string>
     <string name="Team">Equipe :</string>
+    <string name="NoPoster">Pas de poster pour ce projet</string>
+    <string name="Tutor">Tuteur :</string>
+    <string name="NoTeam">Equipe non définie pour ce projet</string>
+    <string name="NoSupervisor">Tuteur non défini pour ce projet</string>
 </resources>

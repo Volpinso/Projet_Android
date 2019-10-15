@@ -45,10 +45,10 @@ public class MyPfeDetailsActivity extends AppCompatActivity {
 
         TextView supervisor = (TextView) findViewById(R.id.supervisor);
         if (PlaceholderFragmentPfe.getProjectList().get(projectId).getSupervisor().getSurname() != null) {
-            supervisor.setText("Tuteur : " + PlaceholderFragmentPfe.getProjectList().get(projectId).getSupervisor().getSurname() + " "
+            supervisor.setText(R.string.Tutor + " " + PlaceholderFragmentPfe.getProjectList().get(projectId).getSupervisor().getSurname() + " "
                     + PlaceholderFragmentPfe.getProjectList().get(projectId).getSupervisor().getForename());
         } else {
-            supervisor.setText("Tuteur : Pas de tuteur pour ce projet");
+            supervisor.setText(R.string.Tutor + " " + R.string.NoSupervisor);
         }
 
         TextView team = (TextView) findViewById(R.id.team_label);
@@ -62,7 +62,7 @@ public class MyPfeDetailsActivity extends AppCompatActivity {
                     PlaceholderFragmentPfe.getProjectList().get(projectId).getStudents()[PlaceholderFragmentPfe.getProjectList().get(projectId).getStudents().length -1].getForename();
            team.setText(equipe);
         } else {
-            team.setText("Team : Pas d'équipe pour ce projet");
+            team.setText(R.string.Team + " " + R.string.NoTeam);
         }
 
         ImageView imageView = (ImageView) this.findViewById(R.id.poster_image);
@@ -73,7 +73,7 @@ public class MyPfeDetailsActivity extends AppCompatActivity {
         }
         else {
             TextView posterLabel = (TextView) findViewById(R.id.poster_label);
-            posterLabel.setText("Poster : No Poster");
+            posterLabel.setText("Poster : " + R.string.NoPoster);
             buttonFull.setEnabled(false);
         }
         buttonFull.setOnClickListener(new View.OnClickListener() {

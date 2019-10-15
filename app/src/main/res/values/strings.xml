@@ -36,4 +36,8 @@
     <string name="Supervisor">Supervisor :</string>
     <string name="FullScreen">Full Screen</string>
     <string name="Team">Team :</string>
+    <string name="NoPoster">No poster for this project</string>
+    <string name="Tutor">Supervisor :</string>
+    <string name="NoTeam">No team for this project</string>
+    <string name="NoSupervisor">No supervisor for this project</string>
 </resources>
