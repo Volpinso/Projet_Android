@@ -27,7 +27,7 @@
     <string name="emplacement">Place : </string>
     <string name="confidential">This subject is confidential.</string>
     <string name="title_activity_pfe_details">Details</string>
-    <string name="MyJuryProjectActivity">Projects which I am Jury member</string>
+    <string name="MyJuryProjectActivity">Projects which I am Jury member or supervisor</string>
     <string name="NoPlaceDefined">No Place Defined</string>
     <string name="MyGrade">My Grade :</string>
     <string name="NotGraded">Not graded yet</string>
