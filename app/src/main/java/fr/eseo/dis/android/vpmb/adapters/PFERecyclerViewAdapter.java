@@ -112,7 +112,7 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                setThumbnail("");
                 try {
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(view.getContext());
