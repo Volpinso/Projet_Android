@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,10 @@ public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJu
     @Override
     public CreatePseudoJuryAdapter.PseudoJuryRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View pseudoJury = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_all_subjects_pj,parent,false);
+        Button selectProjects = (Button) pseudoJury.findViewById(R.id.subject_selected);
+        pseudoJury.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {}} );
         return new CreatePseudoJuryAdapter.PseudoJuryRecyclerViewHolder(pseudoJury);
 
     }
@@ -54,6 +59,8 @@ public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJu
     @Override
     public void onBindViewHolder(@NonNull final CreatePseudoJuryAdapter.PseudoJuryRecyclerViewHolder holder, final int position) {
         holder.checkbox.setText(dbProjects.get(position).getTitle());
+
+
 
     }
 
