@@ -14,7 +14,6 @@ import java.util.List;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Note;
 import fr.eseo.dis.android.vpmb.projet_eseo.GradesDetailsActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 
 
@@ -59,17 +58,20 @@ public class GradesDetailsAdapter extends RecyclerView.Adapter<GradesDetailsAdap
 
         holder.studentName.setText(notesList.get(position).getForename() + " " + notesList.get(position).getSurname());
         if (notesList.get(position).getMyNote() != null ){
-            holder.juryGrade.setText("My Grade : " + notesList.get(position).getMyNote());
+            holder.juryGrade.setText(holder.itemView.getContext().getString(R.string.MyGrade) + " " + notesList.get(position).getMyNote());
         }
         else {
-            holder.juryGrade.setText("My Grade : Not grades Yet");
+            holder.juryGrade.setText(holder.itemView.getContext().getString(R.string.MyGrade)
+                    + " " + holder.itemView.getContext().getString(R.string.NotGraded));
         }
 
         if (notesList.get(position).getAvgNote() != null ){
-            holder.averageGrade.setText("Average Grade : " + notesList.get(position).getAvgNote());
+            holder.averageGrade.setText(holder.itemView.getContext().getString(R.string.AverageGrade) + " "
+                    + notesList.get(position).getAvgNote());
         }
         else {
-            holder.averageGrade.setText("Average Grade : Not grades Yet");
+            holder.averageGrade.setText(holder.itemView.getContext().getString(R.string.AverageGrade) + " "
+                    + holder.itemView.getContext().getString(R.string.NotGraded));
         }
 
         if(expandedPositions.contains(position)){

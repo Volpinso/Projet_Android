@@ -84,7 +84,7 @@ public class MyPfeDetailsActivity extends AppCompatActivity {
                     int projectId = intent.getIntExtra("projectId", 1000);
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(v.getContext());
-                    String url = RequestModel.getPoster(LoginActivity.getUsername(),PlaceholderFragmentPfe.getProjectList().get(projectId).getProjectId(), "FLB64", LoginActivity.getToken());
+                    String url = RequestModel.getPoster(LoginActivity.getUsername(), projectId, "FLB64", LoginActivity.getToken());
                     System.out.println(url);
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                             new Response.Listener<String>() {

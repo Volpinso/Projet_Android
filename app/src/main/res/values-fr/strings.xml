@@ -28,4 +28,9 @@
     <string name="emplacement">Emplacement : </string>
     <string name="confidential">Ce sujet est confidentiel.</string>
     <string name="title_activity_pfe_details">Détails</string>
+    <string name="MyJuryProjectActivity">Projets dont je suis membre du jury</string>
+    <string name="NoPlaceDefined">Emplacement non défini</string>
+    <string name="MyGrade">Ma note :</string>
+    <string name="NotGraded">Pas encore noté</string>
+    <string name="AverageGrade">Moyenne :</string>
 </resources>

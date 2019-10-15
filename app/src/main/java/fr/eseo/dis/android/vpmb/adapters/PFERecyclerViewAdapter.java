@@ -148,7 +148,7 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
                 catch (Exception e){
 
                 }
-                Intent intent = new Intent( view.getContext(), MyPfeDetailsActivity.class);
+                Intent intent = new Intent( view.getContext(), PfeDetailsActivity.class);
                 intent.putExtra("projectId", projectList.get(position).getProjectId());
                 view.getContext().startActivity(intent);
             }

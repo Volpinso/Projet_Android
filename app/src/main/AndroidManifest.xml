@@ -22,7 +22,7 @@
             android:label="@string/AllPfeActivity" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyJuryProjectActivity"
-            android:label="MyJuryProjectActivity" />
+            android:label="@string/MyJuryProjectActivity" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity"
             android:label="@string/MyPfeActivity" />
