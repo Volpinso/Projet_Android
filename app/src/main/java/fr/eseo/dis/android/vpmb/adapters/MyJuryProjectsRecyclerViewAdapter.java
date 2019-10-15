@@ -65,9 +65,11 @@ public class MyJuryProjectsRecyclerViewAdapter extends RecyclerView.Adapter<MyJu
     public void onBindViewHolder(@NonNull final PFERecyclerViewHolder holder, final int position) {
         holder.pfeTitre.setText(projectList.get(position).getTitle());
         if (projectList.get(position).getPoster() != null) {
-            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " " + projectList.get(position).getPoster());
+            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " "
+                    + projectList.get(position).getPoster());
         } else {
-            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " No place defined");
+            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " "
+                    + holder.itemView.getContext().getResources().getString(R.string.NoPlaceDefined));
         }
         if (projectList.get(position).getConfid() == 0 ||
                 createPseudo(projectList.get(position).getSupervisor().getSurname(), projectList.get(position).getSupervisor().getForename()) != LoginActivity.getUsername()) {
@@ -77,9 +79,10 @@ public class MyJuryProjectsRecyclerViewAdapter extends RecyclerView.Adapter<MyJu
             holder.pfeDescriptionLabel.setText(holder.itemView.getContext().getResources().getString(R.string.confidential));
         }
 
-        holder.pfeSupervisor.setText("Supervisor : " + projectList.get(position).getSupervisor().getForename() + " " + projectList.get(position).getSupervisor().getSurname());
+        holder.pfeSupervisor.setText(holder.itemView.getContext().getResources().getString(R.string.Supervisor) + " "
+                + projectList.get(position).getSupervisor().getForename() + " " + projectList.get(position).getSupervisor().getSurname());
 
-        String members = "Members : ";
+        String members = holder.itemView.getContext().getResources().getString(R.string.Members) + " ";
         for(int i =0; i < projectList.get(position).getStudents().length - 1; i++){
             members = members +  projectList.get(position).getStudents()[i].getForename() + " " + projectList.get(position).getStudents()[i].getSurname() + ", ";
         }

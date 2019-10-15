@@ -33,4 +33,6 @@
     <string name="MyGrade">Ma note :</string>
     <string name="NotGraded">Pas encore noté</string>
     <string name="AverageGrade">Moyenne :</string>
+    <string name="Members">Membres :</string>
+    <string name="Supervisor">Tuteur :</string>
 </resources>

@@ -98,7 +98,8 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
         if (myProjectsList.get(position).getPoster() != null) {
             holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " " + myProjectsList.get(position).getPoster());
         } else {
-            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " No place defined");
+            holder.pfeEmplacement.setText(holder.itemView.getContext().getResources().getString(R.string.emplacement) + " " +
+                    holder.itemView.getContext().getResources().getString(R.string.NoPlaceDefined));
         }
         if (myProjectsList.get(position).getConfid() == 0 ||
                 createPseudo(myProjectsList.get(position).getSupervisor().getSurname(), myProjectsList.get(position).getSupervisor().getForename()) != LoginActivity.getUsername()) {

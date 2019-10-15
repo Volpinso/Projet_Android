@@ -32,4 +32,6 @@
     <string name="MyGrade">My Grade :</string>
     <string name="NotGraded">Not graded yet</string>
     <string name="AverageGrade">Average Grade :</string>
+    <string name="Members">Members :</string>
+    <string name="Supervisor">Supervisor :</string>
 </resources>
