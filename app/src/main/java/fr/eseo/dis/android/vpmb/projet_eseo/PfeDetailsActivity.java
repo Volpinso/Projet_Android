@@ -79,6 +79,7 @@ public class PfeDetailsActivity extends AppCompatActivity {
         buttonFull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setFullB64("");
                 try {
                     Intent intent = getIntent();
                     int projectId = intent.getIntExtra("projectId", 1000);
