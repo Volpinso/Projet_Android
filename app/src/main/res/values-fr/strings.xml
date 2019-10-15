@@ -35,4 +35,6 @@
     <string name="AverageGrade">Moyenne :</string>
     <string name="Members">Membres :</string>
     <string name="Supervisor">Tuteur :</string>
+    <string name="FullScreen">Plein écran</string>
+    <string name="Team">Equipe :</string>
 </resources>

@@ -16,7 +16,7 @@ public class PosterFullActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poster_full);
-        setTitle("Full Screen");
+        setTitle(R.string.FullScreen);
         ImageView imageView = (ImageView) this.findViewById(R.id.full_screen);
         if (PfeDetailsActivity.getFullB64() != null) {
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(PfeDetailsActivity.getFullB64()), 0,

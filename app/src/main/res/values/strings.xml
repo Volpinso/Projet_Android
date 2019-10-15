@@ -34,4 +34,6 @@
     <string name="AverageGrade">Average Grade :</string>
     <string name="Members">Members :</string>
     <string name="Supervisor">Supervisor :</string>
+    <string name="FullScreen">Full Screen</string>
+    <string name="Team">Team :</string>
 </resources>
