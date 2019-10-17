@@ -1,11 +1,11 @@
 package fr.eseo.dis.android.vpmb.adapters;
 
-import android.content.Context;
+import android.content.ClipData;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +16,6 @@ import java.util.List;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Project;
-import fr.eseo.dis.android.vpmb.projet_eseo.ActivityVisitorListSubjects;
 import fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManual;
 
 public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJuryAdapter.PseudoJuryRecyclerViewHolder> {
@@ -27,9 +26,17 @@ public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJu
     private List<Integer> expandedPositions;
     private  List<Project> dbProjects;
 
+    public List<Project> getProjectSelected() {
+        return projectSelected;
+    }
 
-    //TODO: This field will be deleted
-    private float radius;
+    public void setProjectSelected(List<Project> projectSelected) {
+        this.projectSelected = projectSelected;
+    }
+
+    List<Project> projectSelected = new ArrayList<>();;
+
+
 
     public CreatePseudoJuryAdapter(CreatePseudoJuryManual pseudoJuryManual) {
         this.pseudoJuryManual = pseudoJuryManual;
@@ -41,28 +48,46 @@ public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJu
             subjectInformation.add(i);
         }
         expandedPositions = new ArrayList<>();
-        //TODO: End of the code to be replaced
-    }
+ }
 
     @NonNull
     @Override
     public CreatePseudoJuryAdapter.PseudoJuryRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View pseudoJury = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_all_subjects_pj,parent,false);
-        Button selectProjects = (Button) pseudoJury.findViewById(R.id.subject_selected);
-        pseudoJury.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {}} );
+
         return new CreatePseudoJuryAdapter.PseudoJuryRecyclerViewHolder(pseudoJury);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull final CreatePseudoJuryAdapter.PseudoJuryRecyclerViewHolder holder, final int position) {
-        holder.checkbox.setText(dbProjects.get(position).getTitle());
+            holder.checkbox.setTag(dbProjects.get(position));
+            holder.checkbox.setText(dbProjects.get(position).getTitle());
+            holder.checkbox.setChecked(false);
+
+            holder.checkbox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Project projet = (Project) holder.checkbox.getTag();
+
+                    //projet.setSelected(holder.checkbox.isChecked());
+
+                    //dbProjects.get(position).setSelected(holder.checkbox.isChecked());
+                    if(holder.checkbox.isChecked()) {
+                        projectSelected.add(projet);
+                    }else{
+                        projectSelected.remove(projet);
+
+                    }
+
+                }
+            });
 
 
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -71,15 +96,20 @@ public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJu
 
     class PseudoJuryRecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView checkbox;
-
+        private final CheckBox checkbox;
 
 
         public PseudoJuryRecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             checkbox = itemView.findViewById(R.id.checkBox);
+            checkbox.setClickable(true);
 
         }
+
+        public void setOnClickListener(View.OnClickListener onClickListener) {
+            itemView.setOnClickListener(onClickListener);
+        }
     }
+
 
 }

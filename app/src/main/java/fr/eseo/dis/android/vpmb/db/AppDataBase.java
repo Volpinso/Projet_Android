@@ -12,6 +12,7 @@ import java.util.List;
 
 import fr.eseo.dis.android.vpmb.db.dao.GradeDAO;
 import fr.eseo.dis.android.vpmb.db.dao.ProjectDAO;
+import fr.eseo.dis.android.vpmb.db.dao.ProjectJuryDAO;
 import fr.eseo.dis.android.vpmb.db.dao.PseudoJuryDAO;
 import fr.eseo.dis.android.vpmb.db.dao.VisitorDAO;
 import fr.eseo.dis.android.vpmb.db.models.Grade;
@@ -20,7 +21,6 @@ import fr.eseo.dis.android.vpmb.db.models.ProjectJury;
 import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
 import fr.eseo.dis.android.vpmb.db.models.Visitor;
 import fr.eseo.dis.android.vpmb.models.Projects;
-import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 @Database(entities = {Project.class, Visitor.class, ProjectJury.class, Grade.class, PseudoJury.class}, version = 1)
 public abstract class AppDataBase extends RoomDatabase {
@@ -36,6 +36,7 @@ public abstract class AppDataBase extends RoomDatabase {
 
     public abstract GradeDAO gradeDAO();
 
+    public abstract ProjectJuryDAO projectJuryDAO();
 
 
     public static AppDataBase getINSTANCE(Context context){

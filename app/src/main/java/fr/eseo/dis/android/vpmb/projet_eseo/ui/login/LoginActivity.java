@@ -262,7 +262,7 @@ public class LoginActivity extends AppCompatActivity {
             String token = LoginActivity.getToken();
             RequestQueue queue = Volley.newRequestQueue(this.getApplicationContext());
             String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
-            System.out.println(url);
+
             // Request a string response from the provided URL.
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                     (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -309,7 +309,7 @@ public class LoginActivity extends AppCompatActivity {
             // Instantiate the RequestQueue.
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
             String url = RequestModel.getMyJuriesRequest(username, token);
-            System.out.println(url);
+
             // Request a string response from the provided URL.
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                     (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -323,7 +323,6 @@ public class LoginActivity extends AppCompatActivity {
                                 myJuriesList.add(responseModel.getJuries()[i]);
                             }
                             setJuryList(myJuriesList);
-                            System.out.println(getJuryList());
 
                         }
                     }, new Response.ErrorListener() {
