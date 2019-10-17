@@ -1,13 +1,16 @@
 package fr.eseo.dis.android.vpmb.projet_eseo;
 
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -88,8 +91,15 @@ public class CreatePseudoJuryManual extends AppCompatActivity implements View.On
             }
 
         }
-
+        showJurySucces(AppCompatActivity.RESULT_OK);
 
         }
+
+    private void showJurySucces(@StringRes Integer successString) {
+        String success = getString(R.string.JuryProjectSuccess);
+        Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(CreatePseudoJuryManual.this, CreatePseudoJuryManual.class);
+        startActivity(intent);
+    }
 
 }

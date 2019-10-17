@@ -40,4 +40,6 @@
     <string name="Tutor">Supervisor :</string>
     <string name="NoTeam">No team for this project</string>
     <string name="NoSupervisor">No supervisor for this project</string>
+    <string name="JuryProjectSuccess">Projects associated to juries</string>
+
 </resources>

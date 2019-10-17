@@ -41,4 +41,5 @@
     <string name="Tutor">Tuteur :</string>
     <string name="NoTeam">Equipe non définie pour ce projet</string>
     <string name="NoSupervisor">Tuteur non défini pour ce projet</string>
+    <string name="JuryProjectSuccess">Succes ajout projet(s) à un jury</string>
 </resources>
