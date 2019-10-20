@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,11 +29,21 @@ import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe;
 public class MyPfeDetailsActivity extends AppCompatActivity {
 
     private static String fullB64;
+    private int idProject;
+
+    public int getIdProject() {
+        return idProject;
+    }
+
+    public void setIdProject(int idProject) {
+        this.idProject = idProject;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
         int projectId = intent.getIntExtra("projectId", 1000);
+        setIdProject(projectId);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pfe_details);
 
@@ -136,6 +147,23 @@ public class MyPfeDetailsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.pfedetail_menu, menu);
         return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_comment:
+                Intent intentComment = new Intent(this, CommentaryActivity.class);
+                intentComment.putExtra("projectId", getIdProject());
+                startActivity(intentComment);
+                return (true);
+            case R.id.action_grade:
+                Intent intentGrade = new Intent(this, AddGradeActivity.class);
+                intentGrade.putExtra("projectId", getIdProject());
+                startActivity(intentGrade);
+                return (true);
+        }
+        return (super.onOptionsItemSelected(item));
+
     }
 
     public static String getFullB64(){
