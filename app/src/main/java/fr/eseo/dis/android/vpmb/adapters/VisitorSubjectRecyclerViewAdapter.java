@@ -40,7 +40,7 @@ public class VisitorSubjectRecyclerViewAdapter extends RecyclerView.Adapter<Visi
         this.subjectActivity = subjectActivity;
         //TODO: The following lines will be repalaced
         projectsJury = new ArrayList<>();
-        projectsJury = AppDataBase.getINSTANCE(subjectActivity.getApplicationContext()).projectJuryDAO().loadAll();
+        projectsJury = AppDataBase.getINSTANCE(subjectActivity.getApplicationContext()).projectJuryDAO().loadSubjectForAJury(ActivityVisitorListSubjects.getPseudoJuryVisitorId());
 
         projectsToDisplay = new ArrayList<>();
         subjectInformation = new ArrayList<>();

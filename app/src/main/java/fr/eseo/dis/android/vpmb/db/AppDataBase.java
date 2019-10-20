@@ -77,29 +77,24 @@ public abstract class AppDataBase extends RoomDatabase {
         //Find last jury id
         List<PseudoJury> pseudoJuries = AppDataBase.getINSTANCE(context).pseudoJuryDAO().loadAll();
         long idLastPseudoJury = -1;
+        long idPseudoJury;
 
         if (!pseudoJuries.isEmpty()) {
-            idLastPseudoJury = pseudoJuries.get(pseudoJuries.size() - 1).getIdPseudoJury();
+            idPseudoJury=pseudoJuries.size();
+        }else {
+            idPseudoJury = 0;
+        }
+
+        AppDataBase.getINSTANCE(context).pseudoJuryDAO().insert(new PseudoJury(idPseudoJury));
+
+
+        for (int i = 0; i < projectsJury.size(); i++) {
+            //Insert new jury and juryProject
+            AppDataBase.getINSTANCE(context).projectJuryDAO().insert(new ProjectJury(projectsJury.get(i).getIdProject(), idPseudoJury));
         }
 
 
-        if (idLastPseudoJury != -1) {
 
-            AppDataBase.getINSTANCE(context).pseudoJuryDAO().insert(new PseudoJury(idLastPseudoJury + 1));
-
-            for (int i = 0; i < projectsJury.size(); i++) {
-                //Insert new jury and juryProject
-                AppDataBase.getINSTANCE(context).projectJuryDAO().insert(new ProjectJury(projectsJury.get(i).getIdProject(), idLastPseudoJury + 1));
-            }
-        } else {
-            AppDataBase.getINSTANCE(context).pseudoJuryDAO().insert(new PseudoJury(0));
-
-            for (int i = 0; i < projectsJury.size(); i++) {
-                //Insert new jury and juryProject
-                AppDataBase.getINSTANCE(context).projectJuryDAO().insert(new ProjectJury(projectsJury.get(i).getIdProject(), 0));
-            }
-
-        }
     }
 
 

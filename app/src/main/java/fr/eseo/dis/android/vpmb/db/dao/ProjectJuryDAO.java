@@ -16,4 +16,7 @@ public interface ProjectJuryDAO {
 
     @Query("SELECT * FROM ProjectJury")
     List<ProjectJury> loadAll();
+
+    @Query("SELECT * FROM ProjectJury WHERE pseudoJury= :idPseudoJury")
+    List<ProjectJury> loadSubjectForAJury(long idPseudoJury);
 }

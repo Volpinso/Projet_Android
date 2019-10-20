@@ -19,8 +19,9 @@ public class ActivityVisitorListSubjects extends AppCompatActivity {
 
 
     private VisitorSubjectRecyclerViewAdapter visitorSubjectRecyclerViewAdapter;
-    private long numVisitor;
 
+    private long numVisitor;
+    private static long pseudoJuryVisitorId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +42,24 @@ public class ActivityVisitorListSubjects extends AppCompatActivity {
         Random random = new Random();
         int randomJury = random.nextInt(jury.size());
 
-        PseudoJury pseudoJuryChosen = jury.get(randomJury);
+        pseudoJuryVisitorId = jury.get(randomJury).getIdPseudoJury();
 
         if(visitorsInDB.isEmpty()){
-            AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().insert(new Visitor(0, pseudoJuryChosen.getIdPseudoJury()));
+            numVisitor = 0;
+            AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().insert(new Visitor(numVisitor, pseudoJuryVisitorId));
         }else{
-            long idVisitor = jury.size();
-            AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().insert(new Visitor(idVisitor, pseudoJuryChosen.getIdPseudoJury()));
+            numVisitor = jury.size();
+            AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().insert(new Visitor(numVisitor, pseudoJuryVisitorId));
 
         }
+    }
+
+
+    public long getNumVisitor() {
+        return numVisitor;
+    }
+
+    public static long getPseudoJuryVisitorId() {
+        return pseudoJuryVisitorId;
     }
 }

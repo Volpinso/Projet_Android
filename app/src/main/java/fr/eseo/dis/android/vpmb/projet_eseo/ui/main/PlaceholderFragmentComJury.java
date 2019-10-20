@@ -204,6 +204,7 @@ public class PlaceholderFragmentComJury extends Fragment {
             // Remove selected element from orginal list
             projectListCopy.remove(randomIndex);
         }
+
         return newList;
     }
 
