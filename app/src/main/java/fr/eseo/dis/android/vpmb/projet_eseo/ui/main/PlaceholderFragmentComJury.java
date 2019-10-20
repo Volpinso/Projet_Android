@@ -166,10 +166,8 @@ public class PlaceholderFragmentComJury extends Fragment {
 
                 List<fr.eseo.dis.android.vpmb.db.models.Project> randomList = getRandomElementList(listOfProjects, randomSize);
 
-                System.out.println("Avant"+AppDataBase.getINSTANCE(PlaceholderFragmentComJury.this.context).pseudoJuryDAO().loadAll().size());
 
                 AppDataBase.insertProjectJury(randomList, PlaceholderFragmentComJury.this.context);
-                System.out.println("Après"+AppDataBase.getINSTANCE(PlaceholderFragmentComJury.this.context).pseudoJuryDAO().loadAll().size());
 
                 showJurySucces(AppCompatActivity.RESULT_OK);
 

@@ -6,13 +6,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import fr.eseo.dis.android.vpmb.adapters.SubjectRecyclerViewAdapter;
+import java.util.List;
+import java.util.Random;
+
+import fr.eseo.dis.android.vpmb.adapters.VisitorSubjectRecyclerViewAdapter;
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.db.AppDataBase;
+import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
+import fr.eseo.dis.android.vpmb.db.models.Visitor;
 
 public class ActivityVisitorListSubjects extends AppCompatActivity {
 
 
-    private SubjectRecyclerViewAdapter subjectRecyclerViewAdapter;
+    private VisitorSubjectRecyclerViewAdapter visitorSubjectRecyclerViewAdapter;
+    private long numVisitor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +30,25 @@ public class ActivityVisitorListSubjects extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
         subjectsRecycler.setLayoutManager(llm);
-        subjectRecyclerViewAdapter = new SubjectRecyclerViewAdapter(this);
-        subjectsRecycler.setAdapter(subjectRecyclerViewAdapter);
+        visitorSubjectRecyclerViewAdapter = new VisitorSubjectRecyclerViewAdapter(this);
+        subjectsRecycler.setAdapter(visitorSubjectRecyclerViewAdapter);
 
+        List<Visitor> visitorsInDB = AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().loadAll();
+
+        //Select a random pseudoJury
+        List<PseudoJury> jury = AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).pseudoJuryDAO().loadAll();
+
+        Random random = new Random();
+        int randomJury = random.nextInt(jury.size());
+
+        PseudoJury pseudoJuryChosen = jury.get(randomJury);
+
+        if(visitorsInDB.isEmpty()){
+            AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().insert(new Visitor(0, pseudoJuryChosen.getIdPseudoJury()));
+        }else{
+            long idVisitor = jury.size();
+            AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().insert(new Visitor(idVisitor, pseudoJuryChosen.getIdPseudoJury()));
+
+        }
     }
 }
