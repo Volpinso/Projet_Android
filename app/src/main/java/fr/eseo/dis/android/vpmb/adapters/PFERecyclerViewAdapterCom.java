@@ -146,7 +146,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
                     e.printStackTrace();
                 }
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(8000);
                 }
                 catch (Exception e){
 
