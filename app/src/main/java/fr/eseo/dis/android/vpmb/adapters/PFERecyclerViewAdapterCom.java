@@ -38,7 +38,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
 
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
-    private static String thumbnail;
+    private static String thumbnail="";
 
 
 
@@ -146,7 +146,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
                     e.printStackTrace();
                 }
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
                 }
                 catch (Exception e){
 

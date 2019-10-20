@@ -93,6 +93,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.022" />
 
+        <Button
+            android:id="@+id/add_subject"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/AddSubject"
+            android:backgroundTint="#531931"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:visibility="invisible"/>
+
     </LinearLayout>
 
 </ScrollView>

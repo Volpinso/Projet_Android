@@ -17,4 +17,7 @@ public interface ProjectDAO {
 
     @Query("SELECT * FROM Subject")
     List<Project>  loadAll();
+
+    @Query("SELECT * FROM Subject WHERE idProject= :idProjectSearched")
+    Project  selectProject(long idProjectSearched);
 }

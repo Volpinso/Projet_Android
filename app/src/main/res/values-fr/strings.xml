@@ -42,4 +42,6 @@
     <string name="NoTeam">Equipe non définie pour ce projet</string>
     <string name="NoSupervisor">Tuteur non défini pour ce projet</string>
     <string name="JuryProjectSuccess">Succes ajout projet(s) à un jury</string>
+    <string name="AddSubject">Ajouter ce sujet pour les JPO</string>
+    <string name="SubjectAlreadyAdded">Sujet déjà ajouté pour les jpo</string>
 </resources>

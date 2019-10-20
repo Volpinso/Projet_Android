@@ -41,5 +41,7 @@
     <string name="NoTeam">No team for this project</string>
     <string name="NoSupervisor">No supervisor for this project</string>
     <string name="JuryProjectSuccess">Projects associated to juries</string>
+    <string name="AddSubject">Add this subject for open days</string>
+    <string name="SubjectAlreadyAdded">Subject already added for open days</string>
 
 </resources>
