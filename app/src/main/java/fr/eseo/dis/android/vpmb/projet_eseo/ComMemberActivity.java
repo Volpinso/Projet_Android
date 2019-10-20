@@ -1,5 +1,6 @@
 package fr.eseo.dis.android.vpmb.projet_eseo;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -12,6 +13,7 @@ import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.SectionsPagerAdapterCom;
 
 public class ComMemberActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,4 +24,6 @@ public class ComMemberActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
     }
+
+
 }

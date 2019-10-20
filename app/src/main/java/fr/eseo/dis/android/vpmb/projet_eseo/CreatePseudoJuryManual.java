@@ -2,12 +2,15 @@ package fr.eseo.dis.android.vpmb.projet_eseo;
 
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -64,33 +67,9 @@ public class CreatePseudoJuryManual extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         List<Project> projectsJury = createPseudoJuryAdapter.getProjectSelected();
-        //Find last jury id
-        List<PseudoJury> pseudoJuries = AppDataBase.getINSTANCE(CreatePseudoJuryManual.this).pseudoJuryDAO().loadAll();
-        long idLastPseudoJury = -1;
-        System.out.println(pseudoJuries.toString());
-        if (!pseudoJuries.isEmpty()) {
-            idLastPseudoJury = pseudoJuries.get(pseudoJuries.size() - 1).getIdPseudoJury();
-        }
 
+        AppDataBase.insertProjectJury(projectsJury, CreatePseudoJuryManual.this);
 
-        if (idLastPseudoJury != -1) {
-            System.out.println(pseudoJuries);
-            System.out.println(idLastPseudoJury);
-            AppDataBase.getINSTANCE(CreatePseudoJuryManual.this).pseudoJuryDAO().insert(new PseudoJury(idLastPseudoJury + 1));
-
-            for (int i = 0; i < projectsJury.size(); i++) {
-                //Insert new jury and juryProject
-                AppDataBase.getINSTANCE(CreatePseudoJuryManual.this).projectJuryDAO().insert(new ProjectJury(projectsJury.get(i).getIdProject(), idLastPseudoJury + 1));
-            }
-        } else {
-            AppDataBase.getINSTANCE(CreatePseudoJuryManual.this).pseudoJuryDAO().insert(new PseudoJury(0));
-
-            for (int i = 0; i < projectsJury.size(); i++) {
-                //Insert new jury and juryProject
-                AppDataBase.getINSTANCE(CreatePseudoJuryManual.this).projectJuryDAO().insert(new ProjectJury(projectsJury.get(i).getIdProject(), 0));
-            }
-
-        }
         showJurySucces(AppCompatActivity.RESULT_OK);
 
         }
@@ -98,8 +77,15 @@ public class CreatePseudoJuryManual extends AppCompatActivity implements View.On
     private void showJurySucces(@StringRes Integer successString) {
         String success = getString(R.string.JuryProjectSuccess);
         Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(CreatePseudoJuryManual.this, CreatePseudoJuryManual.class);
-        startActivity(intent);
-    }
+        FragmentManager fm = getSupportFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            Log.i("MainActivity", "popping backstack");
+            fm.popBackStack();
+        } else {
+            Log.i("MainActivity", "nothing on backstack, calling super");
+            super.onBackPressed();
+        }    }
+
+
 
 }
