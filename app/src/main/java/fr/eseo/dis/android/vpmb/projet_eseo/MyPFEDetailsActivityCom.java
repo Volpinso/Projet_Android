@@ -87,45 +87,7 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
         buttonFull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent intent = getIntent();
-                    int projectId = intent.getIntExtra("projectId", 1000);
-                    // Instantiate the RequestQueue.
-                    RequestQueue queue = Volley.newRequestQueue(v.getContext());
-                    String url = RequestModel.getPoster(LoginActivity.getUsername(),LoginActivity.getProjectList().get(projectId).getProjectId(), "FLB64", LoginActivity.getToken());
-                    System.out.println(url);
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    if(response.contains("Invalid Credentials")){
-                                        setFullB64("No Poster");
-                                    }
-                                    else{
-                                        System.out.println(response);
-                                        setFullB64(response);
-                                    }
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    // Handle error
-                                }
-                            });
 
-                    // Add the request to the RequestQueue.
-                    queue.add(stringRequest);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    Thread.sleep(7000);
-                }
-                catch (Exception e){
-
-                }
                 Intent intent = new Intent(MyPFEDetailsActivityCom.this, PosterFullActivityCom.class);
                 startActivity(intent);
             }
@@ -139,15 +101,14 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Projects projectToAdd = LoginActivity.getProjectList().get(projectId);
-                System.out.println("app"+AppDataBase.getINSTANCE(MyPFEDetailsActivityCom.this).projectDAO().selectProject(projectToAdd.getProjectId()));
+
                 if (AppDataBase.getINSTANCE(MyPFEDetailsActivityCom.this).projectDAO().selectProject(projectToAdd.getProjectId())!=null){
                     showJurySucces(AppCompatActivity.RESULT_CANCELED, getString(R.string.SubjectAlreadyAdded));
                 }else {
                     fr.eseo.dis.android.vpmb.db.models.Project projectToDb = new fr.eseo.dis.android.vpmb.db.models.Project(projectToAdd.getProjectId(), projectToAdd.getTitle(), projectToAdd.getDescrip(), PFERecyclerViewAdapterCom.getThumbnail());
 
-                    System.out.println(AppDataBase.getINSTANCE(MyPFEDetailsActivityCom.this).projectDAO().loadAll().size());
                     AppDataBase.getINSTANCE(MyPFEDetailsActivityCom.this).projectDAO().insert(projectToDb);
-                    System.out.println(AppDataBase.getINSTANCE(MyPFEDetailsActivityCom.this).projectDAO().loadAll().size());
+
                     showJurySucces(AppCompatActivity.RESULT_OK, getString(R.string.AddSubject));
 
                 }
@@ -184,5 +145,6 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
             Log.i("MainActivity", "nothing on backstack, calling super");
             super.onBackPressed();
         }    }
+
 
 }
