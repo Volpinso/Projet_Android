@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManual"></activity>
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.AddGradeActivity"
+            android:label="Ajouter une note"></activity>
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.CommentaryActivity"
+            android:label="Commentaires"></activity>
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManual" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivityCom" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity" />
