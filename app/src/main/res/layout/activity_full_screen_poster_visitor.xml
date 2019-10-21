@@ -6,4 +6,33 @@
     android:layout_height="match_parent"
     tools:context="fr.eseo.dis.android.vpmb.projet_eseo.FullScreenPosterVisitor">
 
+    <ImageView
+        android:id="@+id/full_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="108dp"></ImageView>
+
+    <TextView
+        android:id="@+id/text_no_preview"
+        android:layout_width="242dp"
+        android:layout_height="173dp"
+        android:text="@string/NoPreview"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="187dp"
+        android:visibility="invisible"></TextView>
+
+    <Button
+        android:id="@+id/grade_button"
+        android:layout_width="289dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#531931"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/GradePosterVisitor"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="661dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

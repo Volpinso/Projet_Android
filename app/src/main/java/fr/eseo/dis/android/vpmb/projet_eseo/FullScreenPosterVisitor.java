@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
 
@@ -18,17 +21,26 @@ public class FullScreenPosterVisitor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         String posterBase64 = intent.getStringExtra("poster");
-        setContentView(R.layout.activity_poster_full);
-        setTitle(R.string.FullScreen);
+        setContentView(R.layout.activity_full_screen_poster_visitor);
+        setTitle(R.string.Poster);
         ImageView imageView = (ImageView) this.findViewById(R.id.full_screen);
-
+        Button button = (Button) this.findViewById(R.id.grade_button);
+        TextView text = (TextView) this.findViewById(R.id.text_no_preview);
         if(posterBase64 != null) {
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(posterBase64), 0,
                     convertB64toImage(posterBase64).length));
         }else{
-            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage("No poster"), 0,
-                    convertB64toImage("No poster").length));
+            text.setVisibility(View.VISIBLE);
         }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( v.getContext(), GradeFormVisitor.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
     }
 
     public byte[] convertB64toImage(String base64){

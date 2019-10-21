@@ -44,8 +44,10 @@
     <string name="JuryProjectSuccess">Succes ajout projet(s) à un jury</string>
     <string name="AddSubject">Ajouter ce sujet pour les JPO</string>
     <string name="SubjectAlreadyAdded">Sujet déjà ajouté pour les jpo</string>
+    <string name="GradePosterVisitor">Noter le poster</string>
+    <string name="Poster">Prévisualisation du poster</string>
+    <string name="NoPreview">Prévisualisation du poster non disponible</string>
     <string name="posterlocation">Emplacement des Posters</string>
-
     <string name="grade_prompt">Sélectionnez une note</string>
 
     <string-array name="grade_arrays">
