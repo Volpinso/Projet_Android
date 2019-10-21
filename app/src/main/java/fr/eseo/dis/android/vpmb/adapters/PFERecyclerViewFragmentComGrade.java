@@ -1,5 +1,6 @@
 package fr.eseo.dis.android.vpmb.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Project;
 import fr.eseo.dis.android.vpmb.models.Projects;
+import fr.eseo.dis.android.vpmb.projet_eseo.VisitorsGradesActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComGrade;
 
@@ -52,8 +54,9 @@ public class PFERecyclerViewFragmentComGrade extends RecyclerView.Adapter<PFERec
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppDataBase.getINSTANCE(placeholderFragmentComGrade.getContext()).projectDAO().loadAll();
-
+                Intent intent = new Intent(v.getContext(), VisitorsGradesActivity.class);
+                intent.putExtra("projectID", projectsList.get(position).getIdProject());
+                v.getContext().startActivity(intent);
             }
         });
     }
