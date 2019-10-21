@@ -162,8 +162,8 @@ public class PlaceholderFragmentComJury extends Fragment {
                 Random rand = new Random();
 
                 List<Project> listOfProjects = AppDataBase.getINSTANCE(PlaceholderFragmentComJury.this.context).projectDAO().loadAll();
-                int randomSize = rand.nextInt(listOfProjects.size());
-
+                int randomSize = rand.nextInt(listOfProjects.size()-1)+1;
+                System.out.println(randomSize);
                 List<fr.eseo.dis.android.vpmb.db.models.Project> randomList = getRandomElementList(listOfProjects, randomSize);
 
 
