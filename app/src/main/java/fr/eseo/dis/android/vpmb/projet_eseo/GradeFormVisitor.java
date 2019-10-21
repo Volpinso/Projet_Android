@@ -28,7 +28,7 @@ public class GradeFormVisitor extends AppCompatActivity {
         final Spinner spinner = (Spinner) findViewById(R.id.grade_spinner);
         final EditText edit = (EditText) findViewById(R.id.editText);
         Button button = (Button) findViewById(R.id.button_grade);
-
+        System.out.println(AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
