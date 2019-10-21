@@ -7,7 +7,8 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName="Grade",
-        foreignKeys= @ForeignKey(entity=PseudoJury.class, parentColumns = "idPseudoJury", childColumns = "pseudoJury"))
+        foreignKeys= {@ForeignKey(entity=PseudoJury.class, parentColumns = "idPseudoJury", childColumns = "pseudoJury"),
+                @ForeignKey(entity=Project.class, parentColumns = "idProject", childColumns = "project")})
 
 public class Grade {
 
@@ -23,11 +24,16 @@ public class Grade {
     @ColumnInfo(name="pseudoJury")
     long pseudoJury;
 
-    public Grade(long idNotation, double note, String commentaire, long pseudoJury) {
+    @ColumnInfo(name="project")
+    long idSubject;
+
+
+    public Grade(long idNotation, double note, String commentaire, long pseudoJury, long idSubject) {
         this.idNotation = idNotation;
         this.note = note;
         this.commentaire = commentaire;
         this.pseudoJury = pseudoJury;
+        this.idSubject = idSubject;
     }
 
     public long getIdNotation() {
@@ -62,15 +68,22 @@ public class Grade {
         this.pseudoJury = idPseudoJury;
     }
 
-    @Override
-    public String toString() {
-        return "Visitor{" +
-                "dNotation=" + idNotation +
-                ", note=" + note +
-                ", commentaire='" + commentaire + '\'' +
-                ", idPseudoJury=" + pseudoJury +
-                '}';
+    public long getIdSubject() {
+        return idSubject;
     }
 
+    public void setIdSubject(long idSubject) {
+        this.idSubject = idSubject;
+    }
 
+    @Override
+    public String toString() {
+        return "Grade{" +
+                "idNotation=" + idNotation +
+                ", note=" + note +
+                ", commentaire='" + commentaire + '\'' +
+                ", pseudoJury=" + pseudoJury +
+                ", idSubject=" + idSubject +
+                '}';
+    }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,10 +26,14 @@ public class GradeFormVisitor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grade_form_visitor);
         setTitle(R.string.GradePosterVisitor);
+
+        Intent intent = getIntent();
+        final long idProject = intent.getLongExtra("idProject", 10000L);
+
         final Spinner spinner = (Spinner) findViewById(R.id.grade_spinner);
         final EditText edit = (EditText) findViewById(R.id.editText);
         Button button = (Button) findViewById(R.id.button_grade);
-        System.out.println(AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll());
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,9 +44,13 @@ public class GradeFormVisitor extends AppCompatActivity {
                 }
 
                 if (!"".equals(spinner.getSelectedItem().toString())){
-                    AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().insert(new Grade(idNotation, Double.parseDouble(String.valueOf(spinner.getSelectedItemId())), edit.getText().toString(), ActivityVisitorListSubjects.getPseudoJuryVisitorId()));
+                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll().size());
+
+                    AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().insert(new Grade(idNotation, Double.parseDouble(String.valueOf(spinner.getSelectedItemId())), edit.getText().toString(), ActivityVisitorListSubjects.getPseudoJuryVisitorId(), idProject));
+
 
                     showNotationSucces(AppCompatActivity.RESULT_OK, getString(R.string.GradeSaved));
+                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll().size());
                 }
             }
         });

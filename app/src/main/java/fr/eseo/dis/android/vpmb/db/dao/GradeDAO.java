@@ -14,8 +14,11 @@ import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
 public interface GradeDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    public long insert(Grade grade);
+    long insert(Grade grade);
 
     @Query("SELECT * FROM Grade")
     List<Grade> loadAll();
+
+    @Query("SELECT * FROM Grade WHERE idNotation= :idSubject")
+    List<Grade> loadSubjectGrade(long idSubject);
 }

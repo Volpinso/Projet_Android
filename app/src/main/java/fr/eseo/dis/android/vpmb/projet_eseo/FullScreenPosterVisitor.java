@@ -20,7 +20,9 @@ public class FullScreenPosterVisitor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        String posterBase64 = intent.getStringExtra("poster");
+        final String posterBase64 = intent.getStringExtra("poster");
+        final long idProject = intent.getLongExtra("idProject", 1000L);
+
         setContentView(R.layout.activity_full_screen_poster_visitor);
         setTitle(R.string.Poster);
         ImageView imageView = (ImageView) this.findViewById(R.id.full_screen);
@@ -33,10 +35,12 @@ public class FullScreenPosterVisitor extends AppCompatActivity {
             text.setVisibility(View.VISIBLE);
         }
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( v.getContext(), GradeFormVisitor.class);
+                intent.putExtra("idProject", idProject);
                 v.getContext().startActivity(intent);
             }
         });

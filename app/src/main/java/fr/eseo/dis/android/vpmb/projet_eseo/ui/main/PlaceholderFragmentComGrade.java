@@ -11,8 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewFragmentComGrade;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -22,6 +25,7 @@ public class PlaceholderFragmentComGrade extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
+    PFERecyclerViewFragmentComGrade pfeRecyclerViewFragmentComGrade;
 
     public static PlaceholderFragmentComGrade newInstance(int index) {
         PlaceholderFragmentComGrade fragment = new PlaceholderFragmentComGrade();
@@ -47,13 +51,14 @@ public class PlaceholderFragmentComGrade extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_com_member_grade, container, false);
-        final TextView textView = root.findViewById(R.id.section_label);
-        pageViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        RecyclerView pfeRecycler = (RecyclerView) root.findViewById(R.id.list_subject);
+        pfeRecycler.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        llm.setOrientation(RecyclerView.VERTICAL);
+        pfeRecycler.setLayoutManager(llm);
+        pfeRecyclerViewFragmentComGrade = new PFERecyclerViewFragmentComGrade(this);
+        pfeRecycler.setAdapter(pfeRecyclerViewFragmentComGrade);
+
         return root;
     }
 }

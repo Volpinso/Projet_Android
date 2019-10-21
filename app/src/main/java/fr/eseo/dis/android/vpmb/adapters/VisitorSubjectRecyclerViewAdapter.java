@@ -22,6 +22,8 @@ import fr.eseo.dis.android.vpmb.projet_eseo.ActivityVisitorListSubjects;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.projet_eseo.FullScreenPosterVisitor;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+
 public class VisitorSubjectRecyclerViewAdapter extends RecyclerView.Adapter<VisitorSubjectRecyclerViewAdapter.SubjectRecyclerViewHolder>{
 
     private final ActivityVisitorListSubjects subjectActivity;
@@ -73,6 +75,8 @@ public class VisitorSubjectRecyclerViewAdapter extends RecyclerView.Adapter<Visi
             public void onClick(View v) {
                 Intent intent = new Intent( v.getContext(), FullScreenPosterVisitor.class);
                 intent.putExtra("poster", projectsToDisplay.get(position).getPoster64());
+                intent.putExtra("idProject", projectsToDisplay.get(position).getIdProject());
+                System.out.println("IdPorject1 "+projectsToDisplay.get(position).getIdProject()+"");
                 v.getContext().startActivity(intent);
             }
         });

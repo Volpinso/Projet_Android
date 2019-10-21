@@ -1,8 +1,6 @@
 package fr.eseo.dis.android.vpmb.db;
 
 import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.room.Database;
 import androidx.room.Room;
@@ -22,7 +20,7 @@ import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
 import fr.eseo.dis.android.vpmb.db.models.Visitor;
 import fr.eseo.dis.android.vpmb.models.Projects;
 
-@Database(entities = {Project.class, Visitor.class, ProjectJury.class, Grade.class, PseudoJury.class}, version = 1)
+@Database(entities = {Project.class, Visitor.class, ProjectJury.class, Grade.class, PseudoJury.class}, version = 2)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static AppDataBase INSTANCE;
@@ -37,6 +35,7 @@ public abstract class AppDataBase extends RoomDatabase {
     public abstract GradeDAO gradeDAO();
 
     public abstract ProjectJuryDAO projectJuryDAO();
+
 
 
     public static AppDataBase getINSTANCE(Context context){
