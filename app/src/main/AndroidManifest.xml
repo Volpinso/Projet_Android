@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.FullScreenPosterVisitor"></activity>
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterLocationActivity"
+            android:label="@string/posterlocation"></activity>
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.FullScreenPosterVisitor" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.AddGradeActivity"
             android:label="Ajouter une note" />
