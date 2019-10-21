@@ -4,12 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#531931"
     tools:context="fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManual">
 
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_pfe"
         android:layout_width="match_parent"
@@ -17,26 +23,25 @@
         android:background="@color/colorPrimary"
         />
 
-    <Button
-        android:id="@+id/subject_selected"
-        android:layout_width="243dp"
-        android:layout_height="67dp"
-        android:layout_gravity="start"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/white"
-        android:enabled="false"
-        android:fontFamily="sans-serif-medium"
-        android:text="Select"
-        android:textColor="#531931"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_alignParentBottom="true"
-        />
-
-</RelativeLayout>
-
+            <Button
+                android:id="@+id/subject_selected"
+                android:layout_width="243dp"
+                android:layout_height="67dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/white"
+                android:enabled="false"
+                android:fontFamily="sans-serif-medium"
+                android:text="Select"
+                android:textColor="#531931"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_pfe"
+                app:layout_constraintVertical_bias="0.52" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
