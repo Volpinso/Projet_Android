@@ -26,7 +26,7 @@ public class ActivityVisitorListSubjects extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_list_subjects);
-        RecyclerView subjectsRecycler = (RecyclerView)findViewById(R.id.rv_filmList);
+        RecyclerView subjectsRecycler = (RecyclerView)findViewById(R.id.subject_list);
         subjectsRecycler.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
