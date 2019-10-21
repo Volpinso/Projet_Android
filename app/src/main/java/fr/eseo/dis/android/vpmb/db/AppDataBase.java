@@ -8,19 +8,24 @@ import androidx.room.RoomDatabase;
 
 import java.util.List;
 
+import fr.eseo.dis.android.vpmb.db.dao.AnnotationPosterDAO;
 import fr.eseo.dis.android.vpmb.db.dao.GradeDAO;
 import fr.eseo.dis.android.vpmb.db.dao.ProjectDAO;
 import fr.eseo.dis.android.vpmb.db.dao.ProjectJuryDAO;
 import fr.eseo.dis.android.vpmb.db.dao.PseudoJuryDAO;
+import fr.eseo.dis.android.vpmb.db.dao.StudentAnnotationDAO;
 import fr.eseo.dis.android.vpmb.db.dao.VisitorDAO;
+import fr.eseo.dis.android.vpmb.db.models.AnnotationPoster;
 import fr.eseo.dis.android.vpmb.db.models.Grade;
 import fr.eseo.dis.android.vpmb.db.models.Project;
 import fr.eseo.dis.android.vpmb.db.models.ProjectJury;
 import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
+import fr.eseo.dis.android.vpmb.db.models.StudentAnnotation;
 import fr.eseo.dis.android.vpmb.db.models.Visitor;
 import fr.eseo.dis.android.vpmb.models.Projects;
 
-@Database(entities = {Project.class, Visitor.class, ProjectJury.class, Grade.class, PseudoJury.class}, version = 2)
+@Database(entities = {Project.class, Visitor.class, ProjectJury.class, Grade.class, PseudoJury.class, AnnotationPoster.class, StudentAnnotation.class},
+        version = 2)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static AppDataBase INSTANCE;
@@ -35,6 +40,10 @@ public abstract class AppDataBase extends RoomDatabase {
     public abstract GradeDAO gradeDAO();
 
     public abstract ProjectJuryDAO projectJuryDAO();
+
+    public abstract AnnotationPosterDAO annotationPosterDAO();
+
+    public abstract StudentAnnotationDAO studentAnnotationDAO();
 
 
 
