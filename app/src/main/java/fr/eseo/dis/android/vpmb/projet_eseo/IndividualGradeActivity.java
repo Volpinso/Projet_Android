@@ -38,7 +38,7 @@ public class IndividualGradeActivity extends AppCompatActivity {
         studentName.setText(intent.getStringExtra("studentName"));
 
         TextView studentGrade = (TextView) findViewById(R.id.text_view_ancien_grade);
-        studentGrade.setText("Old Grade : " + intent.getStringExtra("studentGrade"));
+        studentGrade.setText(getString(R.string.OldGrade) + " " + intent.getStringExtra("studentGrade"));
 
         Button buttonAddGrade = (Button) findViewById(R.id.button_add_new_grade);
         buttonAddGrade.setOnClickListener(new View.OnClickListener() {

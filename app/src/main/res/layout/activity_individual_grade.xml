@@ -35,7 +35,7 @@
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
-                android:text="Old Grade :"
+                android:text="@string/OldGrade"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_name_grade"></TextView>
 
@@ -46,7 +46,7 @@
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
-                android:text="New Grade :"
+                android:text="@string/NewGrade"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_ancien_grade"></TextView>
 
@@ -72,7 +72,7 @@
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
-                android:text="Old Comment :"
+                android:text="@string/OldComment"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edit_text_new_grade">
 
@@ -85,7 +85,7 @@
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
-                android:text="New Comment :"
+                android:text="@string/NewComment"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_old_comment">
 
@@ -112,7 +112,7 @@
                 android:layout_marginTop="32dp"
                 android:backgroundTint="#531931"
                 android:fontFamily="sans-serif-medium"
-                android:text="Update Grade"
+                android:text="@string/UpdateGrade"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"

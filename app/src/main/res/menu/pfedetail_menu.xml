@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/action_comment"
-        android:title="Comment the Poster"
+        android:title="@string/CommentPoster"
         app:showAsAction="never"></item>
 
     <item android:id="@+id/action_grade"
-        android:title="Grade the Poster"
+        android:title="@string/GradePosterVisitor"
         app:showAsAction="never"></item>
 
 </menu>

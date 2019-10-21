@@ -49,6 +49,16 @@
     <string name="Comment">Annotation: </string>
     <string name="Grade">Grade </string>
     <string name="GradeSaved">Grade saved successfully </string>
+    <string name="LongPress">Long Press to See the Grades</string>
+    <string name="GradeStudent">Grade the student</string>
+    <string name="OldGrade">Old Grade :</string>
+    <string name="NewGrade">New Grade :</string>
+    <string name="OldComment">Old Annotation :</string>
+    <string name="NewComment">New Annotation :</string>
+    <string name="UpdateGrade">Update Grade</string>
+    <string name="AddComment">Add Comment</string>
+    <string name="UpdateComment">Update Comment</string>
+    <string name="CommentPoster">Annotate the poster</string>
 
     <string name="posterlocation">Poster Location</string>
     <string name="grade_prompt">Choose a grade</string>
