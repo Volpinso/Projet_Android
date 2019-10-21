@@ -49,6 +49,16 @@
     <string name="NoPreview">Prévisualisation du poster non disponible</string>
     <string name="posterlocation">Emplacement des Posters</string>
     <string name="grade_prompt">Sélectionnez une note</string>
+    <string name="LongPress">Appui Long pour Voir les Notes</string>
+    <string name="GradeStudent">Noter un étudiant</string>
+    <string name="OldGrade">Ancinne note :</string>
+    <string name="NewGrade">Nouvelle note :</string>
+    <string name="OldComment">Ancien commentaire :</string>
+    <string name="NewComment">Nouveau commentaire :</string>
+    <string name="UpdateGrade">Mettre à jour la note</string>
+    <string name="AddComment">Ajouter commentaire</string>
+    <string name="UpdateComment">Mettre à jour commentaire</string>
+    <string name="CommentPoster">Commenter le poster</string>
 
     <string-array name="grade_arrays">
         <item>0</item>
