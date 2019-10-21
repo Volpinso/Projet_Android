@@ -50,7 +50,7 @@ public class GradeFormVisitor extends AppCompatActivity {
 
 
                     showNotationSucces(AppCompatActivity.RESULT_OK, getString(R.string.GradeSaved));
-                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll().size());
+                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll());
                 }
             }
         });

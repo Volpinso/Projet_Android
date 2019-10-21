@@ -19,6 +19,6 @@ public interface GradeDAO {
     @Query("SELECT * FROM Grade")
     List<Grade> loadAll();
 
-    @Query("SELECT * FROM Grade WHERE idNotation= :idSubject")
+    @Query("SELECT * FROM Grade WHERE project = :idSubject")
     List<Grade> loadSubjectGrade(long idSubject);
 }

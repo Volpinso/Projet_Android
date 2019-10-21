@@ -44,7 +44,12 @@ public class VisitorsGradesRecyclerviewAdapter extends RecyclerView.Adapter<Visi
     public void onBindViewHolder(@NonNull VisitorsGradesRecyclerViewHolder holder, int position) {
 
 
-        holder.comment.setText(gradeList.get(position).getCommentaire());
+        if(!gradeList.get(position).getCommentaire().equals("")) {
+
+            holder.comment.setText(gradeList.get(position).getCommentaire());
+        }else{
+            holder.comment.setText(holder.itemView.getContext().getString(R.string.NoComment));
+        }
         holder.grade.setText(String.valueOf(gradeList.get(position).getNote()));
     }
 

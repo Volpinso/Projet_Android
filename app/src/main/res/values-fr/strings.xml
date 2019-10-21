@@ -86,6 +86,7 @@
     <string name="Comment">Commentaire:</string>
     <string name="Grade">Noter</string>
     <string name="GradeSaved">Note enregistrée!</string>
+    <string name="NoComment">Aucun commentaire</string>
 
 
 </resources>

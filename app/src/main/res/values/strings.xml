@@ -59,6 +59,7 @@
     <string name="AddComment">Add Comment</string>
     <string name="UpdateComment">Update Comment</string>
     <string name="CommentPoster">Annotate the poster</string>
+    <string name="NoComment">No comment done by the jury</string>
 
     <string name="posterlocation">Poster Location</string>
     <string name="grade_prompt">Choose a grade</string>
