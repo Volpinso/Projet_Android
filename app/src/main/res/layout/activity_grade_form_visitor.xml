@@ -7,35 +7,70 @@
     tools:context="fr.eseo.dis.android.vpmb.projet_eseo.GradeFormVisitor">
 
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:entries="@array/grade_arrays"
+        android:prompt="@string/grade_prompt"
+        android:text="@string/MyGrade"
+        app:layout_constraintBottom_toTopOf="@+id/grade_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57">
+
+    </TextView>
+
     <Spinner
-        android:id="@+id/planets_spinner"
+        android:id="@+id/grade_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:entries="@array/grade_arrays" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="248dp"
+        android:text="@string/Comment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/button_grade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/planets_spinner"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/grade_spinner"></EditText>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_grade"
         android:layout_width="295dp"
         android:layout_height="49dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Button"
+        android:text="@string/Grade"
+        android:textColor="@color/white"
+        android:backgroundTint="#531931"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

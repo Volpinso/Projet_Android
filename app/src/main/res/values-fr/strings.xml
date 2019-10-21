@@ -73,6 +73,9 @@
         <item>19</item>
         <item>20</item>
     </string-array>
+    <string name="Comment">Commentaire:</string>
+    <string name="Grade">Noter</string>
+    <string name="GradeSaved">Note enregistrée!</string>
 
 
 </resources>

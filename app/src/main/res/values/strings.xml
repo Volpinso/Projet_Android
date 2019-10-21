@@ -46,6 +46,10 @@
     <string name="GradePosterVisitor">Grade the poster</string>
     <string name="Poster">Preview of the poster</string>
     <string name="NoPreview">No preview of the poster for this project</string>
+    <string name="Comment">Annotation: </string>
+    <string name="Grade">Grade </string>
+    <string name="GradeSaved">Grade saved successfully </string>
+
     <string name="posterlocation">Poster Location</string>
     <string name="grade_prompt">Choose a grade</string>
 
