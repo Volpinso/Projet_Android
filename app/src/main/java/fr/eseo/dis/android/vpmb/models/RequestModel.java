@@ -10,6 +10,8 @@ public class RequestModel {
     private static String tok = "&token=";
     private static String proj = "&proj=";
     private static String style = "&style=";
+    private static String student = "&student=";
+    private static String note = "&note=";
 
 
     public static String loginRequest(String username, String password){
@@ -42,6 +44,11 @@ public class RequestModel {
 
     public static String getProjectGrades(String username, int projectId, String token){
         return urlBase+methodName+Notes.class.getSimpleName().toUpperCase()+user+username+proj+projectId+tok+token;
+    }
+
+    public static String setStudentGrade(String username, int projectId, int studentId, int studentNote, String token){
+        return urlBase+methodName+Newnt.class.getSimpleName().toUpperCase()+user+username+proj+projectId+
+                student+studentId+note+studentNote+tok+token;
     }
 
 

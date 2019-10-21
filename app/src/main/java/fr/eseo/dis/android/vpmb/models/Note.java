@@ -5,7 +5,7 @@ public class Note {
     private int userId;
     private String forename;
     private String surname;
-    private String myNote;
+    private String mynote;
     private String avgNote;
 
     public int getUserId() {
@@ -33,11 +33,11 @@ public class Note {
     }
 
     public String getMyNote() {
-        return myNote;
+        return mynote;
     }
 
-    public void setMyNote(String myNote) {
-        this.myNote = myNote;
+    public void setMyNote(String mynote) {
+        this.mynote = mynote;
     }
 
     public String getAvgNote() {
@@ -54,7 +54,7 @@ public class Note {
                 "userId=" + userId +
                 ", forename='" + forename + '\'' +
                 ", surname='" + surname + '\'' +
-                ", myNote=" + myNote +
+                ", myNote=" + mynote +
                 ", avgNote=" + avgNote +
                 '}';
     }

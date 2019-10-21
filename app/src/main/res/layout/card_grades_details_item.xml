@@ -62,8 +62,24 @@
             android:layout_marginBottom="16dp"
             android:text="Le roi Arthur et les Chevaliers de la Table Ronde se lancent à la conquête du Graal, chevauchant de fantômatiques montures dans un bruitage de noix de coco cognées. La petite troupe va devoir passer mille épreuves, dont un chevalier à trois têtes, des jouvencelles en chaleur, voire même un terrible lapin tueur. "
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/jury_grade"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button_add_grade"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#531931"
+            android:fontFamily="sans-serif-medium"
+            android:text="Add Grade"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/average_grade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            ></Button>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

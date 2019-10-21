@@ -47,9 +47,15 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
     private List<Integer> expandedPositions;
     private static List<Note> notesList = new ArrayList<>();
 
+    private static int projectId;
 
+    public static int getProjectId() {
+        return projectId;
+    }
 
-
+    public static void setProjectId(int projectId) {
+        PFERecyclerViewAdapterGrade.projectId = projectId;
+    }
 
     public PFERecyclerViewAdapterGrade(PlaceholderFragmentGrade placeholderFragmentGrades) {
         this.placeholderFragmentGrades = placeholderFragmentGrades;
@@ -183,6 +189,8 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
 
                 }
                 Intent intent = new Intent( view.getContext(), GradesDetailsActivity.class);
+                intent.putExtra("projectName", myProjectsList.get(position).getTitle());
+                setProjectId(myProjectsList.get(position).getProjectId());
                 view.getContext().startActivity(intent);
             }
         });

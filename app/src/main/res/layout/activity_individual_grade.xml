@@ -15,40 +15,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/text_view_title_grade"
+                android:id="@+id/text_view_name_grade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Titre du sujet"
+                android:text="Student Name"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
             </TextView>
-
-            <TextView
-                android:id="@+id/text_view_description_label_grade"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:text="Description :"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_title_grade"></TextView>
-
-            <TextView
-                android:id="@+id/text_view_description_grade"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_description_label_grade"></TextView>
 
             <TextView
                 android:id="@+id/text_view_ancien_grade"
@@ -59,7 +37,7 @@
                 android:layout_marginTop="32dp"
                 android:text="Old Grade :"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_description_grade"></TextView>
+                app:layout_constraintTop_toBottomOf="@id/text_view_name_grade"></TextView>
 
             <TextView
                 android:id="@+id/text_view_new_grade"
@@ -70,7 +48,7 @@
                 android:layout_marginTop="32dp"
                 android:text="New Grade :"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_description_grade"></TextView>
+                app:layout_constraintTop_toBottomOf="@id/text_view_ancien_grade"></TextView>
 
 
             <Spinner
@@ -87,8 +65,47 @@
 
             </Spinner>
 
+            <TextView
+                android:id="@+id/text_old_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:text="Old Comment :"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edit_text_new_grade">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/text_new_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:text="New Comment :"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_old_comment">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edit_text_new_comment_grade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_new_comment">
+
+            </EditText>
+
+
             <Button
-                android:id="@+id/button_add"
+                android:id="@+id/button_add_new_grade"
                 android:layout_width="176dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
