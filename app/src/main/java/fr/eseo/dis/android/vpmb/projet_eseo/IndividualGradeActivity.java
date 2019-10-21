@@ -21,17 +21,26 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapter;
 import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapterGrade;
+import fr.eseo.dis.android.vpmb.db.AppDataBase;
+import fr.eseo.dis.android.vpmb.db.models.AnnotationPoster;
+import fr.eseo.dis.android.vpmb.db.models.StudentAnnotation;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 public class IndividualGradeActivity extends AppCompatActivity {
 
+    private List<StudentAnnotation> studentAnnotationList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_individual_grade);
+        setTitle(getString(R.string.GiveGrade));
         final Intent intent = getIntent();
         final int studentId = intent.getIntExtra("studentId", 1000);
         TextView studentName = (TextView) findViewById(R.id.text_view_name_grade);
@@ -39,6 +48,20 @@ public class IndividualGradeActivity extends AppCompatActivity {
 
         TextView studentGrade = (TextView) findViewById(R.id.text_view_ancien_grade);
         studentGrade.setText(getString(R.string.OldGrade) + " " + intent.getStringExtra("studentGrade"));
+
+        if(AppDataBase.getINSTANCE(this).studentAnnotationDAO().loadStudentAnnotatinExist(
+                PFERecyclerViewAdapterGrade.getProjectId(), studentId, LoginActivity.getUsername()) != null) {
+            studentAnnotationList = AppDataBase.getINSTANCE(this).studentAnnotationDAO().loadStudentAnnotatinExist(
+                    PFERecyclerViewAdapterGrade.getProjectId(), studentId, LoginActivity.getUsername());
+        }
+
+        if(studentAnnotationList.size() != 0){
+            TextView oldCommentary = (TextView) findViewById(R.id.text_old_comment);
+            oldCommentary.setText(getString(R.string.OldComment) + " " + studentAnnotationList.get(0).getComment());
+        } else {
+            TextView oldCommentary = (TextView) findViewById(R.id.text_old_comment);
+            oldCommentary.setText(getString(R.string.OldComment) + " " + getString(R.string.NoComment));
+        }
 
         Button buttonAddGrade = (Button) findViewById(R.id.button_add_new_grade);
         buttonAddGrade.setOnClickListener(new View.OnClickListener() {
@@ -76,11 +99,25 @@ public class IndividualGradeActivity extends AppCompatActivity {
                 EditText comment = (EditText) findViewById(R.id.edit_text_new_comment_grade);
                 String commentText = comment.getText().toString();
 
-                Intent gotoScreenVar = new Intent(IndividualGradeActivity.this, JuryMemberActivity.class);
-                String success = getString(R.string.GradeSaved);
-                Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
-                gotoScreenVar.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(gotoScreenVar);
+                if(studentAnnotationList.size() == 0) {
+                    StudentAnnotation studentAnnotation = new StudentAnnotation(studentId, LoginActivity.getUsername(),
+                            PFERecyclerViewAdapterGrade.getProjectId(), commentText);
+                    AppDataBase.getINSTANCE(v.getContext()).studentAnnotationDAO().insert(studentAnnotation);
+                    Intent gotoScreenVar = new Intent(IndividualGradeActivity.this, JuryMemberActivity.class);
+                    String success = getString(R.string.GradeSaved);
+                    Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
+                    gotoScreenVar.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(gotoScreenVar);
+                }
+                else{
+                    AppDataBase.getINSTANCE(v.getContext()).studentAnnotationDAO().
+                            updateStudentAnnotationPoster(commentText, PFERecyclerViewAdapterGrade.getProjectId(), studentId, LoginActivity.getUsername());
+                    Intent gotoScreenVar = new Intent(IndividualGradeActivity.this, JuryMemberActivity.class);
+                    String success = getString(R.string.GradeSaved);
+                    Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
+                    gotoScreenVar.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(gotoScreenVar);
+                }
 
             }
         });

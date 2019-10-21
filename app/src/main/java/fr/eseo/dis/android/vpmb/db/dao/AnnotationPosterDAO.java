@@ -23,4 +23,7 @@ public interface AnnotationPosterDAO {
     @Query("UPDATE AnnotationPoster SET comment = :newComment WHERE idProject= :idProjectGrade AND username= :usernameGrade")
     int updateAnnotationPoster(String newComment, long idProjectGrade, String usernameGrade);
 
+    @Query("UPDATE AnnotationPoster SET grade = :newGrade WHERE idProject= :idProjectGrade AND username= :usernameGrade")
+    int updateGradePoster(long newGrade, long idProjectGrade, String usernameGrade);
+
 }

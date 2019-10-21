@@ -59,6 +59,8 @@
     <string name="AddComment">Ajouter commentaire</string>
     <string name="UpdateComment">Mettre à jour commentaire</string>
     <string name="CommentPoster">Commenter le poster</string>
+    <string name="CommentSaved">Commentaire enregistré !!</string>
+    <string name="GiveGrade">Donner une note individuelle</string>
 
     <string-array name="grade_arrays">
         <item>0</item>

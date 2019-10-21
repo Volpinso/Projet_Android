@@ -17,4 +17,10 @@ public interface StudentAnnotationDAO {
     @Query("SELECT * FROM StudentAnnotation")
     List<StudentAnnotation> loadAll();
 
+    @Query("SELECT * FROM StudentAnnotation WHERE idProject= :idProjectStudent AND idStudent= :idStudentStudent AND username= :usernameStudent")
+    List<StudentAnnotation> loadStudentAnnotatinExist(long idProjectStudent, long idStudentStudent, String usernameStudent);
+
+    @Query("UPDATE StudentAnnotation SET comment = :newComment WHERE idProject= :idProjectStudent AND idStudent= :idStudentStudent AND username= :usernameStudent")
+    int updateStudentAnnotationPoster(String newComment, long idProjectStudent, long idStudentStudent, String usernameStudent);
+
 }

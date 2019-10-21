@@ -42,7 +42,7 @@ public class CommentaryActivity extends AppCompatActivity {
             oldCommentary.setText(annotationPosterList.get(0).getComment());
         } else {
             TextView oldCommentary = (TextView) findViewById(R.id.text_view_ancien_label_comment);
-            oldCommentary.setText("Pas encore de commentaire pour ce projet");
+            oldCommentary.setText(getString(R.string.NoComment));
         }
 
         TextView title = (TextView) findViewById(R.id.text_view_title_comment);
@@ -94,7 +94,7 @@ public class CommentaryActivity extends AppCompatActivity {
     }
 
     private void showJurySucces(@StringRes Integer successString) {
-        String success = getString(R.string.JuryProjectSuccess);
+        String success = getString(R.string.CommentSaved);
         Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
         FragmentManager fm = getSupportFragmentManager();
         if (fm.getBackStackEntryCount() > 0) {

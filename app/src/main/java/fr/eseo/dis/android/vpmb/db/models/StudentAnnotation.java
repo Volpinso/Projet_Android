@@ -1,41 +1,32 @@
 package fr.eseo.dis.android.vpmb.db.models;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-@Entity(tableName = "StudentAnnotation")
+@Entity(tableName = "StudentAnnotation", primaryKeys = {"idStudent","username", "idProject"})
 public class StudentAnnotation {
 
-    @PrimaryKey
-    long idStudentAnnotation;
-
     @ColumnInfo(name="idStudent")
+    @NonNull
     long idStudent;
 
     @ColumnInfo(name="username")
+    @NonNull
     String username;
 
     @ColumnInfo(name="idProject")
+    @NonNull
     long idProject;
 
     @ColumnInfo(name="comment")
     String comment;
 
-    public StudentAnnotation(long idStudentAnnotation, long idStudent, String username, long idProject, String comment) {
-        this.idStudentAnnotation = idStudentAnnotation;
+    public StudentAnnotation(long idStudent, String username, long idProject, String comment) {
         this.idStudent = idStudent;
         this.username = username;
         this.idProject = idProject;
         this.comment = comment;
-    }
-
-    public long getIdStudentAnnotation() {
-        return idStudentAnnotation;
-    }
-
-    public void setIdStudentAnnotation(long idStudentAnnotation) {
-        this.idStudentAnnotation = idStudentAnnotation;
     }
 
     public long getIdStudent() {
@@ -73,8 +64,7 @@ public class StudentAnnotation {
     @Override
     public String toString() {
         return "StudentAnnotation{" +
-                "idStudentAnnotation=" + idStudentAnnotation +
-                ", idStudent=" + idStudent +
+                "idStudent=" + idStudent +
                 ", username='" + username + '\'' +
                 ", idProject=" + idProject +
                 ", comment='" + comment + '\'' +
