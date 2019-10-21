@@ -22,7 +22,7 @@ public class AllPfeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_list_subjects);
-        RecyclerView pfeRecycler = (RecyclerView)findViewById(R.id.rv_filmList);
+        RecyclerView pfeRecycler = (RecyclerView)findViewById(R.id.subject_list);
         pfeRecycler.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
