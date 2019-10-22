@@ -1,6 +1,7 @@
 package fr.eseo.dis.android.vpmb.db.dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -21,4 +22,7 @@ public interface GradeDAO {
 
     @Query("SELECT * FROM Grade WHERE project = :idSubject")
     List<Grade> loadSubjectGrade(long idSubject);
+
+    @Query("DELETE FROM Grade")
+    void deleteAll();
 }

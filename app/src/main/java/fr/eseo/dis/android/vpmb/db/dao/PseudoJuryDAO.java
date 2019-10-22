@@ -1,6 +1,7 @@
 package fr.eseo.dis.android.vpmb.db.dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -16,4 +17,7 @@ public interface PseudoJuryDAO {
 
     @Query("SELECT * FROM PseudoJury")
     List<PseudoJury> loadAll();
+
+    @Query("DELETE FROM PseudoJury")
+    void deleteAll();
 }

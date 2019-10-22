@@ -1,6 +1,7 @@
 package fr.eseo.dis.android.vpmb.db.dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -17,4 +18,7 @@ public interface VisitorDAO {
 
     @Query("SELECT * FROM Visitor")
     List<Visitor> loadAll();
+
+    @Query("DELETE FROM Visitor")
+    void deleteAll();
 }
