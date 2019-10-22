@@ -121,6 +121,7 @@ public class JuryRecyclerViewAdapter extends RecyclerView.Adapter<fr.eseo.dis.an
 
                 try {
                     // Instantiate the RequestQueue.
+                    setMyJuryProjectList(new ArrayList<Projects>());
                     RequestQueue queue = Volley.newRequestQueue(view.getContext());
                     String url = RequestModel.getMyJuriesProjetcsRequest(LoginActivity.getUsername(), juriesList.get(position).getIdJury() ,LoginActivity.getToken());
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
