@@ -38,6 +38,14 @@ public class ComMemberActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button buttonCleanDatabase = (Button) findViewById(R.id.clean_database);
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
 
 

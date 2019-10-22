@@ -30,6 +30,21 @@
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
+            <Button
+                android:id="@+id/clean_database"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_clean_database"
+                android:title="Clean Database"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@id/filterButtonMainWorkorderSelection"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
