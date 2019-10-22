@@ -88,6 +88,45 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                try {
+                    Intent intent = getIntent();
+                    int projectId = intent.getIntExtra("projectId", 1000);
+                    // Instantiate the RequestQueue.
+                    RequestQueue queue = Volley.newRequestQueue(v.getContext());
+                    String url = RequestModel.getPoster(LoginActivity.getUsername(), projectId, "FLB64", LoginActivity.getToken());
+                    System.out.println(url);
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    if(response.contains("Invalid Credentials")){
+                                        setFullB64("No Poster");
+                                    }
+                                    else{
+                                        System.out.println(response);
+                                        setFullB64(response);
+                                    }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // Handle error
+                                }
+                            });
+
+                    // Add the request to the RequestQueue.
+                    queue.add(stringRequest);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    Thread.sleep(7000);
+                }
+                catch (Exception e){
+
+                }
                 Intent intent = new Intent(MyPFEDetailsActivityCom.this, PosterFullActivityCom.class);
                 startActivity(intent);
             }

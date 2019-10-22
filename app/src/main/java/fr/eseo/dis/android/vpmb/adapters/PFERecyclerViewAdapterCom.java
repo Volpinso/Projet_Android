@@ -38,7 +38,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
 
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
-    private static String thumbnail="";
+    private static String thumbnail;
 
 
 
@@ -68,7 +68,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PFERecyclerViewAdapterCom.PFERecyclerComViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final PFERecyclerComViewHolder holder, final int position) {
 
 
         holder.pfeTitre.setText(projectsList.get(position).getTitle());
@@ -117,6 +117,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
 
                 try {
                     // Instantiate the RequestQueue.
+                    setThumbnail("");
                     RequestQueue queue = Volley.newRequestQueue(view.getContext());
                     String url = RequestModel.getPoster(LoginActivity.getUsername(), projectsList.get(position).getProjectId(), "THB64", LoginActivity.getToken());
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
