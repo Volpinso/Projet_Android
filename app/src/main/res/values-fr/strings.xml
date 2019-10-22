@@ -93,6 +93,8 @@
     <string name="NoComment">Aucun commentaire</string>
     <string name="TruncateTable">Vider les données</string>
     <string name="SubjectLoaded">Sujet aléatoire sauvegardés</string>
+    <string name="CreateJuryAuto">Creer jury manuellement</string>
+    <string name="CreateJuryManual">Générer des jury automatiquement</string>
 
 
 </resources>
