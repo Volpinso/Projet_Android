@@ -34,7 +34,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
 
     private final PlaceholderFragmentComPfe placeholderFragmentComPfe;
 
-    private final List<Projects> projectsList;
+    private List<Projects> projectsList;
 
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;

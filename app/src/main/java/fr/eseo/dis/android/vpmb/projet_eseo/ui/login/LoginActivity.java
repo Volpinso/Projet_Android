@@ -193,13 +193,12 @@ public class LoginActivity extends AppCompatActivity {
                                         showLoginFailed(AppCompatActivity.RESULT_CANCELED);
                                     } else {
                                         try {
+                                            listProjects(usernameEditText.getText().toString(), responseModel.getToken());
                                             juryRequest(usernameEditText.getText().toString(), responseModel.getToken());
                                             setToken(responseModel.getToken());
                                             setUsername(usernameEditText.getText().toString());
                                             loginViewModel.login(usernameEditText.getText().toString(),
                                                     passwordEditText.getText().toString());
-
-                                            listProjects();
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
@@ -255,14 +254,13 @@ public class LoginActivity extends AppCompatActivity {
         LoginActivity.projectList = projectList;
     }
 
-    private void listProjects() {
+    private void listProjects(String username, String token) {
         //Request Get All projects
         try {
             // Instantiate the RequestQueue.
             setProjectList(new ArrayList<Projects>());
-            String token = LoginActivity.getToken();
             RequestQueue queue = Volley.newRequestQueue(this.getApplicationContext());
-            String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
+            String url = RequestModel.getAllProjectrequest(username, token);
 
             // Request a string response from the provided URL.
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -290,6 +288,11 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
             queue.add(jsonObjectRequest);
+            try{
+                Thread.sleep(2000);
+            }catch (Exception e){
+
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
