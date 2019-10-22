@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.security.KeyManagementException;
@@ -21,6 +22,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.android.vpmb.connexion.ConnexionManager;
 import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,13 +55,24 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button button6 = (Button) findViewById(R.id.buttonVisitor);
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ActivityVisitorListSubjects.class);
-                startActivity(intent);
-            }
-        });
+        System.out.println(AppDataBase.getINSTANCE(MainActivity.this).pseudoJuryDAO().loadAll().isEmpty());
+
+
+
+            button6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(AppDataBase.getINSTANCE(MainActivity.this).pseudoJuryDAO().loadAll().isEmpty()) {
+
+                        String success = getString(R.string.NoPseudoJury);
+                        Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
+                    }else {
+                        Intent intent = new Intent(MainActivity.this, ActivityVisitorListSubjects.class);
+                        startActivity(intent);
+                    }
+                }
+            });
+
         Button buttonLogin = (Button) findViewById(R.id.buttonMembreESEO);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override

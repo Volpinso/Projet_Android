@@ -68,6 +68,7 @@
     <string name="NoGrades">You do not belong to any jury</string>
     <string name="CreateJuryManual">Create pseudoJury manually</string>
     <string name="CreateJuryAuto">Create pseudoJury automatically</string>
+    <string name="NoPseudoJury">No pseudoJury created. Access denied!</string>
 
     <string name="posterlocation">Poster Location</string>
     <string name="grade_prompt">Choose a grade</string>
