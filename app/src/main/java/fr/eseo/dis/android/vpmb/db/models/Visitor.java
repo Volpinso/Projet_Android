@@ -6,9 +6,11 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 @Entity(tableName="Visitor",
         foreignKeys =
-                @ForeignKey(entity=PseudoJury.class, parentColumns = "idPseudoJury",childColumns = "pseudoJury"))
+                @ForeignKey(entity=PseudoJury.class, parentColumns = "idPseudoJury",childColumns = "pseudoJury", onDelete = CASCADE ))
 
 public class Visitor {
 

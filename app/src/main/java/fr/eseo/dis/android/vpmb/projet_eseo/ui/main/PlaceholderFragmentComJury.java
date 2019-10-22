@@ -74,20 +74,8 @@ public class PlaceholderFragmentComJury extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
-
-        int index = 1;
-        if (getArguments() != null) {
-            index = getArguments().getInt(ARG_SECTION_NUMBER);
-        }
-        pageViewModel.setIndex(index);
-    }
-
-    @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
         context = getContext();
-        View root = inflater.inflate(R.layout.fragment_com_member_jury, container, false);
+
         if(AppDataBase.getINSTANCE(context).projectDAO().loadAll().isEmpty() ) {
 
             //Return up to five subject non confidential
@@ -118,6 +106,7 @@ public class PlaceholderFragmentComJury extends Fragment {
 
                                     }
                                 }
+                                showSuccesProjectLoaded(AppCompatActivity.RESULT_OK);
 
                             }
                         }, new Response.ErrorListener() {
@@ -141,6 +130,20 @@ public class PlaceholderFragmentComJury extends Fragment {
                 e.printStackTrace();
             }
         }
+
+        int index = 1;
+        if (getArguments() != null) {
+            index = getArguments().getInt(ARG_SECTION_NUMBER);
+        }
+        pageViewModel.setIndex(index);
+    }
+
+    @Override
+    public View onCreateView(
+            @NonNull LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_com_member_jury, container, false);
+
         Button buttonAllPfe = (Button) root.findViewById(R.id.buttonManualJury);
         buttonAllPfe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,6 +213,12 @@ public class PlaceholderFragmentComJury extends Fragment {
 
     private void showJurySucces(@StringRes Integer successString) {
         String success = getString(R.string.JuryProjectSuccess);
+        Toast.makeText(context, success, Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void showSuccesProjectLoaded(@StringRes Integer successString) {
+        String success = getString(R.string.SubjectLoaded);
         Toast.makeText(context, success, Toast.LENGTH_SHORT).show();
 
     }

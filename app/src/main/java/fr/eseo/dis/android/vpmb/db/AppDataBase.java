@@ -25,7 +25,7 @@ import fr.eseo.dis.android.vpmb.db.models.Visitor;
 import fr.eseo.dis.android.vpmb.models.Projects;
 
 @Database(entities = {Project.class, Visitor.class, ProjectJury.class, Grade.class, PseudoJury.class, AnnotationPoster.class, StudentAnnotation.class},
-        version = 3)
+        version = 5)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static AppDataBase INSTANCE;

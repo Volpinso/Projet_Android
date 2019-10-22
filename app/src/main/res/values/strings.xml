@@ -40,7 +40,7 @@
     <string name="Tutor">Supervisor :</string>
     <string name="NoTeam">No team for this project</string>
     <string name="NoSupervisor">No supervisor for this project</string>
-    <string name="JuryProjectSuccess">Projects associated to juries</string>
+    <string name="JuryProjectSuccess">Projects associated to jury</string>
     <string name="AddSubject">Add this subject for open days</string>
     <string name="SubjectAlreadyAdded">Subject already added for open days</string>
     <string name="GradePosterVisitor">Grade the poster</string>
@@ -63,6 +63,7 @@
     <string name="CommentSaved">Annotation saved successfully</string>
     <string name="GiveGrade">Give individual Grade</string>
     <string name="TruncateTable">Drop data</string>
+    <string name="SubjectLoaded">Random subjects loaded</string>
 
     <string name="posterlocation">Poster Location</string>
     <string name="grade_prompt">Choose a grade</string>
