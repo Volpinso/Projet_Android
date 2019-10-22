@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.adapters.VisitorsGradesRecyclerviewAdapter;
+import fr.eseo.dis.android.vpmb.db.AppDataBase;
 
 public class VisitorsGradesActivity extends AppCompatActivity {
 
@@ -27,6 +30,12 @@ public class VisitorsGradesActivity extends AppCompatActivity {
         subjectsRecycler.setLayoutManager(llm);
         visitorsGradesRecyclerviewAdapter = new VisitorsGradesRecyclerviewAdapter(this);
         subjectsRecycler.setAdapter(visitorsGradesRecyclerviewAdapter);
+
+        TextView textView = (TextView) findViewById(R.id.textView6);
+        if(AppDataBase.getINSTANCE(this).gradeDAO().
+                loadSubjectGrade(VisitorsGradesActivity.getProjectId()).isEmpty()){
+            textView.setVisibility(View.VISIBLE);
+        }
     }
 
     public static long getProjectId() {
