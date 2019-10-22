@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Projet_ESEO</string>
+    <string name="app_name">PFE Manager</string>
     <string name="membreESEO">Membre ESEO</string>
     <string name="buttonVisitor">Visiteur</string>
     <string name="iAm">Qui suis-je ?</string>

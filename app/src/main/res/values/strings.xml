@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Projet_ESEO</string>
+    <string name="app_name">FSP Manager</string>
     <string name="jury_menu_name">Welcome </string>
     <string name="membreESEO">ESEO Member</string>
     <string name="buttonVisitor">Visitor</string>
