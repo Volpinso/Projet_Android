@@ -259,6 +259,7 @@ public class LoginActivity extends AppCompatActivity {
         //Request Get All projects
         try {
             // Instantiate the RequestQueue.
+            setProjectList(new ArrayList<Projects>());
             String token = LoginActivity.getToken();
             RequestQueue queue = Volley.newRequestQueue(this.getApplicationContext());
             String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
@@ -307,6 +308,7 @@ public class LoginActivity extends AppCompatActivity {
     public void juryRequest(String username, String token) {
         try {
             // Instantiate the RequestQueue.
+            setJuryList(new ArrayList<Juries>());
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
             String url = RequestModel.getMyJuriesRequest(username, token);
 

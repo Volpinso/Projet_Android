@@ -85,6 +85,7 @@ public class PlaceholderFragmentPfe extends Fragment {
         //Request Get All projects
         try {
             // Instantiate the RequestQueue.
+            setProjectList(new ArrayList<Projects>());
             String token = LoginActivity.getToken();
             RequestQueue queue = Volley.newRequestQueue(getAppContext());
             String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
@@ -123,6 +124,7 @@ public class PlaceholderFragmentPfe extends Fragment {
         //Request Get My Juries
         try {
             // Instantiate the RequestQueue.
+            setMyProjectList(new ArrayList<Projects>());
             String token = LoginActivity.getToken();
             RequestQueue queue = Volley.newRequestQueue(getAppContext());
             String url = RequestModel.getMyJuriesRequest(LoginActivity.getUsername(), token);
