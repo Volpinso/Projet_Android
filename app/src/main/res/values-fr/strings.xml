@@ -61,6 +61,8 @@
     <string name="CommentPoster">Commenter le poster</string>
     <string name="CommentSaved">Commentaire enregistré !!</string>
     <string name="GiveGrade">Donner une note individuelle</string>
+    <string name="NoJuries">Pas de jurys attribués</string>
+    <string name="NoGrades">Vous ne faites partie d\'aucun jury</string>
 
     <string-array name="grade_arrays">
         <item>0</item>

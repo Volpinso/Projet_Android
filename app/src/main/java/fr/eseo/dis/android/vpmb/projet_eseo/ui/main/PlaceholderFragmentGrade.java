@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapterCom;
 import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapterGrade;
+import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 
 /**
@@ -55,17 +56,22 @@ public class PlaceholderFragmentGrade extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_jury_grade, container, false);
+        if(LoginActivity.getJuryList().size() != 0) {
+            View root = inflater.inflate(R.layout.fragment_jury_grade, container, false);
 
-        RecyclerView pfeRecycler = (RecyclerView) root.findViewById(R.id.rv_pfe);
-        pfeRecycler.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        llm.setOrientation(RecyclerView.VERTICAL);
-        pfeRecycler.setLayoutManager(llm);
-        pfeRecyclerView = new PFERecyclerViewAdapterGrade(this);
-        pfeRecycler.setAdapter(pfeRecyclerView);
+            RecyclerView pfeRecycler = (RecyclerView) root.findViewById(R.id.rv_pfe);
+            pfeRecycler.setHasFixedSize(true);
+            LinearLayoutManager llm = new LinearLayoutManager(getContext());
+            llm.setOrientation(RecyclerView.VERTICAL);
+            pfeRecycler.setLayoutManager(llm);
+            pfeRecyclerView = new PFERecyclerViewAdapterGrade(this);
+            pfeRecycler.setAdapter(pfeRecyclerView);
 
-        return root;
+            return root;
+        } else {
+            View root = inflater.inflate(R.layout.fragment_jury_grade_empty, container, false);
+            return root;
+        }
     }
 
 }

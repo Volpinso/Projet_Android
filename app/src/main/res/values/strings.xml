@@ -64,6 +64,8 @@
     <string name="GiveGrade">Give individual Grade</string>
     <string name="TruncateTable">Drop data</string>
     <string name="SubjectLoaded">Random subjects loaded</string>
+    <string name="NoJuries">No Juries Assigned</string>
+    <string name="NoGrades">You do not belong to any jury</string>
 
     <string name="posterlocation">Poster Location</string>
     <string name="grade_prompt">Choose a grade</string>

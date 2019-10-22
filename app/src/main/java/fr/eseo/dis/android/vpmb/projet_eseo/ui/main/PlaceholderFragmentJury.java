@@ -68,15 +68,20 @@ public class PlaceholderFragmentJury extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_jury_jury, container, false);
-        RecyclerView juryRecycler = (RecyclerView) root.findViewById(R.id.rv_juryList);
-        juryRecycler.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        llm.setOrientation(RecyclerView.VERTICAL);
-        juryRecycler.setLayoutManager(llm);
-        juryRecyclerViewAdapter = new JuryRecyclerViewAdapter(this);
-        juryRecycler.setAdapter(juryRecyclerViewAdapter);
-
-        return root;
+        if(LoginActivity.getJuryList().size() != 0) {
+            View root = inflater.inflate(R.layout.fragment_jury_jury, container, false);
+            RecyclerView juryRecycler = (RecyclerView) root.findViewById(R.id.rv_juryList);
+            juryRecycler.setHasFixedSize(true);
+            LinearLayoutManager llm = new LinearLayoutManager(getContext());
+            llm.setOrientation(RecyclerView.VERTICAL);
+            juryRecycler.setLayoutManager(llm);
+            juryRecyclerViewAdapter = new JuryRecyclerViewAdapter(this);
+            juryRecycler.setAdapter(juryRecyclerViewAdapter);
+            return root;
+        }
+        else {
+            View root = inflater.inflate(R.layout.fragment_jury_jury_empty, container, false);
+            return root;
+        }
     }
 }
