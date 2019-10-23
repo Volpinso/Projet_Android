@@ -148,11 +148,14 @@ public class PlaceholderFragmentComJury extends Fragment {
         buttonAllPfe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(AppDataBase.getINSTANCE(context).projectDAO().loadAll().isEmpty() ) {
+                    String success = getString(R.string.NoSubjectLoaded);
+                    Toast.makeText(getContext(), success, Toast.LENGTH_SHORT).show();
+                } else {
 
-
-                Intent intent = new Intent(getActivity(), CreatePseudoJuryManual.class);
-                startActivity(intent);
-
+                    Intent intent = new Intent(getActivity(), CreatePseudoJuryManual.class);
+                    startActivity(intent);
+                }
         }
         }
         );
@@ -160,20 +163,24 @@ public class PlaceholderFragmentComJury extends Fragment {
         buttonPfeJury.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(AppDataBase.getINSTANCE(context).projectDAO().loadAll().isEmpty() ) {
+                    String success = getString(R.string.NoSubjectLoaded);
+                    Toast.makeText(getContext(), success, Toast.LENGTH_SHORT).show();
 
-                //take a random number of elements we want for the new jury
-                Random rand = new Random();
+                }else {
+                    //take a random number of elements we want for the new jury
+                    Random rand = new Random();
 
-                List<Project> listOfProjects = AppDataBase.getINSTANCE(PlaceholderFragmentComJury.this.context).projectDAO().loadAll();
-                int randomSize = rand.nextInt(listOfProjects.size()-1)+1;
-                System.out.println(randomSize);
-                List<fr.eseo.dis.android.vpmb.db.models.Project> randomList = getRandomElementList(listOfProjects, randomSize);
+                    List<Project> listOfProjects = AppDataBase.getINSTANCE(PlaceholderFragmentComJury.this.context).projectDAO().loadAll();
+                    int randomSize = rand.nextInt(listOfProjects.size() - 1) + 1;
+                    System.out.println(randomSize);
+                    List<fr.eseo.dis.android.vpmb.db.models.Project> randomList = getRandomElementList(listOfProjects, randomSize);
 
 
-                AppDataBase.insertProjectJury(randomList, PlaceholderFragmentComJury.this.context);
+                    AppDataBase.insertProjectJury(randomList, PlaceholderFragmentComJury.this.context);
 
-                showJurySucces(AppCompatActivity.RESULT_OK);
-
+                    showJurySucces(AppCompatActivity.RESULT_OK);
+                }
 
             }
         });

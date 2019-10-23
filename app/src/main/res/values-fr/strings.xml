@@ -97,6 +97,8 @@
     <string name="CreateJuryManual">Générer des jury automatiquement</string>
     <string name="NoPseudoJury">Aucun pseudoJury créé. Accès refusé!</string>
     <string name="SubjectAdded">Sujet ajouter aux suejts jpo</string>
+    <string name="NoSubjectLoaded">Sujets non téléchargés. Veuillez patienter!</string>
+    <string name="TableEmptied">Les tables ont bien été vidées</string>
 
 
 </resources>

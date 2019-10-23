@@ -70,7 +70,8 @@ public class ComMemberActivity extends AppCompatActivity {
                 AppDataBase.getINSTANCE(v.getContext()).visitorDAO().deleteAll();
                 AppDataBase.getINSTANCE(v.getContext()).pseudoJuryDAO().deleteAll();
                 AppDataBase.getINSTANCE(v.getContext()).projectDAO().deleteAll();
-                System.out.println("1 "+AppDataBase.getINSTANCE(v.getContext()).projectJuryDAO().loadAll().size());
+                String success = getString(R.string.TableEmptied);
+                Toast.makeText(ComMemberActivity.this, success, Toast.LENGTH_SHORT).show();
 
                 //Return up to five subject non confidential
                 try {
