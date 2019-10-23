@@ -3,7 +3,6 @@ package fr.eseo.dis.android.vpmb.projet_eseo.ui.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -34,14 +31,12 @@ import java.util.List;
 import java.util.Random;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.projet_eseo.ComMemberActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManual;
+import fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManualActivity;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.DataConverter;
 import fr.eseo.dis.android.vpmb.db.models.Project;
 import fr.eseo.dis.android.vpmb.models.Porte;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
-import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 /**
@@ -153,7 +148,7 @@ public class PlaceholderFragmentComJury extends Fragment {
                     Toast.makeText(getContext(), success, Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Intent intent = new Intent(getActivity(), CreatePseudoJuryManual.class);
+                    Intent intent = new Intent(getActivity(), CreatePseudoJuryManualActivity.class);
                     startActivity(intent);
                 }
         }

@@ -16,14 +16,14 @@ import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Grade;
 import fr.eseo.dis.android.vpmb.projet_eseo.VisitorsGradesActivity;
 
-public class VisitorsGradesRecyclerviewAdapter extends RecyclerView.Adapter<VisitorsGradesRecyclerviewAdapter.VisitorsGradesRecyclerViewHolder> {
+public class VisitorsGradesRecyclervViewComAdapter extends RecyclerView.Adapter<VisitorsGradesRecyclervViewComAdapter.VisitorsGradesRecyclerViewHolder> {
 
     VisitorsGradesActivity visitorsGradesActivity;
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
     private List<Grade> gradeList;
 
-    public VisitorsGradesRecyclerviewAdapter(VisitorsGradesActivity visitorsGradesActivity){
+    public VisitorsGradesRecyclervViewComAdapter(VisitorsGradesActivity visitorsGradesActivity){
         this.visitorsGradesActivity = visitorsGradesActivity;
         this.gradeList = AppDataBase.getINSTANCE(visitorsGradesActivity.getApplicationContext()).gradeDAO().loadSubjectGrade(visitorsGradesActivity.getProjectId());
         subjectInformation = new ArrayList<>();

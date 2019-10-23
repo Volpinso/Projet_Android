@@ -19,7 +19,7 @@ import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Grade;
 
-public class GradeFormVisitor extends AppCompatActivity {
+public class GradeFormVisitorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +38,19 @@ public class GradeFormVisitor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 long idNotation=0;
-                List<Grade> grades = AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll();
+                List<Grade> grades = AppDataBase.getINSTANCE(GradeFormVisitorActivity.this).gradeDAO().loadAll();
                 if(!grades.isEmpty()){
                     idNotation=grades.size();
                 }
 
                 if (!"".equals(spinner.getSelectedItem().toString())){
-                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll().size());
+                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitorActivity.this).gradeDAO().loadAll().size());
 
-                    AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().insert(new Grade(idNotation, Double.parseDouble(String.valueOf(spinner.getSelectedItemId())), edit.getText().toString(), ActivityVisitorListSubjects.getPseudoJuryVisitorId(), idProject));
+                    AppDataBase.getINSTANCE(GradeFormVisitorActivity.this).gradeDAO().insert(new Grade(idNotation, Double.parseDouble(String.valueOf(spinner.getSelectedItemId())), edit.getText().toString(), VisitorListSubjectsActivity.getPseudoJuryVisitorId(), idProject));
 
 
                     showNotationSucces(AppCompatActivity.RESULT_OK, getString(R.string.GradeSaved));
-                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitor.this).gradeDAO().loadAll());
+                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitorActivity.this).gradeDAO().loadAll());
                 }
             }
         });

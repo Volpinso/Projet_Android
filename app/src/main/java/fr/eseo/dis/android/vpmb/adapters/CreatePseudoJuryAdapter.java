@@ -1,10 +1,8 @@
 package fr.eseo.dis.android.vpmb.adapters;
 
-import android.content.ClipData;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
@@ -16,11 +14,11 @@ import java.util.List;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Project;
-import fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManual;
+import fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManualActivity;
 
 public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJuryAdapter.PseudoJuryRecyclerViewHolder> {
 
-    private final CreatePseudoJuryManual pseudoJuryManual;
+    private final CreatePseudoJuryManualActivity pseudoJuryManual;
 
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
@@ -38,7 +36,7 @@ public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJu
 
 
 
-    public CreatePseudoJuryAdapter(CreatePseudoJuryManual pseudoJuryManual) {
+    public CreatePseudoJuryAdapter(CreatePseudoJuryManualActivity pseudoJuryManual) {
         this.pseudoJuryManual = pseudoJuryManual;
         //TODO: The following lines will be repalaced
         subjectInformation = new ArrayList<>();

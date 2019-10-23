@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapterCom;
+import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewComAdapter;
 
 
 /**
@@ -28,7 +28,7 @@ public class PlaceholderFragmentComPfe extends Fragment {
 
     private PageViewModel pageViewModel;
 
-    PFERecyclerViewAdapterCom pfeRecyclerView;
+    PFERecyclerViewComAdapter pfeRecyclerView;
 
     public static PlaceholderFragmentComPfe newInstance(int index) {
         PlaceholderFragmentComPfe fragment = new PlaceholderFragmentComPfe();
@@ -61,7 +61,7 @@ public class PlaceholderFragmentComPfe extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(RecyclerView.VERTICAL);
         pfeRecycler.setLayoutManager(llm);
-        pfeRecyclerView = new PFERecyclerViewAdapterCom(this);
+        pfeRecyclerView = new PFERecyclerViewComAdapter(this);
         pfeRecycler.setAdapter(pfeRecyclerView);
 
         return root;

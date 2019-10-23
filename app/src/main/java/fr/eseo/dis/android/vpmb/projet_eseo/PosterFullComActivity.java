@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
 
-public class PosterFullActivityCom extends AppCompatActivity {
+public class PosterFullComActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +17,13 @@ public class PosterFullActivityCom extends AppCompatActivity {
         setContentView(R.layout.activity_poster_full);
         setTitle("Full Screen");
         ImageView imageView = (ImageView) this.findViewById(R.id.full_screen);
-        if (MyPFEDetailsActivityCom.getFullB64() != null) {
-            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(MyPFEDetailsActivityCom.getFullB64()), 0,
-                    convertB64toImage(MyPFEDetailsActivityCom.getFullB64()).length));
+        if (MyPFEDetailsComActivity.getFullB64() != null) {
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(MyPFEDetailsComActivity.getFullB64()), 0,
+                    convertB64toImage(MyPFEDetailsComActivity.getFullB64()).length));
         }
         else {
-            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(MyPFEDetailsActivityCom.getFullB64()), 0,
-                    convertB64toImage(MyPFEDetailsActivityCom.getFullB64()).length));
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(MyPFEDetailsComActivity.getFullB64()), 0,
+                    convertB64toImage(MyPFEDetailsComActivity.getFullB64()).length));
         }
     }
 

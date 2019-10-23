@@ -16,7 +16,7 @@
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterLocationActivity"
             android:label="@string/posterlocation" />
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.GradeFormVisitor" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.GradeFormVisitorActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.FullScreenPosterVisitor" />
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.AddGradeActivity"
@@ -24,11 +24,11 @@
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.CommentaryActivity"
             android:label="Commentaires" />
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManual" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManualActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivity" />
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullActivityCom" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PosterFullComActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity" />
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPFEDetailsActivityCom" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPFEDetailsComActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MyPfeDetailsActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.GradesDetailsActivity" />
         <activity
@@ -61,7 +61,7 @@
         <activity
             android:name="fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.ActivityVisitorListSubjects" />
+        <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.VisitorListSubjectsActivity" />
         <activity android:name="fr.eseo.dis.android.vpmb.projet_eseo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

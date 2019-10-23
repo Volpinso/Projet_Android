@@ -1,12 +1,9 @@
 package fr.eseo.dis.android.vpmb.projet_eseo;
 
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,10 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapter;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapterGrade;
+import fr.eseo.dis.android.vpmb.adapters.GradeRecyclerViewJuryAdapter;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
-import fr.eseo.dis.android.vpmb.db.models.AnnotationPoster;
 import fr.eseo.dis.android.vpmb.db.models.StudentAnnotation;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
@@ -50,9 +45,9 @@ public class IndividualGradeActivity extends AppCompatActivity {
         studentGrade.setText(getString(R.string.OldGrade) + " " + intent.getStringExtra("studentGrade"));
 
         if(AppDataBase.getINSTANCE(this).studentAnnotationDAO().loadStudentAnnotatinExist(
-                PFERecyclerViewAdapterGrade.getProjectId(), studentId, LoginActivity.getUsername()) != null) {
+                GradeRecyclerViewJuryAdapter.getProjectId(), studentId, LoginActivity.getUsername()) != null) {
             studentAnnotationList = AppDataBase.getINSTANCE(this).studentAnnotationDAO().loadStudentAnnotatinExist(
-                    PFERecyclerViewAdapterGrade.getProjectId(), studentId, LoginActivity.getUsername());
+                    GradeRecyclerViewJuryAdapter.getProjectId(), studentId, LoginActivity.getUsername());
         }
 
         if(studentAnnotationList.size() != 0){
@@ -74,7 +69,7 @@ public class IndividualGradeActivity extends AppCompatActivity {
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(v.getContext());
                     String url = RequestModel.setStudentGrade(
-                            LoginActivity.getUsername(), PFERecyclerViewAdapterGrade.getProjectId(), studentId,
+                            LoginActivity.getUsername(), GradeRecyclerViewJuryAdapter.getProjectId(), studentId,
                             Integer.parseInt(grade), LoginActivity.getToken()
                     );
                     System.out.println(url);
@@ -101,7 +96,7 @@ public class IndividualGradeActivity extends AppCompatActivity {
 
                 if(studentAnnotationList.size() == 0) {
                     StudentAnnotation studentAnnotation = new StudentAnnotation(studentId, LoginActivity.getUsername(),
-                            PFERecyclerViewAdapterGrade.getProjectId(), commentText);
+                            GradeRecyclerViewJuryAdapter.getProjectId(), commentText);
                     AppDataBase.getINSTANCE(v.getContext()).studentAnnotationDAO().insert(studentAnnotation);
                     Intent gotoScreenVar = new Intent(IndividualGradeActivity.this, JuryMemberActivity.class);
                     String success = getString(R.string.GradeSaved);
@@ -111,7 +106,7 @@ public class IndividualGradeActivity extends AppCompatActivity {
                 }
                 else{
                     AppDataBase.getINSTANCE(v.getContext()).studentAnnotationDAO().
-                            updateStudentAnnotationPoster(commentText, PFERecyclerViewAdapterGrade.getProjectId(), studentId, LoginActivity.getUsername());
+                            updateStudentAnnotationPoster(commentText, GradeRecyclerViewJuryAdapter.getProjectId(), studentId, LoginActivity.getUsername());
                     Intent gotoScreenVar = new Intent(IndividualGradeActivity.this, JuryMemberActivity.class);
                     String success = getString(R.string.GradeSaved);
                     Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();

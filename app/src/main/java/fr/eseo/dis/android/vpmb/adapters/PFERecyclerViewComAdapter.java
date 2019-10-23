@@ -22,14 +22,12 @@ import java.util.List;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
-import fr.eseo.dis.android.vpmb.projet_eseo.MyPFEDetailsActivityCom;
-import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeDetailsActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity;
+import fr.eseo.dis.android.vpmb.projet_eseo.MyPFEDetailsComActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComPfe;
 
 
-public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerViewAdapterCom.PFERecyclerComViewHolder> {
+public class PFERecyclerViewComAdapter extends RecyclerView.Adapter<PFERecyclerViewComAdapter.PFERecyclerComViewHolder> {
 
 
     private final PlaceholderFragmentComPfe placeholderFragmentComPfe;
@@ -44,7 +42,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
 
 
 
-    public PFERecyclerViewAdapterCom(PlaceholderFragmentComPfe placeholderFragmentComPfe) {
+    public PFERecyclerViewComAdapter(PlaceholderFragmentComPfe placeholderFragmentComPfe) {
         this.placeholderFragmentComPfe = placeholderFragmentComPfe;
         //TODO: The following lines will be repalaced
         this.projectsList = LoginActivity.getProjectList();
@@ -152,7 +150,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
                 catch (Exception e){
 
                 }
-                Intent intent = new Intent( view.getContext(), MyPFEDetailsActivityCom.class);
+                Intent intent = new Intent( view.getContext(), MyPFEDetailsComActivity.class);
                 intent.putExtra("projectId", projectsList.get(position).getProjectId());
                 view.getContext().startActivity(intent);
             }
@@ -190,7 +188,7 @@ public class PFERecyclerViewAdapterCom extends RecyclerView.Adapter<PFERecyclerV
     }
 
     public static void setThumbnail(String thumbnail){
-        PFERecyclerViewAdapterCom.thumbnail = thumbnail;
+        PFERecyclerViewComAdapter.thumbnail = thumbnail;
     }
 
     public String createPseudo(String surname, String forename){

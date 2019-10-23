@@ -8,13 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.adapters.GradesDetailsAdapter;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapter;
+import fr.eseo.dis.android.vpmb.adapters.GradesDetailsJuryAdapter;
 
 
 public class GradesDetailsActivity extends AppCompatActivity {
 
-    GradesDetailsAdapter gradesDetailsAdapter;
+    GradesDetailsJuryAdapter gradesDetailsJuryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +27,8 @@ public class GradesDetailsActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
         pfeRecycler.setLayoutManager(llm);
-        gradesDetailsAdapter = new GradesDetailsAdapter(this);
-        pfeRecycler.setAdapter(gradesDetailsAdapter);
+        gradesDetailsJuryAdapter = new GradesDetailsJuryAdapter(this);
+        pfeRecycler.setAdapter(gradesDetailsJuryAdapter);
 
     }
 }

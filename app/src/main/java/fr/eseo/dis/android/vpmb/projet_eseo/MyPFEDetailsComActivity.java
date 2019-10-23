@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,15 +23,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.adapters.MyPFERecyclerViewAdapter;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapterCom;
+import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewComAdapter;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 
-public class MyPFEDetailsActivityCom extends AppCompatActivity {
+public class MyPFEDetailsComActivity extends AppCompatActivity {
 
     private static String fullB64;
 
@@ -75,9 +73,9 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
 
         ImageView imageView = (ImageView) this.findViewById(R.id.poster_image);
 
-        if(PFERecyclerViewAdapterCom.getThumbnail()!= null && !PFERecyclerViewAdapterCom.getThumbnail().equals("No Poster")) {
-            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(PFERecyclerViewAdapterCom.getThumbnail()), 0,
-                    convertB64toImage(PFERecyclerViewAdapterCom.getThumbnail()).length));
+        if(PFERecyclerViewComAdapter.getThumbnail()!= null && !PFERecyclerViewComAdapter.getThumbnail().equals("No Poster")) {
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(convertB64toImage(PFERecyclerViewComAdapter.getThumbnail()), 0,
+                    convertB64toImage(PFERecyclerViewComAdapter.getThumbnail()).length));
         }
         else {
             TextView posterLabel = (TextView) findViewById(R.id.poster_label);
@@ -127,7 +125,7 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
                 catch (Exception e){
 
                 }
-                Intent intent = new Intent(MyPFEDetailsActivityCom.this, PosterFullActivityCom.class);
+                Intent intent = new Intent(MyPFEDetailsComActivity.this, PosterFullComActivity.class);
                 startActivity(intent);
             }
         });
@@ -141,12 +139,12 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
             public void onClick(View v) {
                 Projects projectToAdd = LoginActivity.getProjectList().get(projectId);
 
-                if (AppDataBase.getINSTANCE(MyPFEDetailsActivityCom.this).projectDAO().selectProject(projectToAdd.getProjectId())!=null){
+                if (AppDataBase.getINSTANCE(MyPFEDetailsComActivity.this).projectDAO().selectProject(projectToAdd.getProjectId())!=null){
                     showJurySucces(AppCompatActivity.RESULT_CANCELED, getString(R.string.SubjectAlreadyAdded));
                 }else {
-                    fr.eseo.dis.android.vpmb.db.models.Project projectToDb = new fr.eseo.dis.android.vpmb.db.models.Project(projectToAdd.getProjectId(), projectToAdd.getTitle(), projectToAdd.getDescrip(), PFERecyclerViewAdapterCom.getThumbnail());
+                    fr.eseo.dis.android.vpmb.db.models.Project projectToDb = new fr.eseo.dis.android.vpmb.db.models.Project(projectToAdd.getProjectId(), projectToAdd.getTitle(), projectToAdd.getDescrip(), PFERecyclerViewComAdapter.getThumbnail());
 
-                    AppDataBase.getINSTANCE(MyPFEDetailsActivityCom.this).projectDAO().insert(projectToDb);
+                    AppDataBase.getINSTANCE(MyPFEDetailsComActivity.this).projectDAO().insert(projectToDb);
 
                     showJurySucces(AppCompatActivity.RESULT_OK, getString(R.string.SubjectAdded));
 
@@ -170,7 +168,7 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
     }
 
     public static void setFullB64(String fullB64){
-        MyPFEDetailsActivityCom.fullB64 = fullB64;
+        MyPFEDetailsComActivity.fullB64 = fullB64;
     }
 
     private void showJurySucces(@StringRes Integer successString, String message) {

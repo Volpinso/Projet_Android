@@ -39,7 +39,7 @@ public class FullScreenPosterVisitor extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( v.getContext(), GradeFormVisitor.class);
+                Intent intent = new Intent( v.getContext(), GradeFormVisitorActivity.class);
                 intent.putExtra("idProject", idProject);
                 v.getContext().startActivity(intent);
             }

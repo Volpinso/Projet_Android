@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.adapters.VisitorsGradesRecyclerviewAdapter;
+import fr.eseo.dis.android.vpmb.adapters.VisitorsGradesRecyclervViewComAdapter;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 
 public class VisitorsGradesActivity extends AppCompatActivity {
 
-    VisitorsGradesRecyclerviewAdapter visitorsGradesRecyclerviewAdapter;
+    VisitorsGradesRecyclervViewComAdapter visitorsGradesRecyclervViewComAdapter;
     private static long projectId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class VisitorsGradesActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
         subjectsRecycler.setLayoutManager(llm);
-        visitorsGradesRecyclerviewAdapter = new VisitorsGradesRecyclerviewAdapter(this);
-        subjectsRecycler.setAdapter(visitorsGradesRecyclerviewAdapter);
+        visitorsGradesRecyclervViewComAdapter = new VisitorsGradesRecyclervViewComAdapter(this);
+        subjectsRecycler.setAdapter(visitorsGradesRecyclervViewComAdapter);
 
         TextView textView = (TextView) findViewById(R.id.textView6);
         if(AppDataBase.getINSTANCE(this).gradeDAO().

@@ -15,7 +15,7 @@ import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
 import fr.eseo.dis.android.vpmb.db.models.Visitor;
 
-public class ActivityVisitorListSubjects extends AppCompatActivity {
+public class VisitorListSubjectsActivity extends AppCompatActivity {
 
 
     private VisitorSubjectRecyclerViewAdapter visitorSubjectRecyclerViewAdapter;
@@ -34,10 +34,10 @@ public class ActivityVisitorListSubjects extends AppCompatActivity {
         visitorSubjectRecyclerViewAdapter = new VisitorSubjectRecyclerViewAdapter(this);
         subjectsRecycler.setAdapter(visitorSubjectRecyclerViewAdapter);
 
-        List<Visitor> visitorsInDB = AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().loadAll();
+        List<Visitor> visitorsInDB = AppDataBase.getINSTANCE(VisitorListSubjectsActivity.this).visitorDAO().loadAll();
 
         //Select a random pseudoJury
-        List<PseudoJury> jury = AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).pseudoJuryDAO().loadAll();
+        List<PseudoJury> jury = AppDataBase.getINSTANCE(VisitorListSubjectsActivity.this).pseudoJuryDAO().loadAll();
 
         Random random = new Random();
         int randomJury = random.nextInt(jury.size());
@@ -46,10 +46,10 @@ public class ActivityVisitorListSubjects extends AppCompatActivity {
 
         if(visitorsInDB.isEmpty()){
             numVisitor = 0;
-            AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().insert(new Visitor(numVisitor, pseudoJuryVisitorId));
+            AppDataBase.getINSTANCE(VisitorListSubjectsActivity.this).visitorDAO().insert(new Visitor(numVisitor, pseudoJuryVisitorId));
         }else{
             numVisitor = jury.size();
-            AppDataBase.getINSTANCE(ActivityVisitorListSubjects.this).visitorDAO().insert(new Visitor(numVisitor, pseudoJuryVisitorId));
+            AppDataBase.getINSTANCE(VisitorListSubjectsActivity.this).visitorDAO().insert(new Visitor(numVisitor, pseudoJuryVisitorId));
 
         }
     }

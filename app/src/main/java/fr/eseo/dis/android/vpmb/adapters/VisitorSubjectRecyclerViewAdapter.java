@@ -1,12 +1,10 @@
 package fr.eseo.dis.android.vpmb.adapters;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,15 +16,13 @@ import java.util.List;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Project;
 import fr.eseo.dis.android.vpmb.db.models.ProjectJury;
-import fr.eseo.dis.android.vpmb.projet_eseo.ActivityVisitorListSubjects;
+import fr.eseo.dis.android.vpmb.projet_eseo.VisitorListSubjectsActivity;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.projet_eseo.FullScreenPosterVisitor;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-
 public class VisitorSubjectRecyclerViewAdapter extends RecyclerView.Adapter<VisitorSubjectRecyclerViewAdapter.SubjectRecyclerViewHolder>{
 
-    private final ActivityVisitorListSubjects subjectActivity;
+    private final VisitorListSubjectsActivity subjectActivity;
 
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
@@ -38,11 +34,11 @@ public class VisitorSubjectRecyclerViewAdapter extends RecyclerView.Adapter<Visi
     //TODO: This field will be deleted
     private float radius;
 
-    public VisitorSubjectRecyclerViewAdapter(ActivityVisitorListSubjects subjectActivity) {
+    public VisitorSubjectRecyclerViewAdapter(VisitorListSubjectsActivity subjectActivity) {
         this.subjectActivity = subjectActivity;
         //TODO: The following lines will be repalaced
         projectsJury = new ArrayList<>();
-        projectsJury = AppDataBase.getINSTANCE(subjectActivity.getApplicationContext()).projectJuryDAO().loadSubjectForAJury(ActivityVisitorListSubjects.getPseudoJuryVisitorId());
+        projectsJury = AppDataBase.getINSTANCE(subjectActivity.getApplicationContext()).projectJuryDAO().loadSubjectForAJury(VisitorListSubjectsActivity.getPseudoJuryVisitorId());
 
         projectsToDisplay = new ArrayList<>();
         subjectInformation = new ArrayList<>();

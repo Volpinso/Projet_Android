@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         String success = getString(R.string.NoPseudoJury);
                         Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
                     }else {
-                        Intent intent = new Intent(MainActivity.this, ActivityVisitorListSubjects.class);
+                        Intent intent = new Intent(MainActivity.this, VisitorListSubjectsActivity.class);
                         startActivity(intent);
                     }
                 }

@@ -16,8 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapterCom;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapterGrade;
+import fr.eseo.dis.android.vpmb.adapters.GradeRecyclerViewJuryAdapter;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
 
@@ -30,7 +29,7 @@ public class PlaceholderFragmentGrade extends Fragment {
 
     private PageViewModel pageViewModel;
 
-    PFERecyclerViewAdapterGrade pfeRecyclerView;
+    GradeRecyclerViewJuryAdapter pfeRecyclerView;
 
     public static PlaceholderFragmentGrade newInstance(int index) {
         PlaceholderFragmentGrade fragment = new PlaceholderFragmentGrade();
@@ -64,7 +63,7 @@ public class PlaceholderFragmentGrade extends Fragment {
             LinearLayoutManager llm = new LinearLayoutManager(getContext());
             llm.setOrientation(RecyclerView.VERTICAL);
             pfeRecycler.setLayoutManager(llm);
-            pfeRecyclerView = new PFERecyclerViewAdapterGrade(this);
+            pfeRecyclerView = new GradeRecyclerViewJuryAdapter(this);
             pfeRecycler.setAdapter(pfeRecyclerView);
 
             return root;

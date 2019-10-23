@@ -34,7 +34,7 @@ import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentGrade;
 
 
 
-public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecyclerViewAdapterGrade.PFERecyclerComViewHolder> {
+public class GradeRecyclerViewJuryAdapter extends RecyclerView.Adapter<GradeRecyclerViewJuryAdapter.PFERecyclerComViewHolder> {
 
 
     private final PlaceholderFragmentGrade placeholderFragmentGrades;
@@ -54,10 +54,10 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
     }
 
     public static void setProjectId(int projectId) {
-        PFERecyclerViewAdapterGrade.projectId = projectId;
+        GradeRecyclerViewJuryAdapter.projectId = projectId;
     }
 
-    public PFERecyclerViewAdapterGrade(PlaceholderFragmentGrade placeholderFragmentGrades) {
+    public GradeRecyclerViewJuryAdapter(PlaceholderFragmentGrade placeholderFragmentGrades) {
         this.placeholderFragmentGrades = placeholderFragmentGrades;
         //TODO: The following lines will be repalaced
 
@@ -97,7 +97,7 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PFERecyclerViewAdapterGrade.PFERecyclerComViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final GradeRecyclerViewJuryAdapter.PFERecyclerComViewHolder holder, final int position) {
 
 
         holder.pfeTitre.setText(myProjectsList.get(position).getTitle());
@@ -227,7 +227,7 @@ public class PFERecyclerViewAdapterGrade extends RecyclerView.Adapter<PFERecycle
     }
 
     public static void setNotes(List<Note> notesList){
-        PFERecyclerViewAdapterGrade.notesList = notesList;
+        GradeRecyclerViewJuryAdapter.notesList = notesList;
     }
 
     public String createPseudo(String surname, String forename){

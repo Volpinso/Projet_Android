@@ -15,12 +15,10 @@ import java.util.List;
 import fr.eseo.dis.android.vp.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Project;
-import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.projet_eseo.VisitorsGradesActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentComGrade;
 
-public class PFERecyclerViewFragmentComGrade extends RecyclerView.Adapter<PFERecyclerViewFragmentComGrade.PFERecyclerGradeComViewHolder> {
+public class GradeRecyclerViewFragmentComAdapter extends RecyclerView.Adapter<GradeRecyclerViewFragmentComAdapter.PFERecyclerGradeComViewHolder> {
 
     private final PlaceholderFragmentComGrade placeholderFragmentComGrade;
 
@@ -29,7 +27,7 @@ public class PFERecyclerViewFragmentComGrade extends RecyclerView.Adapter<PFERec
     private List<Integer> subjectInformation;
     private List<Integer> expandedPositions;
 
-    public PFERecyclerViewFragmentComGrade(PlaceholderFragmentComGrade placeholderFragmentComGrade) {
+    public GradeRecyclerViewFragmentComAdapter(PlaceholderFragmentComGrade placeholderFragmentComGrade) {
         this.placeholderFragmentComGrade = placeholderFragmentComGrade;
         this.projectsList = AppDataBase.getINSTANCE(placeholderFragmentComGrade.getContext()).projectDAO().loadAll();
         subjectInformation = new ArrayList<>();
@@ -48,7 +46,7 @@ public class PFERecyclerViewFragmentComGrade extends RecyclerView.Adapter<PFERec
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PFERecyclerViewFragmentComGrade.PFERecyclerGradeComViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final GradeRecyclerViewFragmentComAdapter.PFERecyclerGradeComViewHolder holder, final int position) {
 
         holder.pfeTitre.setText(projectsList.get(position).getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {

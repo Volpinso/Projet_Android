@@ -18,7 +18,7 @@ import fr.eseo.dis.android.vpmb.models.Note;
 import fr.eseo.dis.android.vpmb.projet_eseo.GradesDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.IndividualGradeActivity;
 
-public class GradesDetailsAdapter extends RecyclerView.Adapter<GradesDetailsAdapter.GradeDetailsViewHolder> {
+public class GradesDetailsJuryAdapter extends RecyclerView.Adapter<GradesDetailsJuryAdapter.GradeDetailsViewHolder> {
 
 
     private final GradesDetailsActivity gradesDetailsActivity;
@@ -30,10 +30,10 @@ public class GradesDetailsAdapter extends RecyclerView.Adapter<GradesDetailsAdap
 
 
 
-    public GradesDetailsAdapter(GradesDetailsActivity gradesDetailsActivity) {
+    public GradesDetailsJuryAdapter(GradesDetailsActivity gradesDetailsActivity) {
         this.gradesDetailsActivity = gradesDetailsActivity;
         //TODO: The following lines will be repalaced
-        this.notesList = PFERecyclerViewAdapterGrade.getNotes();
+        this.notesList = GradeRecyclerViewJuryAdapter.getNotes();
         //TODO: The following lines will be repalaced
         subjectInformation = new ArrayList<>();
         for(int i = 0; i < this.notesList.size(); i++) {
@@ -54,7 +54,7 @@ public class GradesDetailsAdapter extends RecyclerView.Adapter<GradesDetailsAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final GradesDetailsAdapter.GradeDetailsViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final GradesDetailsJuryAdapter.GradeDetailsViewHolder holder, final int position) {
 
 
         holder.studentName.setText(notesList.get(position).getForename() + " " + notesList.get(position).getSurname());
