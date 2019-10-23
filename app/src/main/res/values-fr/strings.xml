@@ -96,6 +96,7 @@
     <string name="CreateJuryAuto">Creer jury manuellement</string>
     <string name="CreateJuryManual">Générer des jury automatiquement</string>
     <string name="NoPseudoJury">Aucun pseudoJury créé. Accès refusé!</string>
+    <string name="SubjectAdded">Sujet ajouter aux suejts jpo</string>
 
 
 </resources>

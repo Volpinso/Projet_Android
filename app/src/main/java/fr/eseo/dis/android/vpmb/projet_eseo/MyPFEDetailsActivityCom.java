@@ -148,7 +148,7 @@ public class MyPFEDetailsActivityCom extends AppCompatActivity {
 
                     AppDataBase.getINSTANCE(MyPFEDetailsActivityCom.this).projectDAO().insert(projectToDb);
 
-                    showJurySucces(AppCompatActivity.RESULT_OK, getString(R.string.AddSubject));
+                    showJurySucces(AppCompatActivity.RESULT_OK, getString(R.string.SubjectAdded));
 
                 }
             }

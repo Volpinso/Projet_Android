@@ -69,6 +69,7 @@
     <string name="CreateJuryManual">Create pseudoJury manually</string>
     <string name="CreateJuryAuto">Create pseudoJury automatically</string>
     <string name="NoPseudoJury">No pseudoJury created. Access denied!</string>
+    <string name="SubjectAdded">Subject added for open days</string>
 
     <string name="posterlocation">Poster Location</string>
     <string name="grade_prompt">Choose a grade</string>
