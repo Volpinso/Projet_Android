@@ -74,9 +74,7 @@ public class GradeRecyclerViewJuryAdapter extends RecyclerView.Adapter<GradeRecy
             }
         }
 
-        System.out.println(projectsList.toString());
-        System.out.println(juryList.toString());
-        System.out.println(myProjectsList.toString());
+
         //TODO: The following lines will be repalaced
         subjectInformation = new ArrayList<>();
         for(int i = 0; i < this.myProjectsList.size(); i++) {
@@ -149,7 +147,7 @@ public class GradeRecyclerViewJuryAdapter extends RecyclerView.Adapter<GradeRecy
                     setNotes(new ArrayList<Note>());
                     RequestQueue queue = Volley.newRequestQueue(view.getContext());
                     String url = RequestModel.getProjectGrades(LoginActivity.getUsername(), myProjectsList.get(position).getProjectId(), LoginActivity.getToken());
-                    System.out.println(url);
+
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                             (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -161,10 +159,9 @@ public class GradeRecyclerViewJuryAdapter extends RecyclerView.Adapter<GradeRecy
 
                                     for(int i = 0 ; i < responseModel.getNotes().length; i++){
                                         notesList.add(responseModel.getNotes()[i]);
-                                        System.out.println(notesList.toString());
                                     }
                                     setNotes(notesList);
-                                    System.out.println(getNotes());
+
 
                                 }
                             }, new Response.ErrorListener() {
@@ -173,7 +170,7 @@ public class GradeRecyclerViewJuryAdapter extends RecyclerView.Adapter<GradeRecy
                                 public void onErrorResponse(VolleyError error) {
                                     // TODO: Handle error
                                     notesList = null;
-                                    System.out.println("error");
+                                    System.out.println(error);
 
                                 }
                             });

@@ -135,7 +135,6 @@ public class JuryRecyclerViewAdapter extends RecyclerView.Adapter<fr.eseo.dis.an
                                         myJuryProjectList.add(responseModel.getProjects()[i]);
                                     }
                                     setMyJuryProjectList(myJuryProjectList);
-                                    System.out.println(getMyJuryProjectList());
 
                                 }
                             },

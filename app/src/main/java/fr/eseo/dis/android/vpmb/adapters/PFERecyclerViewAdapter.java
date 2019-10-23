@@ -125,7 +125,6 @@ public class PFERecyclerViewAdapter extends RecyclerView.Adapter<PFERecyclerView
                                         setThumbnail("No Poster");
                                     }
                                     else{
-                                        System.out.println(response);
                                         setThumbnail(response);
                                     }
                                 }

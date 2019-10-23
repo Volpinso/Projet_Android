@@ -43,7 +43,7 @@ public class MyJuryProjectsRecyclerViewAdapter extends RecyclerView.Adapter<MyJu
     public MyJuryProjectsRecyclerViewAdapter(MyJuryProjectActivity myJuryProjectActivity) {
         this.myJuryProjectActivity = myJuryProjectActivity;
         this.projectList = JuryRecyclerViewAdapter.getMyJuryProjectList();
-        System.out.println(projectList.size());
+
         //TODO: The following lines will be repalaced
         subjectInformation = new ArrayList<>();
         for(int i = 0; i < this.projectList.size(); i++) {

@@ -72,7 +72,7 @@ public class IndividualGradeActivity extends AppCompatActivity {
                             LoginActivity.getUsername(), GradeRecyclerViewJuryAdapter.getProjectId(), studentId,
                             Integer.parseInt(grade), LoginActivity.getToken()
                     );
-                    System.out.println(url);
+
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                             new Response.Listener<String>() {
                                 @Override

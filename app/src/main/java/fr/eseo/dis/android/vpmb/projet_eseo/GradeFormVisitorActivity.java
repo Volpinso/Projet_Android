@@ -44,13 +44,12 @@ public class GradeFormVisitorActivity extends AppCompatActivity {
                 }
 
                 if (!"".equals(spinner.getSelectedItem().toString())){
-                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitorActivity.this).gradeDAO().loadAll().size());
 
                     AppDataBase.getINSTANCE(GradeFormVisitorActivity.this).gradeDAO().insert(new Grade(idNotation, Double.parseDouble(String.valueOf(spinner.getSelectedItemId())), edit.getText().toString(), VisitorListSubjectsActivity.getPseudoJuryVisitorId(), idProject));
 
 
                     showNotationSucces(AppCompatActivity.RESULT_OK, getString(R.string.GradeSaved));
-                    System.out.println(AppDataBase.getINSTANCE(GradeFormVisitorActivity.this).gradeDAO().loadAll());
+
                 }
             }
         });

@@ -41,7 +41,7 @@ public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJu
         //TODO: The following lines will be repalaced
         subjectInformation = new ArrayList<>();
         this.dbProjects = AppDataBase.getINSTANCE(pseudoJuryManual.getApplicationContext()).projectDAO().loadAll();
-        System.out.println(dbProjects.size());
+
         for(int i = 0; i < dbProjects.size() ; i++){
             subjectInformation.add(i);
         }

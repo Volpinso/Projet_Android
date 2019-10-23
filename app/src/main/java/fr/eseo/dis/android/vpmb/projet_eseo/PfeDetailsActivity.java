@@ -86,7 +86,7 @@ public class PfeDetailsActivity extends AppCompatActivity {
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(v.getContext());
                     String url = RequestModel.getPoster(LoginActivity.getUsername(),PlaceholderFragmentPfe.getProjectList().get(projectId).getProjectId(), "FLB64", LoginActivity.getToken());
-                    System.out.println(url);
+
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                             new Response.Listener<String>() {
                                 @Override
@@ -95,7 +95,6 @@ public class PfeDetailsActivity extends AppCompatActivity {
                                         setFullB64("No Poster");
                                     }
                                     else{
-                                        System.out.println(response);
                                         setFullB64(response);
                                     }
                                 }

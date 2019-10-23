@@ -210,7 +210,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     // TODO: Handle error
-                                    System.out.println("error");
+                                    System.out.println(error);
 
                                 }
                             });
@@ -283,7 +283,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
                             projectList = null;
-                            System.out.println("error");
+                            System.out.println(error);
 
                         }
                     });
@@ -336,7 +336,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
                             myJuriesList = null;
-                            System.out.println("error");
+                            System.out.println(error);
 
                         }
                     });

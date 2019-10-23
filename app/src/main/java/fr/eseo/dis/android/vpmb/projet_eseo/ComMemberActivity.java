@@ -97,10 +97,8 @@ public class ComMemberActivity extends AppCompatActivity {
 
                                     List<Project> projectToSave = DataConverter.convertProjectsToProject(projectList);
                                     if(!projectToSave.isEmpty()){
-                                        System.out.println(projectToSave.size());
+
                                         for(int i=0; i<projectToSave.size(); i++){
-                                            System.out.println("projets"+projectToSave.get(i).toString());
-                                            System.out.println("projets "+ AppDataBase.getINSTANCE(ComMemberActivity.this).projectDAO().selectProject(projectToSave.get(i).getIdProject()));
 
                                             AppDataBase.getINSTANCE(ComMemberActivity.this).projectDAO().insert(projectToSave.get(i));
 

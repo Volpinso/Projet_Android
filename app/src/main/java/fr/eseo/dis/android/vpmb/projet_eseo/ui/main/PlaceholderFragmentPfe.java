@@ -89,7 +89,7 @@ public class PlaceholderFragmentPfe extends Fragment {
             String token = LoginActivity.getToken();
             RequestQueue queue = Volley.newRequestQueue(getAppContext());
             String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
-            System.out.println(url);
+
             // Request a string response from the provided URL.
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                     (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -111,7 +111,7 @@ public class PlaceholderFragmentPfe extends Fragment {
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
                             projectList = null;
-                            System.out.println("error");
+                            System.out.println(error);
 
                         }
                     });
@@ -128,7 +128,7 @@ public class PlaceholderFragmentPfe extends Fragment {
             String token = LoginActivity.getToken();
             RequestQueue queue = Volley.newRequestQueue(getAppContext());
             String url = RequestModel.getMyJuriesRequest(LoginActivity.getUsername(), token);
-            System.out.println(url);
+
             // Request a string response from the provided URL.
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                     (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -144,7 +144,6 @@ public class PlaceholderFragmentPfe extends Fragment {
                                         if(getProjectList().get(k).getProjectId() == responseModel.getJuries()[i].getInfo().getProjects()[j].getProjectId()){
                                             myProjectsList.add(getProjectList().get(k));
                                             setMyProjectList(myProjectsList);
-                                            System.out.println(myProjectsList);
                                         }
                                     }
                                 }
@@ -157,7 +156,7 @@ public class PlaceholderFragmentPfe extends Fragment {
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
                             myProjectsList = null;
-                            System.out.println("error");
+                            System.out.println(error);
 
                         }
                     });
@@ -174,7 +173,7 @@ public class PlaceholderFragmentPfe extends Fragment {
             String token = LoginActivity.getToken();
             RequestQueue queue = Volley.newRequestQueue(getAppContext());
             String url = RequestModel.getSupervisorProjectrequest(LoginActivity.getUsername(), token);
-            System.out.println(url);
+
             // Request a string response from the provided URL.
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                     (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -209,7 +208,7 @@ public class PlaceholderFragmentPfe extends Fragment {
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
                             myProjectsList = null;
-                            System.out.println("error");
+                            System.out.println(error);
 
                         }
                     });
@@ -251,44 +250,7 @@ public class PlaceholderFragmentPfe extends Fragment {
         return root;
     }
 
-    /*public static List<Projects> getListRequest(){
-        try {
-            // Instantiate the RequestQueue.
-            String token = LoginActivity.getToken();
-            RequestQueue queue = Volley.newRequestQueue(getAppContext());
-            String url = RequestModel.getAllProjectrequest(LoginActivity.getUsername(), token);
-            System.out.println(url);
-            // Request a string response from the provided URL.
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Gson gson = new Gson();
-                            Liprj responseModel = gson.fromJson(String.valueOf(response),
-                                    Liprj.class);
-                            for(int i = 0 ; i < responseModel.getProjects().length; i++){
-                                projectList.add(responseModel.getProjects()[i]);
-                            }
-
-                        }
-                    }, new Response.ErrorListener() {
-
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            // TODO: Handle error
-                            projectList = null;
-                            System.out.println("error");
-
-                        }
-                    });
-            queue.add(jsonObjectRequest);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return projectList;
-    }*/
 
     public static Context getAppContext() {
         return PlaceholderFragmentPfe.context;

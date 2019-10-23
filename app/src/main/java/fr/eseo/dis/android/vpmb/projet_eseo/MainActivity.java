@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button button6 = (Button) findViewById(R.id.buttonVisitor);
-        System.out.println(AppDataBase.getINSTANCE(MainActivity.this).pseudoJuryDAO().loadAll().isEmpty());
-
 
 
             button6.setOnClickListener(new View.OnClickListener() {

@@ -72,7 +72,6 @@ public class VisitorSubjectRecyclerViewAdapter extends RecyclerView.Adapter<Visi
                 Intent intent = new Intent( v.getContext(), FullScreenPosterVisitor.class);
                 intent.putExtra("poster", projectsToDisplay.get(position).getPoster64());
                 intent.putExtra("idProject", projectsToDisplay.get(position).getIdProject());
-                System.out.println("IdPorject1 "+projectsToDisplay.get(position).getIdProject()+"");
                 v.getContext().startActivity(intent);
             }
         });
