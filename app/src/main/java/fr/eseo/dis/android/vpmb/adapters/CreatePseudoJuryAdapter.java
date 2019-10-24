@@ -69,9 +69,6 @@ public class CreatePseudoJuryAdapter extends RecyclerView.Adapter<CreatePseudoJu
 
                     Project projet = (Project) holder.checkbox.getTag();
 
-                    //projet.setSelected(holder.checkbox.isChecked());
-
-                    //dbProjects.get(position).setSelected(holder.checkbox.isChecked());
                     if(holder.checkbox.isChecked()) {
                         projectSelected.add(projet);
                     }else{

@@ -72,6 +72,7 @@
     <string name="SubjectAdded">Subject added for open days</string>
     <string name="NoSubjectLoaded">Subjects not uploaded yet. Please wait!</string>
     <string name="TableEmptied">The tables have been emptied successfully</string>
+    <string name="NoProjectsSelected">Please select at least one subject</string>
 
     <string name="posterlocation">Poster Location</string>
     <string name="grade_prompt">Choose a grade</string>

@@ -48,10 +48,14 @@ public class CreatePseudoJuryManualActivity extends AppCompatActivity implements
     public void onClick(View v) {
         List<Project> projectsJury = createPseudoJuryAdapter.getProjectSelected();
 
-        AppDataBase.insertProjectJury(projectsJury, CreatePseudoJuryManualActivity.this);
+        if(!projectsJury.isEmpty()) {
+            AppDataBase.insertProjectJury(projectsJury, CreatePseudoJuryManualActivity.this);
 
-        showJurySucces(AppCompatActivity.RESULT_OK);
-
+            showJurySucces(AppCompatActivity.RESULT_OK);
+        } else{
+            String success = getString(R.string.NoProjectsSelected);
+            Toast.makeText(getApplicationContext(), success, Toast.LENGTH_SHORT).show();
+        }
         }
 
     private void showJurySucces(@StringRes Integer successString) {

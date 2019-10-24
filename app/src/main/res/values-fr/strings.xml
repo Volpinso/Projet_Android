@@ -99,6 +99,7 @@
     <string name="SubjectAdded">Sujet ajouter aux suejts jpo</string>
     <string name="NoSubjectLoaded">Sujets non téléchargés. Veuillez patienter!</string>
     <string name="TableEmptied">Les tables ont bien été vidées</string>
+    <string name="NoProjectsSelected">Veuillez sélectionner au moins un sujet</string>
 
 
 </resources>
