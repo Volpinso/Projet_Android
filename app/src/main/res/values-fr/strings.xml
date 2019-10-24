@@ -93,10 +93,10 @@
     <string name="NoComment">Aucun commentaire</string>
     <string name="TruncateTable">Vider les données</string>
     <string name="SubjectLoaded">Sujet aléatoire sauvegardés</string>
-    <string name="CreateJuryAuto">Creer jury manuellement</string>
-    <string name="CreateJuryManual">Générer des jury automatiquement</string>
+    <string name="CreateJuryManual">Creer jury manuellement</string>
+    <string name="CreateJuryAuto">Générer des jury automatiquement</string>
     <string name="NoPseudoJury">Aucun pseudoJury créé. Accès refusé!</string>
-    <string name="SubjectAdded">Sujet ajouter aux suejts jpo</string>
+    <string name="SubjectAdded">Sujet ajouter aux sujets jpo</string>
     <string name="NoSubjectLoaded">Sujets non téléchargés. Veuillez patienter!</string>
     <string name="TableEmptied">Les tables ont bien été vidées</string>
     <string name="NoProjectsSelected">Veuillez sélectionner au moins un sujet</string>
