@@ -89,6 +89,7 @@
     </string-array>
     <string name="Comment">Commentaire:</string>
     <string name="Grade">Noter</string>
+    <string name="GradeVisitor">Note</string>
     <string name="GradeSaved">Note enregistrée!</string>
     <string name="NoComment">Aucun commentaire</string>
     <string name="TruncateTable">Vider les données</string>
