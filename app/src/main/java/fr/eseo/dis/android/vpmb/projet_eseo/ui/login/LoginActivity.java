@@ -7,17 +7,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -27,7 +24,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -41,11 +37,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 
 
-import fr.eseo.dis.android.vpmb.db.AppDataBase;
-import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
 import fr.eseo.dis.android.vpmb.models.Juries;
 import fr.eseo.dis.android.vpmb.models.Liprj;
 import fr.eseo.dis.android.vpmb.models.Logon;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.eseo.dis.android.vp.projet_eseo">
+    package="fr.eseo.dis.android.vpmb.projet_eseo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

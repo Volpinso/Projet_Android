@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,7 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapter;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;

@@ -17,7 +17,7 @@ import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Project;
 import fr.eseo.dis.android.vpmb.db.models.ProjectJury;
 import fr.eseo.dis.android.vpmb.projet_eseo.VisitorListSubjectsActivity;
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.projet_eseo.FullScreenPosterVisitor;
 
 public class VisitorSubjectRecyclerViewAdapter extends RecyclerView.Adapter<VisitorSubjectRecyclerViewAdapter.SubjectRecyclerViewHolder>{

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.jsibbold.zoomage.ZoomageView;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 
 public class PosterLocationActivity extends AppCompatActivity {
 

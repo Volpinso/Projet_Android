@@ -1,6 +1,5 @@
 package fr.eseo.dis.android.vpmb.adapters;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,24 +8,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Projects;
-import fr.eseo.dis.android.vpmb.models.RequestModel;
-import fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.MyJuryProjectActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.PfeDetailsActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.ui.main.PlaceholderFragmentPfe;
 
 
 public class MyJuryProjectsRecyclerViewAdapter extends RecyclerView.Adapter<MyJuryProjectsRecyclerViewAdapter.PFERecyclerViewHolder>{

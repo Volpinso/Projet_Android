@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.adapters.GradeRecyclerViewFragmentComAdapter;
 
 /**

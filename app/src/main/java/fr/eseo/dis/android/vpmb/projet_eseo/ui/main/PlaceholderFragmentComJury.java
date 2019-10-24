@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.projet_eseo.CreatePseudoJuryManualActivity;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.DataConverter;

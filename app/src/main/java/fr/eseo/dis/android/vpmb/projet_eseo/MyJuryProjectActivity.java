@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.adapters.MyJuryProjectsRecyclerViewAdapter;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapter;
 
 
 public class MyJuryProjectActivity extends AppCompatActivity {

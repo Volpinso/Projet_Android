@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.data.LoginRepository;
 import fr.eseo.dis.android.vpmb.projet_eseo.data.Result;
 import fr.eseo.dis.android.vpmb.projet_eseo.data.model.LoggedInUser;
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 
 public class LoginViewModel extends ViewModel {
 

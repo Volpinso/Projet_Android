@@ -16,7 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.adapters.CreatePseudoJuryAdapter;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.Project;

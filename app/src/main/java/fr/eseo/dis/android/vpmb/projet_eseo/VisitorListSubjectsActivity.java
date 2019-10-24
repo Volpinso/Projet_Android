@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 import fr.eseo.dis.android.vpmb.adapters.VisitorSubjectRecyclerViewAdapter;
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.PseudoJury;
 import fr.eseo.dis.android.vpmb.db.models.Visitor;

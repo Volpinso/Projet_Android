@@ -19,7 +19,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity;

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.db.models.AnnotationPoster;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;

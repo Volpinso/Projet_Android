@@ -20,7 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.adapters.MyPFERecyclerViewAdapter;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;

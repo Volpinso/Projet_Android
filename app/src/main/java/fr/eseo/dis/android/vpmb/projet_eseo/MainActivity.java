@@ -21,7 +21,7 @@ import java.security.cert.CertificateException;
 import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.android.vpmb.connexion.ConnexionManager;
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 

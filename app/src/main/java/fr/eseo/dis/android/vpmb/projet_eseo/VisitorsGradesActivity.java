@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.adapters.VisitorsGradesRecyclervViewComAdapter;
 import fr.eseo.dis.android.vpmb.db.AppDataBase;
 

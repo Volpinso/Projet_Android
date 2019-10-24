@@ -7,8 +7,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.widget.ImageView;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
-import fr.eseo.dis.android.vpmb.adapters.PFERecyclerViewAdapter;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 
 public class PosterFullActivity extends AppCompatActivity {
 

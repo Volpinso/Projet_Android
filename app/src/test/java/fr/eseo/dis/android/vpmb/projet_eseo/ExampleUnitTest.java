@@ -1,4 +1,4 @@
-package fr.eseo.dis.android.vp.projet_eseo;
+package fr.eseo.dis.android.vpmb.projet_eseo;
 
 import org.junit.Test;
 

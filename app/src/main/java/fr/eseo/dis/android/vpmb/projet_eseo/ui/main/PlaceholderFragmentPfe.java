@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,7 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eseo.dis.android.vp.projet_eseo.R;
+import fr.eseo.dis.android.vpmb.projet_eseo.R;
 import fr.eseo.dis.android.vpmb.models.Juries;
 import fr.eseo.dis.android.vpmb.models.Liprj;
 import fr.eseo.dis.android.vpmb.models.Myjur;
@@ -34,7 +35,6 @@ import fr.eseo.dis.android.vpmb.models.Myprj;
 import fr.eseo.dis.android.vpmb.models.Projects;
 import fr.eseo.dis.android.vpmb.models.RequestModel;
 import fr.eseo.dis.android.vpmb.projet_eseo.AllPfeActivity;
-import fr.eseo.dis.android.vpmb.projet_eseo.MainActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.MyPfeActivity;
 import fr.eseo.dis.android.vpmb.projet_eseo.ui.login.LoginActivity;
 
@@ -243,8 +243,14 @@ public class PlaceholderFragmentPfe extends Fragment {
         buttonPfeJury.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyPfeActivity.class);
-                startActivity(intent);
+                if (!getMyProjectList().isEmpty()) {
+                    Intent intent = new Intent(getActivity(), MyPfeActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    String success = getString(R.string.NoGrades);
+                    Toast.makeText(v.getContext(), success, Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return root;
