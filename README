@@ -1,0 +1,25 @@
+First of all, make sure that your device is running on the version of Android 6.0 or upper.
+
+1. Download the zip
+2. Extract the project file
+3. Open Android Studio (last version)
+4. Click on « Open an existing Android Studio project » -> Select the unzipped project file (yourPath/Projet_Android)
+
+5. Once the build is done, run the app on your device. The application will start and the main page will appear
+
+6. Now you have two choices:
+
+	6.a. Visitor: the button is blocked and message is returned because the local database is not created yet (unblocked once the communication member has created one pseudo jury at least).
+
+	6.b.Member ESEO: when you click on the button a login page is displayed
+
+		You can be logged as:
+			6.b.1: Member ESEO who is not a tutor of a project neither member of jury
+			6.b.2: Member ESEO who is tutor of project(s) and member of a jury (or more)
+			6.b.3: Member ESEO only member of a jury (or more)
+			6.b.4: Member of the communication
+
+
+You can click on the link below to see the main functionalities for person logged:
+
+https://drive.google.com/file/d/15pmlMC3vlTV5TfPIvyxtzUSi7K_YDUYL/view?usp=sharing
